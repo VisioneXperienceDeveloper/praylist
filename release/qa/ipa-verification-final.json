@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "artifact": "build/AppStoreExport/Praylist.ipa",
+  "signing": "verified signature",
+  "bundleId": "com.visionexperiencedeveloper.praylist",
+  "version": "1.0.0",
+  "build": "2",
+  "languages": [
+    "en",
+    "ko"
+  ],
+  "localizationKeys": 180,
+  "supportURL": "https://www.visionexperiencedeveloper.com",
+  "team": "JS293ULS3A",
+  "icon": "opaque compiled AppIcon",
+  "debugFixtures": "absent"
+}

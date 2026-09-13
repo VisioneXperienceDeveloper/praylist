@@ -1,0 +1,14 @@
+Praylist is a personal bucket-list and prayer journal. No account, login, purchase, review credentials, subscription, server, or remote content feed is required.
+
+Languages: English and Korean. Automatic selection follows the iPhone Region setting: Korea uses Korean; every other region uses English. Settings > Language lets the user choose either language. This does not use location access, and existing user writing is not translated.
+
+Review flow:
+1. On first launch, select one or more categories and tap Start with these categories. Write your first pray, then tap Open my Praylist.
+2. Tap an empty line to write another pray. Tap Done on the keyboard to save. Tap existing text to edit it in place. Each category holds up to 10 prays, including answered ones.
+3. Swipe left or right to change category. Tap the circle beside a pray, choose an achievement date, then Save date. The same circle also provides undo and deletion.
+4. Open Today's prayer, read each category, then tap I prayed today. The app records the local calendar day once.
+5. Open My journey at the top of the notebook. Answered prays appear with their dates. Prayer calendar marks only the recorded days. This calendar does not read or write the device's Calendar events.
+6. Settings > Daily prayer reminder allows an optional local notification at a chosen time. Tapping the notification opens the app and today's prayer. Declining permission does not block the rest of the app.
+7. Settings provides manual JSON backup export/import and an in-app privacy policy. Import requires confirmation because it replaces the notebook; reminders must be enabled again after restoration.
+
+The notebook is stored locally. No user content or analytics is transmitted to the developer. Only user-selected external support links and file providers require connectivity. There is no advertising, tracking, AI content generation, or social sharing service in the app. Sample prays in store images are fictional demo records captured from the actual interface; the release build has no sample-data controls.

@@ -1,0 +1,32 @@
+{
+  "app_name": "Praylist",
+  "app_store_id": "6810881384",
+  "release_version": "1.0.0",
+  "release_build": "2",
+  "build_id": "06995f2d-d254-4c1e-9a07-41ad00edf453",
+  "binary_uploaded_at": "2026-09-11T01:03:59Z",
+  "binary_processing_status": "VALID",
+  "review_submitted": true,
+  "remote_status": "WAITING_FOR_REVIEW",
+  "review_submitted_at": "2026-09-11T11:23:00+10:00",
+  "submission_id": "b223a2d1-1f58-4b54-b4e7-7943a92ad8ac",
+  "submission_url": "https://appstoreconnect.apple.com/apps/6810881384/distribution/reviewsubmissions/details/b223a2d1-1f58-4b54-b4e7-7943a92ad8ac",
+  "price": 0,
+  "territories_verified": 175,
+  "free_territories_verified": 175,
+  "release_mode": "after_approval",
+  "screenshots_uploaded": {
+    "en-US": 8,
+    "ko": 8
+  },
+  "previews_uploaded": {
+    "en-US": 1,
+    "ko": 1
+  },
+  "privacy_url": "https://www.visionexperiencedeveloper.com/en/policies/praylist",
+  "privacy_url_ko": "https://www.visionexperiencedeveloper.com/ko/policies/praylist",
+  "support_url": "https://www.visionexperiencedeveloper.com/en/supports/praylist",
+  "support_url_ko": "https://www.visionexperiencedeveloper.com/ko/supports/praylist",
+  "evidence": "Read directly from authenticated App Store Connect submission detail page after Submit for Review; both submission and item state Waiting for Review.",
+  "date_precision": "App Store Connect displays submitted time to minute, Australia/Sydney."
+}

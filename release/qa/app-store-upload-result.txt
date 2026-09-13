@@ -1,0 +1,3 @@
+2026-09-11 11:03:59.263 xcodebuild[92703:70134136] Progress 100%: Upload succeeded.
+Uploaded Praylist
+** EXPORT SUCCEEDED **

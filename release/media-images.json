@@ -1,0 +1,166 @@
+{
+  "generatedAt" : "2026-09-11T00:53:33Z",
+  "generator" : "scripts/generate-store-assets.swift",
+  "images" : [
+    {
+      "detail" : "항목마다 최대 10개의 pray를 담아보세요.",
+      "file" : "release/store-images/ko/01-your-praylist.png",
+      "height" : 2868,
+      "language" : "ko",
+      "opaque" : true,
+      "source" : "release/screenshots/ko/01-notebook.png",
+      "title" : "마음에 품은 pray,\n한 장에 차곡차곡",
+      "width" : 1320
+    },
+    {
+      "detail" : "옆으로 넘기며 나만의 pray를 만나보세요.",
+      "file" : "release/store-images/ko/02-turn-the-page.png",
+      "height" : 2868,
+      "language" : "ko",
+      "opaque" : true,
+      "source" : "release/screenshots/ko/02-travel.png",
+      "title" : "다음 pray는\n한 번의 넘김으로",
+      "width" : 1320
+    },
+    {
+      "detail" : "잠시 멈추고, pray 하나하나에 마음을 모아요.",
+      "file" : "release/store-images/ko/03-daily-prayer.png",
+      "height" : 2868,
+      "language" : "ko",
+      "opaque" : true,
+      "source" : "release/screenshots/ko/03-prayer.png",
+      "title" : "오늘의 pray를\n오늘의 기도로",
+      "width" : 1320
+    },
+    {
+      "detail" : "pray가 이루어진 날을 함께 기록하세요.",
+      "file" : "release/store-images/ko/04-answered-prays.png",
+      "height" : 2868,
+      "language" : "ko",
+      "opaque" : true,
+      "source" : "release/screenshots/ko/04-achievements.png",
+      "title" : "응답된 pray,\n그날의 기억까지",
+      "width" : 1320
+    },
+    {
+      "detail" : "기도한 날을 달력에서 한눈에 돌아보세요.",
+      "file" : "release/store-images/ko/05-prayer-calendar.png",
+      "height" : 2868,
+      "language" : "ko",
+      "opaque" : true,
+      "source" : "release/screenshots/ko/07-prayer-calendar.png",
+      "title" : "기도한 하루가\n나의 발자취로",
+      "width" : 1320
+    },
+    {
+      "detail" : "원하는 시간에 매일 기도 알림을 받아요.",
+      "file" : "release/store-images/ko/06-gentle-reminder.png",
+      "height" : 2868,
+      "language" : "ko",
+      "opaque" : true,
+      "source" : "release/screenshots/ko/05-reminder.png",
+      "title" : "나를 위한 시간,\n잊지 않도록",
+      "width" : 1320
+    },
+    {
+      "detail" : "원하는 항목을 고르고 첫 pray를 적어보세요.",
+      "file" : "release/store-images/ko/07-begin-simply.png",
+      "height" : 2868,
+      "language" : "ko",
+      "opaque" : true,
+      "source" : "release/screenshots/ko/06-onboarding.png",
+      "title" : "마음이 향하는\n항목부터 시작",
+      "width" : 1320
+    },
+    {
+      "detail" : "이름과 설명을 적어 자유롭게 만들어보세요.",
+      "file" : "release/store-images/ko/08-make-it-yours.png",
+      "height" : 2868,
+      "language" : "ko",
+      "opaque" : true,
+      "source" : "release/screenshots/ko/08-new-category.png",
+      "title" : "내 pray에 맞춘\n나만의 항목",
+      "width" : 1320
+    },
+    {
+      "detail" : "Keep up to 10 prays in each category.",
+      "file" : "release/store-images/en/01-your-praylist.png",
+      "height" : 2868,
+      "language" : "en",
+      "opaque" : true,
+      "source" : "release/screenshots/en/01-notebook.png",
+      "title" : "Your prays.\nOne little book.",
+      "width" : 1320
+    },
+    {
+      "detail" : "Turn the page to explore your prays.",
+      "file" : "release/store-images/en/02-turn-the-page.png",
+      "height" : 2868,
+      "language" : "en",
+      "opaque" : true,
+      "source" : "release/screenshots/en/02-travel.png",
+      "title" : "A new chapter.\nJust a swipe away.",
+      "width" : 1320
+    },
+    {
+      "detail" : "Pause and reflect on each of your prays.",
+      "file" : "release/store-images/en/03-daily-prayer.png",
+      "height" : 2868,
+      "language" : "en",
+      "opaque" : true,
+      "source" : "release/screenshots/en/03-prayer.png",
+      "title" : "Make room for\ntoday’s prayer.",
+      "width" : 1320
+    },
+    {
+      "detail" : "Keep the day each pray became a reality.",
+      "file" : "release/store-images/en/04-answered-prays.png",
+      "height" : 2868,
+      "language" : "en",
+      "opaque" : true,
+      "source" : "release/screenshots/en/04-achievements.png",
+      "title" : "Remember your\nanswered prays.",
+      "width" : 1320
+    },
+    {
+      "detail" : "See the days you prayed on your calendar.",
+      "file" : "release/store-images/en/05-prayer-calendar.png",
+      "height" : 2868,
+      "language" : "en",
+      "opaque" : true,
+      "source" : "release/screenshots/en/07-prayer-calendar.png",
+      "title" : "Your journey,\none prayer at a time.",
+      "width" : 1320
+    },
+    {
+      "detail" : "Choose a daily time for your prayer reminder.",
+      "file" : "release/store-images/en/06-gentle-reminder.png",
+      "height" : 2868,
+      "language" : "en",
+      "opaque" : true,
+      "source" : "release/screenshots/en/05-reminder.png",
+      "title" : "A gentle reminder\nto pause each day.",
+      "width" : 1320
+    },
+    {
+      "detail" : "Choose your categories. Write your first pray.",
+      "file" : "release/store-images/en/07-begin-simply.png",
+      "height" : 2868,
+      "language" : "en",
+      "opaque" : true,
+      "source" : "release/screenshots/en/06-onboarding.png",
+      "title" : "Begin with what\nmatters to you.",
+      "width" : 1320
+    },
+    {
+      "detail" : "Create a category and make it your own.",
+      "file" : "release/store-images/en/08-make-it-yours.png",
+      "height" : 2868,
+      "language" : "en",
+      "opaque" : true,
+      "source" : "release/screenshots/en/08-new-category.png",
+      "title" : "A space for\nevery kind of pray.",
+      "width" : 1320
+    }
+  ]
+}

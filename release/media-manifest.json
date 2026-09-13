@@ -1,0 +1,398 @@
+{
+  "app": "Praylist",
+  "verifiedAt": "2026-09-11T00:56:17.770601+00:00",
+  "languages": [
+    "ko",
+    "en"
+  ],
+  "rawScreenshotCount": 16,
+  "storeScreenshotCount": 16,
+  "appPreviewCount": 2,
+  "source": "Actual iPhone 17 Pro Max Simulator app captures using isolated sample data; no synthesized UI.",
+  "specifications": [
+    "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications",
+    "https://developer.apple.com/help/app-store-connect/reference/app-information/app-preview-specifications"
+  ],
+  "checks": {
+    "pngDimensionsAndOpacity": "passed",
+    "videoEncodingAndDuration": "passed",
+    "displayedTerminologyOCR": "passed",
+    "fileHashes": "sha256"
+  },
+  "files": [
+    {
+      "file": "release/screenshots/ko/01-notebook.png",
+      "bytes": 357552,
+      "sha256": "457e35c259a817d7583c37afaadeda8a2a0744e1ce14526567a81af2040154d5",
+      "kind": "raw-simulator-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsKOFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/ko/02-travel.png",
+      "bytes": 297838,
+      "sha256": "5702232bece91e2cb36084a6293f7657cf34585b988ff988dd3e9056e178417d",
+      "kind": "raw-simulator-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsKOFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/ko/03-prayer.png",
+      "bytes": 291573,
+      "sha256": "e15e55728fc6262d8ac800a49939fe0de37d058c745e1cb8f0e48d0aa97ef669",
+      "kind": "raw-simulator-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsKOFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/ko/04-achievements.png",
+      "bytes": 159443,
+      "sha256": "767feeacea5ab2644940df26e65efdea360d26458cd83929def38ea980c50062",
+      "kind": "raw-simulator-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsKOFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/ko/05-reminder.png",
+      "bytes": 178054,
+      "sha256": "785fbb94c6d1aacf2fdc193ed0301b396b73ae7078eb6424d792e12364c6cc81",
+      "kind": "raw-simulator-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsKOFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/ko/06-onboarding.png",
+      "bytes": 281099,
+      "sha256": "93ee6503942f85cbd7e7afcde70f6878f53e8763b1bbcf73ca21b0508b68d489",
+      "kind": "raw-simulator-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsKOFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/ko/07-prayer-calendar.png",
+      "bytes": 196071,
+      "sha256": "51f793e0bed3fcfb089e419b770f6898a155d33d5b2fc646d18beb6dcd691ef3",
+      "kind": "raw-simulator-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsKOFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/ko/08-new-category.png",
+      "bytes": 184126,
+      "sha256": "015b413a4b833fe9726c907c876aa9f49919d17ba8f451d6bbda2eaf30eec324",
+      "kind": "raw-simulator-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsKOFinal.xcresult"
+    },
+    {
+      "file": "release/store-images/ko/01-your-praylist.png",
+      "bytes": 446019,
+      "sha256": "46d5382407231b085322d827f4c7013be02f390941622312e92229497eb61a2a",
+      "kind": "app-store-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/ko/02-turn-the-page.png",
+      "bytes": 349272,
+      "sha256": "dc55c3b9bdcdc2f19926f3e4514c6f143435cb1f522b0b582dbda416e7cc315e",
+      "kind": "app-store-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/ko/03-daily-prayer.png",
+      "bytes": 373431,
+      "sha256": "9f3d8892bc6b63ca9d2bd44fc51afe795a6a23c5ea5a11fa4c7c55228a5616e0",
+      "kind": "app-store-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/ko/04-answered-prays.png",
+      "bytes": 226025,
+      "sha256": "e64d35ac09de5b5daba1a3c5d86d08cf767917116bf762afb8af647349f18a54",
+      "kind": "app-store-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/ko/05-prayer-calendar.png",
+      "bytes": 252459,
+      "sha256": "5e1402b0eb901a6e1317cfa400fcda1d7fdc6eaaf58f5876f8302b891686f3ec",
+      "kind": "app-store-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/ko/06-gentle-reminder.png",
+      "bytes": 250546,
+      "sha256": "aba3afb352ff4b1b012acf1559b65a36ce1199ad366f25fb013f584187403a42",
+      "kind": "app-store-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/ko/07-begin-simply.png",
+      "bytes": 355563,
+      "sha256": "21b704647d42ce94e83df6c267dbc7c7d05658348d194bf9f2e5aa48c9d5754b",
+      "kind": "app-store-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/ko/08-make-it-yours.png",
+      "bytes": 233740,
+      "sha256": "4ce60bdc5c1d13996cc85287ccdcaba2844fec16eeec292832d38cd2cb259cff",
+      "kind": "app-store-screenshot",
+      "language": "ko",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/video/Praylist-App-Preview-ko.mp4",
+      "bytes": 38267852,
+      "sha256": "cba69b3e678ae6f545b1e6aaa55444c551bfc49e86130c164e53d42da8134535",
+      "kind": "app-preview",
+      "language": "ko",
+      "durationSeconds": 28.0,
+      "width": 886,
+      "height": 1920,
+      "frameRate": "30/1",
+      "videoCodec": "h264",
+      "profile": "High",
+      "level": 40,
+      "videoBitRate": 10922118,
+      "audioCodec": "aac",
+      "audioChannels": 2,
+      "audioSampleRate": 48000,
+      "audioIntent": "deliberately silent"
+    },
+    {
+      "file": "release/screenshots/en/01-notebook.png",
+      "bytes": 385771,
+      "sha256": "e03cd23ef06a1beead66d848a79fed49bc020c155f41ced80573001efc632bf1",
+      "kind": "raw-simulator-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsENFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/en/02-travel.png",
+      "bytes": 324050,
+      "sha256": "781a5fc0dd08bac8cc50a4dade35ce275d86049ad5245f886f7f0bcd22d62ce7",
+      "kind": "raw-simulator-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsENFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/en/03-prayer.png",
+      "bytes": 315497,
+      "sha256": "f1df48e8ca5ac18d0582905ddca35ccb3ff6ede28660a28a86b4dcc49f3e42d0",
+      "kind": "raw-simulator-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsENFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/en/04-achievements.png",
+      "bytes": 176435,
+      "sha256": "0204fb7d80f8874e87c227374a9b09f5f9c919689ccdac013e08048005135476",
+      "kind": "raw-simulator-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsENFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/en/05-reminder.png",
+      "bytes": 177531,
+      "sha256": "30c5c87f6b4df98ac87898997d57ca2f9ce40088e54990baf9060e3d93126bc7",
+      "kind": "raw-simulator-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsENFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/en/06-onboarding.png",
+      "bytes": 289605,
+      "sha256": "a299e29637001f74cab44f8e612c3d824d92d09225e6d0adbb109f5a39f430bb",
+      "kind": "raw-simulator-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsENFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/en/07-prayer-calendar.png",
+      "bytes": 217242,
+      "sha256": "6354799f735921456a68b06ab6fb125f2d324f575fcb29b8fb380d6b41dbcdac",
+      "kind": "raw-simulator-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsENFinal.xcresult"
+    },
+    {
+      "file": "release/screenshots/en/08-new-category.png",
+      "bytes": 195507,
+      "sha256": "bd75f363117bd7dbeaac467f3f1f14e01e60326a29b68066a00b5a36c29401b7",
+      "kind": "raw-simulator-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true,
+      "captureResult": "build/MediaScreenshotsENFinal.xcresult"
+    },
+    {
+      "file": "release/store-images/en/01-your-praylist.png",
+      "bytes": 503347,
+      "sha256": "b1be29a513dcf76a4635d991c83bda5af634584efc3456bb80feab86c9c4844d",
+      "kind": "app-store-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/en/02-turn-the-page.png",
+      "bytes": 404478,
+      "sha256": "713cddf3212c10981d89b310923c87463786ec39dd87d3cd5cbd332c2e6a9926",
+      "kind": "app-store-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/en/03-daily-prayer.png",
+      "bytes": 433069,
+      "sha256": "0663b746cbf5c67841bbc276f43c05fb9f5b24c27751ab81008ec784075e2aea",
+      "kind": "app-store-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/en/04-answered-prays.png",
+      "bytes": 257806,
+      "sha256": "928ef96e0232ca8e0745f16774bf24c77b288f5622d8f7ab9a581f3710027fc7",
+      "kind": "app-store-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/en/05-prayer-calendar.png",
+      "bytes": 289411,
+      "sha256": "55ecd7affe7eb4a56b91ecbe335aa7c98ea7cc71c6edbbca169ac9ec96920c11",
+      "kind": "app-store-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/en/06-gentle-reminder.png",
+      "bytes": 287456,
+      "sha256": "aa497da0e8592476571761db973bfd5bbb16c699e4362f5bfb82d22cbd46a9b7",
+      "kind": "app-store-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/en/07-begin-simply.png",
+      "bytes": 386067,
+      "sha256": "987a60d7c440b180c9bd82648e0c2b9ffb8e8b515dd7cb01ac20cbca461c6da5",
+      "kind": "app-store-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/store-images/en/08-make-it-yours.png",
+      "bytes": 259225,
+      "sha256": "791f817bc02fea239384b97e6bcf394650565d7e0d0248c438217a36afa4bb2f",
+      "kind": "app-store-screenshot",
+      "language": "en",
+      "width": 1320,
+      "height": 2868,
+      "opaque": true
+    },
+    {
+      "file": "release/video/Praylist-App-Preview-en.mp4",
+      "bytes": 38267825,
+      "sha256": "a015bca8a33e2d8bb47b9cea8a11fed1ee6bacfa15eceedbd39eba68acac789c",
+      "kind": "app-preview",
+      "language": "en",
+      "durationSeconds": 28.0,
+      "width": 886,
+      "height": 1920,
+      "frameRate": "30/1",
+      "videoCodec": "h264",
+      "profile": "High",
+      "level": 40,
+      "videoBitRate": 10922114,
+      "audioCodec": "aac",
+      "audioChannels": 2,
+      "audioSampleRate": 48000,
+      "audioIntent": "deliberately silent"
+    }
+  ]
+}

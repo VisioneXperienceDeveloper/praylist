@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "artifact": "build/Praylist-unsigned.xcarchive",
+  "signing": "unsigned archive",
+  "bundleId": "com.visionexperiencedeveloper.praylist",
+  "version": "1.0.0",
+  "build": "2",
+  "languages": [
+    "en",
+    "ko"
+  ],
+  "localizationKeys": 180,
+  "supportURL": "https://www.visionexperiencedeveloper.com",
+  "team": null,
+  "icon": "opaque compiled AppIcon",
+  "debugFixtures": "absent"
+}

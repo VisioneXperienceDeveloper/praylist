@@ -1,0 +1,13 @@
+{
+  "language": "ko",
+  "source": "build/media/raw-ko.mp4",
+  "captureResult": "build/MediaPreviewKO.xcresult",
+  "recorderStartEpoch": 1789087605.261,
+  "durationSeconds": 28,
+  "playbackSpeed": 1,
+  "editNote": "Real app UI only. Source ranges chosen after visual inspection; idle time between prayer and history is omitted.",
+  "segments": [
+    {"start": 17.5, "duration": 18, "content": "Notebook, two real category swipes, daily prayer sheet"},
+    {"start": 40, "duration": 10, "content": "Answered prays and prayer calendar"}
+  ]
+}

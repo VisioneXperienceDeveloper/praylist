@@ -1,0 +1,34 @@
+.DS_Store
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.xcodebuildmcp/
+*.ipa
+*.xcarchive
+
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+*.p8
+*.p12
+*.pfx
+*.key
+*.pem
+*.mobileprovision
+*.provisionprofile
+
+# Internal App Store account and reviewer information
+release/release-config.json
+release/review/release-decisions.md
+
+# Generated caches and duplicate delivery archives
+__pycache__/
+*.py[cod]
+*.xcresult
+*.log
+*.zip
+.vercel/
+node_modules/
+.venv/
