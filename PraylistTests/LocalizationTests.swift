@@ -35,6 +35,22 @@ struct LocalizationTests {
         relaunched.preference = .automatic
         #expect(LanguageSettings(defaults: defaults, region: "US").resolved == .english)
     }
+    @Test func appearanceChoicePersistsWithoutChangingBackupData() throws {
+        let name = "PraylistAppearanceTests." + UUID().uuidString
+        let defaults = try #require(UserDefaults(suiteName: name))
+        defer { defaults.removePersistentDomain(forName: name) }
+        let data = PreviewData.filled
+        let encodedBefore = try PrayStore.encode(data)
+        let settings = AppearanceSettings(defaults: defaults)
+        #expect(settings.preference == .automatic)
+        #expect(settings.preference.colorScheme == nil)
+        settings.preference = .dark
+        #expect(settings.preference.colorScheme == .dark)
+        #expect(AppearanceSettings(defaults: defaults).preference == .dark)
+        settings.preference = .light
+        #expect(settings.preference.colorScheme == .light)
+        #expect(try PrayStore.encode(data) == encodedBefore)
+    }
     @Test func englishAndKoreanResourcesHaveMatchingKeysAndRealTranslations() throws {
         func entries(_ language: String) throws -> [String: String] {
             let path = try #require(Bundle.main.path(forResource: "Localizable", ofType: "strings", inDirectory: nil, forLocalization: language))
@@ -43,11 +59,39 @@ struct LocalizationTests {
         }
         let english = try entries("en"), korean = try entries("ko")
         #expect(Set(english.keys) == Set(korean.keys))
-        #expect(english.count >= 174)
+        #expect(english.count >= 179)
         #expect(L10n.text("오늘의 기도", language: .english) == "Today's prayer")
         #expect(L10n.text("오늘의 기도", language: .korean) == "오늘의 기도")
         #expect(L10n.text("가보고 싶은 곳", language: .english) == "Places to go")
+        #expect(L10n.text("항목 관리", language: .korean) == "카테고리 관리")
+        #expect(L10n.text("새 항목 만들기", language: .korean) == "새 카테고리 생성")
+        #expect(L10n.text("나만의 항목", language: .korean) == "새 카테고리")
         #expect(english.values.allSatisfy { $0.range(of: "[가-힣]", options: .regularExpression) == nil })
+    }
+    @Test func defaultCategoryMatchingWorksAcrossLanguages() {
+        let korean = PrayCategory.suggestions[0]
+        let english = PrayCategory(
+            title: L10n.text("되고 싶은 나", language: .english),
+            symbol: korean.symbol,
+            subtitle: L10n.text("어떤 사람이 되고 싶나요?", language: .english)
+        )
+        let custom = PrayCategory(title: korean.title, symbol: "star", subtitle: korean.subtitle)
+        #expect(PrayCategory.isSameSuggestion(korean, english))
+        #expect(!PrayCategory.isSameSuggestion(korean, custom))
+    }
+    @Test func prayerCompletionMessagesAreLocalizedUniqueAndCalm() {
+        #expect(PrayerCompletionMessage.allCases.count >= 5)
+        for language in [AppLanguage.korean, .english] {
+            let messages = PrayerCompletionMessage.allCases.map { L10n.text($0.rawValue, language: language) }
+            #expect(messages.allSatisfy { !$0.isEmpty && !$0.hasPrefix("prayer.completion.") })
+            #expect(Set(messages).count == messages.count)
+            let disallowed = ["streak", "score", "rank", "연속", "점수", "순위"]
+            #expect(messages.allSatisfy { message in
+                disallowed.allSatisfy { !message.localizedCaseInsensitiveContains($0) }
+            })
+        }
+        #expect(PrayerCompletionMessage.select(index: 0) == .heldClose)
+        #expect(PrayerCompletionMessage.select(index: PrayerCompletionMessage.allCases.count) == .heldClose)
     }
     @Test func reminderUsesSelectedLanguageAndSamePrivateRoute() {
         let english = ReminderService.makeRequest(.init(enabled: true, hour: 8, minute: 15), language: .english)
