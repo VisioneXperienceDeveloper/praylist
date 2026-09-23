@@ -30,15 +30,29 @@ final class PraylistAppDelegate: NSObject, UIApplicationDelegate, UNUserNotifica
 struct PraylistApp: App {
     @State private var store: PrayStore
     @State private var language: LanguageSettings
+    @State private var appearance: AppearanceSettings
     @UIApplicationDelegateAdaptor(PraylistAppDelegate.self) private var appDelegate
 
     init() {
         #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("--reset-language") { L10n.defaults.removeObject(forKey: L10n.preferenceKey) }
+        if ProcessInfo.processInfo.arguments.contains("--reset-appearance") { L10n.defaults.removeObject(forKey: AppearanceSettings.preferenceKey) }
         #endif
         _language = State(initialValue: LanguageSettings())
+        _appearance = State(initialValue: AppearanceSettings())
         #if DEBUG
-        if ProcessInfo.processInfo.arguments.contains("--uitesting"), ProcessInfo.processInfo.arguments.contains("--verify-reminder-delivery") {
+        if ProcessInfo.processInfo.arguments.contains("--uitesting"), ProcessInfo.processInfo.arguments.contains("--prayer-empty") {
+            _store = State(initialValue: PrayStore(
+                fileURL: nil,
+                initial: PrayData(onboarded: true, categories: [PrayCategory(title: "되고 싶은 나", symbol: "sparkles", subtitle: "어떤 사람이 되고 싶나요?")])
+            ))
+        } else if ProcessInfo.processInfo.arguments.contains("--uitesting"), ProcessInfo.processInfo.arguments.contains("--prayer-write-failure") {
+            _store = State(initialValue: PrayStore(
+                fileURL: URL.applicationSupportDirectory.appending(path: "Praylist/ui-prayer-write-failure.json"),
+                initial: PreviewData.filled,
+                write: { _, _ in throw CocoaError(.fileWriteOutOfSpace) }
+            ))
+        } else if ProcessInfo.processInfo.arguments.contains("--uitesting"), ProcessInfo.processInfo.arguments.contains("--verify-reminder-delivery") {
             // The opt-in UI check waits for a real repeating calendar notification.
             var fixture = PreviewData.filled
             fixture.reminder.enabled = true
@@ -58,8 +72,8 @@ struct PraylistApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            RootView().environment(store).environment(appDelegate.reminders).environment(language)
-                .environment(\.locale, language.locale).tint(.forest)
+            RootView().environment(store).environment(appDelegate.reminders).environment(language).environment(appearance)
+                .environment(\.locale, language.locale).preferredColorScheme(appearance.preference.colorScheme).tint(.forest)
         }
     }
 }
@@ -91,7 +105,7 @@ struct RootView: View {
                     Color.paper
                     VStack(spacing: 20) {
                         Text("praylist").font(.system(size: 42, weight: .regular, design: .serif))
-                        Text(L10n.text("소망을 담고, 매일 기도하다")).font(.subheadline).foregroundStyle(Color.quiet)
+                        Text(L10n.text("나의 소망을 담은 작은 책")).font(.subheadline).foregroundStyle(Color.quiet)
                     }
                 }
                 .overlay(alignment: .leading) { Rectangle().fill(Color.forest.opacity(0.12)).frame(width: 6) }

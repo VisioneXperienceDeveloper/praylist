@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import SwiftUI
 
 enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     case automatic, korean = "ko", english = "en"
@@ -9,6 +10,25 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
         self == .automatic ? (region?.uppercased() == "KR" ? .korean : .english) : self
     }
     var locale: Locale { Locale(identifier: self == .korean ? "ko_KR" : "en_US") }
+}
+
+enum AppAppearance: String, CaseIterable, Identifiable, Sendable {
+    case automatic, light, dark
+    var id: String { rawValue }
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .automatic: nil
+        case .light: .light
+        case .dark: .dark
+        }
+    }
+    var localizationKey: String {
+        switch self {
+        case .automatic: "시스템 설정"
+        case .light: "라이트"
+        case .dark: "다크"
+        }
+    }
 }
 
 enum L10n {
@@ -65,4 +85,18 @@ final class LanguageSettings {
         preference = AppLanguage(rawValue: defaults.string(forKey: L10n.preferenceKey) ?? "") ?? .automatic
     }
     func refreshRegion() { region = Locale.current.region?.identifier }
+}
+
+@MainActor @Observable
+final class AppearanceSettings {
+    static let preferenceKey = "praylist.appearance"
+    var preference: AppAppearance {
+        didSet { defaults.set(preference.rawValue, forKey: Self.preferenceKey) }
+    }
+    private let defaults: UserDefaults
+
+    init(defaults: UserDefaults = L10n.defaults) {
+        self.defaults = defaults
+        preference = AppAppearance(rawValue: defaults.string(forKey: Self.preferenceKey) ?? "") ?? .automatic
+    }
 }
