@@ -22,6 +22,28 @@ struct PrayStoreTests {
             #expect(color.resolvedColor(with: UITraitCollection(userInterfaceStyle: style)).cgColor.alpha > 0.99)
         }
     }
+    @Test func semanticTextColorsMeetContrastInBothAppearances() throws {
+        func luminance(_ color: UIColor, style: UIUserInterfaceStyle) throws -> Double {
+            let resolved = color.resolvedColor(with: UITraitCollection(userInterfaceStyle: style))
+            var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+            #expect(resolved.getRed(&red, green: &green, blue: &blue, alpha: &alpha))
+            func channel(_ value: CGFloat) -> Double {
+                let value = Double(value)
+                return value <= 0.04045 ? value / 12.92 : pow((value + 0.055) / 1.055, 2.4)
+            }
+            return 0.2126 * channel(red) + 0.7152 * channel(green) + 0.0722 * channel(blue)
+        }
+        func contrast(_ foreground: String, _ background: String, style: UIUserInterfaceStyle) throws -> Double {
+            let foreground = try luminance(#require(UIColor(named: foreground)), style: style)
+            let background = try luminance(#require(UIColor(named: background)), style: style)
+            return (max(foreground, background) + 0.05) / (min(foreground, background) + 0.05)
+        }
+        for style in [UIUserInterfaceStyle.light, .dark] {
+            #expect(try contrast("Ink", "Paper", style: style) >= 4.5)
+            #expect(try contrast("Quiet", "Paper", style: style) >= 4.5)
+            #expect(try contrast("OnAccent", "AccentColor", style: style) >= 4.5)
+        }
+    }
     private func store() -> PrayStore {
         PrayStore(fileURL: nil, initial: PrayData(onboarded: true, categories: [.init(title: "나의 소망", symbol: "star", subtitle: "매일 기억하기")]))
     }
@@ -97,6 +119,17 @@ struct PrayStoreTests {
         let before = store.data
         #expect(throws: (any Error).self) { try store.savePray(Pray(title: "잃으면 안 되는 기록"), categoryID: before.categories[0].id) }
         #expect(store.data == before)
+    }
+    @Test func failedPrayerRecordDoesNotMutateMemory() {
+        let store = PrayStore(
+            fileURL: FileManager.default.temporaryDirectory.appending(path: UUID().uuidString),
+            initial: PreviewData.filled,
+            write: { _, _ in throw CocoaError(.fileWriteOutOfSpace) }
+        )
+        let before = store.data
+        #expect(throws: (any Error).self) { try store.recordPrayer() }
+        #expect(store.data == before)
+        #expect(!store.data.prayedToday)
     }
     @Test func corruptStoreIsNeverOverwritten() throws {
         let url = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString + ".json")
