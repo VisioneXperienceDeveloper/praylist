@@ -59,14 +59,14 @@ final class PraylistUITests: XCTestCase {
         app.buttons["prayerButton"].tap()
         XCTAssertTrue(app.buttons["prayerContinueButton"].waitForExistence(timeout: 5))
         capture("03-prayer", app: app)
-        app.buttons[label("닫기", "Close")].tap()
+        app.buttons["Close"].tap()
         app.buttons["historyButton"].tap()
         XCTAssertTrue(app.staticTexts[label("나의 발자취", "My journey")].waitForExistence(timeout: 5))
         capture("04-achievements", app: app)
         app.buttons[label("기도 기록", "prayer calendar")].tap()
         XCTAssertTrue(app.otherElements["prayerCalendar"].waitForExistence(timeout: 5))
         capture("07-prayer-calendar", app: app)
-        app.buttons[label("닫기", "Close")].tap()
+        app.buttons["Close"].tap()
         app.buttons["settingsButton"].tap()
         app.cells.containing(.staticText, identifier: label("매일 기도 알림", "Daily prayer reminder")).firstMatch.tap()
         let toggle = app.switches["reminderToggle"]
@@ -74,14 +74,99 @@ final class PraylistUITests: XCTestCase {
         toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
         capture("05-reminder", app: app)
         app.navigationBars[label("기도 알림", "prayer reminder")].buttons.firstMatch.tap()
-        app.buttons[label("항목 관리", "Manage categories")].tap()
-        app.buttons[label("새 항목 만들기", "Create a category")].tap()
+        app.buttons[label("카테고리 관리", "Manage categories")].tap()
+        app.buttons[label("새 카테고리 생성", "Create a category")].tap()
         XCTAssertTrue(app.textFields[label("예: 배우고 싶은 것", "e.g. Things to learn")].waitForExistence(timeout: 5))
         capture("08-new-category", app: app)
         app.terminate()
         let fresh = launch(["--uitesting", "--reset"], language: english ? "en" : "ko")
         XCTAssertTrue(fresh.buttons["onboardingContinue"].waitForExistence(timeout: 10))
         capture("06-onboarding", app: fresh)
+    }
+
+    func testCaptureAllAppScreens() throws {
+        let environment = ProcessInfo.processInfo.environment
+        guard environment["PRAYLIST_CAPTURE_ALL_SCREENS"] == "1" || environment["TEST_RUNNER_PRAYLIST_CAPTURE_ALL_SCREENS"] == "1" else {
+            throw XCTSkip("Complete app-screen capture only.")
+        }
+
+        let onboarding = launch(["--uitesting", "--reset"])
+        XCTAssertTrue(onboarding.buttons["onboardingContinue"].waitForExistence(timeout: 10))
+        capture("01-onboarding-categories", app: onboarding)
+        onboarding.buttons["onboardingContinue"].tap()
+        XCTAssertTrue(onboarding.textFields["firstPrayTitle"].waitForExistence(timeout: 5) || onboarding.textViews["firstPrayTitle"].exists)
+        capture("02-onboarding-first-pray", app: onboarding)
+        onboarding.terminate()
+
+        let app = launch(["--screenshots"])
+        XCTAssertTrue(app.textFields["prayField9"].waitForExistence(timeout: 10))
+        capture("03-main-notebook", app: app)
+
+        app.buttons["achievePray0"].tap()
+        XCTAssertTrue(app.buttons["saveAchievementButton"].waitForExistence(timeout: 5))
+        capture("04-achievement-answered", app: app)
+        app.buttons["Close"].tap()
+
+        app.buttons["다음 항목"].tap()
+        XCTAssertTrue(app.staticTexts["갖고 싶은 것"].waitForExistence(timeout: 5))
+        app.buttons["achievePray0"].tap()
+        XCTAssertTrue(app.buttons["saveAchievementButton"].waitForExistence(timeout: 5))
+        capture("05-achievement-new", app: app)
+        app.buttons["Close"].tap()
+
+        app.buttons["prayerButton"].tap()
+        XCTAssertTrue(app.buttons["prayerContinueButton"].waitForExistence(timeout: 5))
+        capture("06-prayer-reading", app: app)
+        for _ in 0..<4 {
+            XCTAssertTrue(app.buttons["prayerContinueButton"].waitForExistence(timeout: 5))
+            app.buttons["prayerContinueButton"].tap()
+        }
+        XCTAssertTrue(app.buttons["prayerDoneButton"].waitForExistence(timeout: 5))
+        capture("07-prayer-complete", app: app)
+        app.buttons["prayerDoneButton"].tap()
+
+        app.buttons["historyButton"].tap()
+        XCTAssertTrue(app.staticTexts["나의 발자취"].waitForExistence(timeout: 5))
+        capture("08-history-answered", app: app)
+        app.buttons["기도 기록"].tap()
+        XCTAssertTrue(app.otherElements["prayerCalendar"].waitForExistence(timeout: 5))
+        capture("09-history-calendar", app: app)
+        app.buttons["Close"].tap()
+
+        app.buttons["settingsButton"].tap()
+        XCTAssertTrue(app.staticTexts["설정"].waitForExistence(timeout: 5))
+        capture("10-settings", app: app)
+
+        app.cells.containing(.staticText, identifier: "매일 기도 알림").firstMatch.tap()
+        XCTAssertTrue(app.switches["reminderToggle"].waitForExistence(timeout: 5))
+        capture("11-reminder-settings", app: app)
+        app.navigationBars["기도 알림"].buttons.firstMatch.tap()
+
+        app.buttons["카테고리 관리"].tap()
+        XCTAssertTrue(app.navigationBars["카테고리 관리"].waitForExistence(timeout: 5))
+        capture("12-category-management", app: app)
+        app.buttons["새 카테고리 생성"].tap()
+        XCTAssertTrue(app.navigationBars["새 카테고리"].waitForExistence(timeout: 5))
+        capture("13-new-category", app: app)
+        app.swipeUp()
+        XCTAssertTrue(app.staticTexts["기본 카테고리"].waitForExistence(timeout: 5))
+        capture("14-new-category-defaults", app: app)
+        app.buttons["Cancel"].tap()
+        app.navigationBars["카테고리 관리"].buttons["Close"].tap()
+
+        app.buttons["languageSettings"].tap()
+        XCTAssertTrue(app.navigationBars["언어"].waitForExistence(timeout: 5))
+        capture("15-language-settings", app: app)
+        app.navigationBars["언어"].buttons.firstMatch.tap()
+
+        app.buttons["사용 방법"].tap()
+        XCTAssertTrue(app.navigationBars["사용 방법"].waitForExistence(timeout: 5))
+        capture("16-help", app: app)
+        app.navigationBars["사용 방법"].buttons.firstMatch.tap()
+
+        app.buttons["개인정보 처리방침"].tap()
+        XCTAssertTrue(app.navigationBars["개인정보 처리방침"].waitForExistence(timeout: 5))
+        capture("17-privacy", app: app)
     }
 
     // Opt-in real UI capture. Pauses are intentional reading time for the preview.
@@ -150,9 +235,118 @@ final class PraylistUITests: XCTestCase {
     }
     private func launch(_ arguments: [String], language: String = "ko", resetLanguage: Bool = true) -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = arguments + (resetLanguage ? ["--reset-language"] : []) + ["-AppleLanguages", "(\(language))", "-AppleLocale", language == "ko" ? "ko_KR" : "en_US"]
+        app.launchArguments = arguments + (resetLanguage ? ["--reset-language", "--reset-appearance"] : []) + ["-AppleLanguages", "(\(language))", "-AppleLocale", language == "ko" ? "ko_KR" : "en_US"]
         app.launch()
         return app
+    }
+    func testDailyPrayerCompletionAndSameDayReentry() {
+        let app = launch(["--screenshots"])
+        XCTAssertTrue(app.buttons["prayerButton"].waitForExistence(timeout: 10))
+        app.buttons["prayerButton"].tap()
+        XCTAssertTrue(app.descendants(matching: .any)["prayerStateReading"].waitForExistence(timeout: 5))
+        for _ in 0..<10 {
+            let button = app.buttons["prayerContinueButton"]
+            guard button.waitForExistence(timeout: 1) else { break }
+            button.tap()
+            if app.buttons["prayerDoneButton"].exists { break }
+        }
+        XCTAssertTrue(app.descendants(matching: .any)["prayerStateCompleted"].waitForExistence(timeout: 5))
+        let message = app.staticTexts["prayerCompletionMessage"]
+        XCTAssertTrue(message.exists)
+        let originalMessage = message.label
+        XCTAssertFalse(originalMessage.isEmpty)
+        XCTAssertTrue([
+            "오늘의 pray를 마음에 담았어요.",
+            "잠시 멈춘 이 시간을 기억할게요.",
+            "오늘도 기도할 자리를 만들었어요.",
+            "천천히 돌아온 오늘을 기록했어요.",
+            "기도한 오늘을 차분히 남겼어요."
+        ].contains(originalMessage))
+        XCTAssertEqual(message.label, originalMessage)
+        app.buttons["prayerDoneButton"].tap()
+        XCTAssertTrue(app.buttons["prayerButton"].label.contains("오늘도"))
+        app.buttons["prayerButton"].tap()
+        XCTAssertTrue(app.descendants(matching: .any)["prayerStateAlreadyPrayed"].waitForExistence(timeout: 5))
+        app.buttons["prayerAgainButton"].tap()
+        XCTAssertTrue(app.descendants(matching: .any)["prayerStateReading"].waitForExistence(timeout: 5))
+    }
+    func testPrayerWriteFailureNeverShowsCompletion() {
+        let app = launch(["--uitesting", "--prayer-write-failure"])
+        XCTAssertTrue(app.buttons["prayerButton"].waitForExistence(timeout: 10))
+        app.buttons["prayerButton"].tap()
+        for _ in 0..<10 {
+            let button = app.buttons["prayerContinueButton"]
+            guard button.waitForExistence(timeout: 1) else { break }
+            button.tap()
+            if app.buttons["prayerRetrySaveButton"].exists { break }
+        }
+        XCTAssertTrue(app.descendants(matching: .any)["prayerStateSaveFailed"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["prayerRetrySaveButton"].exists)
+        XCTAssertFalse(app.descendants(matching: .any)["prayerStateCompleted"].exists)
+    }
+    func testPrayerEmptyStateReturnsToNotebook() {
+        let app = launch(["--uitesting", "--prayer-empty"])
+        XCTAssertTrue(app.buttons["prayerButton"].waitForExistence(timeout: 10))
+        app.buttons["prayerButton"].tap()
+        XCTAssertTrue(app.buttons["prayerEmptyDoneButton"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["첫 pray를 적어볼까요?"].exists)
+        app.buttons["prayerEmptyDoneButton"].tap()
+        XCTAssertTrue(app.buttons["prayerButton"].waitForExistence(timeout: 5))
+    }
+    func testPrayerPrimaryActionAtAccessibilityTextSizeAndReduceMotion() {
+        let app = XCUIApplication()
+        app.launchArguments = [
+            "--screenshots", "--reset-language", "--reset-appearance",
+            "-AppleLanguages", "(ko)", "-AppleLocale", "ko_KR",
+            "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityLarge",
+            "-UIAccessibilityReduceMotionEnabled", "YES"
+        ]
+        app.launch()
+        XCTAssertTrue(app.buttons["prayerButton"].waitForExistence(timeout: 10))
+        app.buttons["prayerButton"].tap()
+        let action = app.buttons["prayerContinueButton"]
+        XCTAssertTrue(action.waitForExistence(timeout: 5))
+        XCTAssertTrue(action.isHittable)
+        XCTAssertTrue(app.progressIndicators.firstMatch.exists)
+    }
+    func testAppearanceSelectionPersistsAcrossRelaunch() {
+        let app = launch(["--screenshots"])
+        XCTAssertTrue(app.buttons["settingsButton"].waitForExistence(timeout: 10))
+        app.buttons["settingsButton"].tap()
+        app.buttons["appearanceSettings"].tap()
+        XCTAssertTrue(app.buttons["appearance-dark"].waitForExistence(timeout: 5))
+        app.buttons["appearance-dark"].tap()
+        XCTAssertTrue(app.buttons["appearance-dark"].isSelected)
+        XCTAssertEqual(app.staticTexts["appearanceResolved"].value as? String, "dark")
+        app.terminate()
+        app.launchArguments = ["--screenshots", "-AppleLanguages", "(ko)", "-AppleLocale", "ko_KR"]
+        app.launch()
+        XCTAssertTrue(app.buttons["settingsButton"].waitForExistence(timeout: 10))
+        app.buttons["settingsButton"].tap()
+        app.buttons["appearanceSettings"].tap()
+        XCTAssertTrue(app.buttons["appearance-dark"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["appearance-dark"].isSelected)
+        XCTAssertEqual(app.staticTexts["appearanceResolved"].value as? String, "dark")
+    }
+    func testAutomaticAppearanceFollowsLiveSystemChange() throws {
+        #if PRAYLIST_VERIFY_SYSTEM_APPEARANCE
+        let liveAppearanceCheckEnabled = true
+        #else
+        let liveAppearanceCheckEnabled = false
+        #endif
+        guard liveAppearanceCheckEnabled else {
+            throw XCTSkip("Run with the opt-in environment and toggle Simulator appearance from Light to Dark while this test waits.")
+        }
+        let app = launch(["--screenshots"])
+        XCTAssertTrue(app.buttons["settingsButton"].waitForExistence(timeout: 10))
+        app.buttons["settingsButton"].tap()
+        app.buttons["appearanceSettings"].tap()
+        XCTAssertTrue(app.buttons["appearance-automatic"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["appearance-automatic"].isSelected)
+        let resolved = app.staticTexts["appearanceResolved"]
+        XCTAssertEqual(resolved.value as? String, "light")
+        let changed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "dark"), object: resolved)
+        XCTAssertEqual(XCTWaiter.wait(for: [changed], timeout: 20), .completed)
     }
     func testOnboardingAchievementPrayerAndRelaunch() {
         let app = launch(["--uitesting", "--reset"])
@@ -170,7 +364,7 @@ final class PraylistUITests: XCTestCase {
         app.buttons["saveAchievementButton"].tap()
         app.buttons["historyButton"].tap()
         XCTAssertTrue(app.staticTexts["매일 감사하는 사람 되기"].waitForExistence(timeout: 5))
-        app.buttons["닫기"].tap()
+        app.buttons["Close"].tap()
         app.buttons["prayerButton"].tap()
         XCTAssertTrue(app.buttons["prayerContinueButton"].waitForExistence(timeout: 5))
         app.buttons["prayerContinueButton"].tap()
@@ -228,17 +422,17 @@ final class PraylistUITests: XCTestCase {
         let app = launch(["--screenshots"])
         XCTAssertTrue(app.buttons["settingsButton"].waitForExistence(timeout: 10))
         app.buttons["settingsButton"].tap()
-        app.buttons["항목 관리"].tap()
-        XCTAssertTrue(app.buttons["새 항목 만들기"].waitForExistence(timeout: 5))
-        app.buttons["새 항목 만들기"].tap()
+        app.buttons["카테고리 관리"].tap()
+        XCTAssertTrue(app.buttons["새 카테고리 생성"].waitForExistence(timeout: 5))
+        app.buttons["새 카테고리 생성"].tap()
         let name = app.textFields["예: 배우고 싶은 것"]
         XCTAssertTrue(name.waitForExistence(timeout: 5))
         capture("08-new-category", app: app)
         name.tap(); name.typeText("배우고 싶은 것")
-        app.buttons["저장"].tap()
+        app.buttons["Save"].tap()
         XCTAssertTrue(app.staticTexts["배우고 싶은 것"].waitForExistence(timeout: 5))
-        app.navigationBars["항목 관리"].buttons["닫기"].tap()
-        app.navigationBars["설정"].buttons["닫기"].tap()
+        app.navigationBars["카테고리 관리"].buttons["Close"].tap()
+        app.navigationBars["설정"].buttons["Close"].tap()
         for _ in 0..<4 { app.buttons["다음 항목"].tap() }
         XCTAssertTrue(app.staticTexts["배우고 싶은 것"].waitForExistence(timeout: 5))
         let field = app.textFields["prayField0"]
@@ -253,6 +447,23 @@ final class PraylistUITests: XCTestCase {
         XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 5))
         XCTAssertEqual(field.value as? String, "피아노 한 곡 배우기")
     }
+    func testNewCategoryCanUseOnlyMissingDefaultCategories() {
+        let app = launch(["--screenshots"])
+        XCTAssertTrue(app.buttons["settingsButton"].waitForExistence(timeout: 10))
+        app.buttons["settingsButton"].tap()
+        app.buttons["카테고리 관리"].tap()
+        app.buttons["새 카테고리 생성"].tap()
+        let name = app.textFields["예: 배우고 싶은 것"]
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        app.swipeUp()
+        XCTAssertFalse(app.buttons["defaultCategory-sparkles"].exists)
+        let category = app.buttons["defaultCategory-heart"]
+        XCTAssertTrue(category.waitForExistence(timeout: 5))
+        category.tap()
+        XCTAssertEqual(name.value as? String, "함께하고 싶은 순간")
+        app.buttons["Save"].tap()
+        XCTAssertTrue(app.staticTexts["함께하고 싶은 순간"].waitForExistence(timeout: 5))
+    }
     func testReleaseScreenshotsAndReminderSettings() {
         let app = launch(["--screenshots"])
         XCTAssertTrue(app.textFields["prayField9"].waitForExistence(timeout: 10))
@@ -264,18 +475,14 @@ final class PraylistUITests: XCTestCase {
         app.buttons["prayerButton"].tap()
         XCTAssertTrue(app.buttons["prayerContinueButton"].waitForExistence(timeout: 5))
         capture("03-prayer", app: app)
-        app.buttons["닫기"].tap()
+        app.buttons["Close"].tap()
         app.buttons["historyButton"].tap()
         XCTAssertTrue(app.staticTexts["나의 발자취"].waitForExistence(timeout: 5))
         capture("04-achievements", app: app)
         app.buttons["기도 기록"].tap()
         XCTAssertTrue(app.otherElements["prayerCalendar"].waitForExistence(timeout: 5))
-        let prayedDay = app.buttons.matching(NSPredicate(format: "value == %@", "circlebadge.fill")).firstMatch
-        XCTAssertTrue(prayedDay.exists)
-        prayedDay.tap()
-        XCTAssertTrue(app.staticTexts["selectedPrayerDay"].waitForExistence(timeout: 5))
         capture("07-prayer-calendar", app: app)
-        app.buttons["닫기"].tap()
+        app.buttons["Close"].tap()
         app.buttons["settingsButton"].tap()
         app.cells.containing(.staticText, identifier: "매일 기도 알림").firstMatch.tap()
         let toggle = app.switches["reminderToggle"]
