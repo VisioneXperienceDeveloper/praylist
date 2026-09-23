@@ -73,6 +73,8 @@ Swift와 SwiftUI, iOS 기본 프레임워크와 기기 내 저장 기능으로 �
 
 - [빌드 및 개발 가이드](docs/DEVELOPMENT.md)
 - [아키텍처](docs/ARCHITECTURE.md)
+- [C4 다이어그램과 ERD](docs/architecture/C4-ERD.md)
+- [사용자 흐름·유스케이스·제품 운영 다이어그램](docs/product/PRODUCT-DIAGRAMS.md)
 - [검증 범위와 기록](docs/QA.md)
 - [출시 자료](release/RELEASE.md)
 

@@ -1,0 +1,19 @@
+stateDiagram-v2
+    [*] --> 미존재
+    미존재 --> 미저장입력: 빈 줄에 제목 입력
+    미저장입력 --> 활성Pray: 제목 검증 및 저장 성공
+    미저장입력 --> 미존재: 빈 제목 또는 입력 취소
+
+    활성Pray --> 활성Pray: 제목·메모 수정
+    활성Pray --> 응답된Pray: achievedAt 기록
+    응답된Pray --> 응답된Pray: 달성일·내용 수정
+    응답된Pray --> 활성Pray: 달성 취소<br/>achievedAt 제거
+
+    활성Pray --> 삭제됨: 개별 삭제 또는 항목 삭제
+    응답된Pray --> 삭제됨: 개별 삭제 또는 항목 삭제
+    삭제됨 --> [*]
+
+    state "미저장 입력 (화면 임시 상태)" as 미저장입력
+    state "활성 Pray (achievedAt = nil)" as 활성Pray
+    state "응답된 Pray (achievedAt != nil)" as 응답된Pray
+    state "JSON에서 제거" as 삭제됨

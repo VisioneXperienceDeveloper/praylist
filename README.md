@@ -73,6 +73,8 @@ Built with Swift and SwiftUI, using native iOS frameworks and local storage.
 
 - [Build and development guide (Korean)](docs/DEVELOPMENT.md)
 - [Architecture](docs/ARCHITECTURE.md)
+- [C4 diagrams and logical ERD](docs/architecture/C4-ERD.md)
+- [User flow, use cases, and product operations diagrams](docs/product/PRODUCT-DIAGRAMS.md)
 - [QA evidence and scope](docs/QA.md)
 - [Release materials](release/RELEASE.md)
 

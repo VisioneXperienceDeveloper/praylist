@@ -1,0 +1,56 @@
+flowchart LR
+    subgraph sources["현재 사용할 수 있는 근거"]
+        direction TB
+        code[코드·Git 변경 이력]
+        automated[단위·UI 테스트와 xcresult]
+        runtime[시뮬레이터·실기기 수동 QA]
+        store[App Store Connect<br/>처리·심사·배포 상태]
+        public[지원·정책 URL과 공개 문안]
+        feedback[지원 이메일·스토어 리뷰]
+        diagnostics[Apple 충돌·성능 진단<br/>사용 가능 시]
+    end
+
+    subgraph decisions["반복 의사결정"]
+        direction TB
+        ship{이 빌드를 출시할 수 있는가?}
+        fix{즉시 수정이 필요한가?}
+        invest{다음에 무엇을 개선할 것인가?}
+        comply{정책·스토어 정보를 바꿔야 하는가?}
+    end
+
+    subgraph outputs["기록해야 할 결과"]
+        direction TB
+        releaseRecord[버전·빌드·검증 SHA·원격 상태]
+        backlog[우선순위·성공 조건·담당 범위]
+        incidentRecord[증상·재현·완화·회귀 검사]
+        docsUpdate[지원·정책·아키텍처 문서 변경]
+    end
+
+    code --> ship
+    automated --> ship
+    runtime --> ship
+    store --> ship
+    runtime --> fix
+    feedback --> fix
+    diagnostics --> fix
+    feedback --> invest
+    automated --> invest
+    public --> comply
+    store --> comply
+
+    ship --> releaseRecord
+    fix --> incidentRecord
+    invest --> backlog
+    comply --> docsUpdate
+
+    noAnalytics["현재 경계<br/><b>앱 내 분석·광고 SDK 없음</b><br/>행동 퍼널은 측정하지 않음"]
+    noAnalytics -. 개인정보 검토 없이<br/>이벤트 추적 근거로 대체하지 않음 .-> invest
+
+    classDef source fill:#EFF6FF,stroke:#1D4ED8,color:#172554,stroke-width:1.5px;
+    classDef decision fill:#FFF7ED,stroke:#9A3412,color:#431407,stroke-width:1.5px;
+    classDef output fill:#ECFDF5,stroke:#047857,color:#022C22,stroke-width:1.5px;
+    classDef boundary fill:#FEF2F2,stroke:#B91C1C,color:#450A0A,stroke-width:2px;
+    class code,automated,runtime,store,public,feedback,diagnostics source;
+    class ship,fix,invest,comply decision;
+    class releaseRecord,backlog,incidentRecord,docsUpdate output;
+    class noAnalytics boundary;

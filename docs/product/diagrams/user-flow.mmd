@@ -1,0 +1,52 @@
+flowchart TB
+    launch([앱 실행]) --> load[로컬 노트 읽기]
+    load --> readable{파일을 읽을 수 있는가?}
+    readable -- 아니요 --> recovery[복구 화면<br/>다시 열기 또는 원본 파일 내보내기]
+    recovery --> load
+    readable -- 예 --> onboarded{온보딩 완료?}
+
+    onboarded -- 아니요 --> choose[기본·사용자 항목 선택]
+    choose --> first[첫 Pray 작성]
+    first --> validate[입력과 전체 데이터 검증]
+    validate --> notebook[노트 화면]
+    onboarded -- 예 --> notebook
+
+    notebook --> write[Pray 추가·수정]
+    write --> persist[검증 후 JSON 원자적 저장]
+    persist --> notebook
+
+    notebook --> achieve[달성일 기록·수정·취소]
+    achieve --> persist
+
+    notebook --> prayer[오늘의 기도]
+    prayer --> pages[Pray가 있는 항목을 순서대로 읽기]
+    pages --> finish[오늘 기도했어요]
+    finish --> prayerDay[현지 날짜를 중복 없이 기록]
+    prayerDay --> persist
+
+    notebook --> history[나의 발자취]
+    history --> answered[응답된 Pray 확인]
+    history --> calendar[기도 기록 달력 확인]
+
+    notebook --> settings[설정]
+    settings --> categories[항목 추가·수정·정렬·삭제]
+    settings --> reminder[매일 기도 알림 설정]
+    settings --> language[한국어·영어·자동 선택]
+    settings --> backup[JSON 백업 내보내기·복원]
+    settings --> support[사용 방법·지원·개인정보 처리방침]
+    categories --> persist
+    reminder --> persist
+    backup --> persist
+    language --> defaults[(UserDefaults)]
+
+    notification([사용자가 로컬 알림을 탭]) --> route[열린 시트를 정리하고<br/>오늘의 기도로 이동]
+    route --> prayer
+
+    classDef entry fill:#FFF7ED,stroke:#9A3412,color:#431407,stroke-width:2px;
+    classDef action fill:#ECFDF5,stroke:#047857,color:#022C22,stroke-width:1.5px;
+    classDef decision fill:#EFF6FF,stroke:#1D4ED8,color:#172554,stroke-width:1.5px;
+    classDef store fill:#F5F3FF,stroke:#6D28D9,color:#2E1065,stroke-width:1.5px;
+    class launch,notification entry;
+    class readable,onboarded decision;
+    class defaults store;
+    class load,recovery,choose,first,validate,notebook,write,persist,achieve,prayer,pages,finish,prayerDay,history,answered,calendar,settings,categories,reminder,language,backup,support,route action;

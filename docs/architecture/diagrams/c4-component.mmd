@@ -1,0 +1,56 @@
+%%{init: {"flowchart": {"defaultRenderer": "elk"}}}%%
+flowchart LR
+    user["Person<br/><b>사용자</b>"]
+
+    subgraph app["Container: Praylist iOS App"]
+        direction TB
+        composition["Component<br/><b>PraylistApp / RootView</b><br/>의존성 생성, 온보딩 분기, 시작 오류 처리"]
+        views["Component<br/><b>SwiftUI Views</b><br/>Notebook · Prayer · History · Settings · Onboarding"]
+        store["Component<br/><b>PrayStore</b><br/>유일한 쓰기 경계<br/>복사 → 검증 → 저장 → 메모리 반영"]
+        model["Component<br/><b>PrayData Model</b><br/>Codable 값 타입과 스키마 v1 불변 조건"]
+        backup["Component<br/><b>BackupDocument</b><br/>FileDocument 기반 JSON 입출력"]
+        reminder["Component<br/><b>ReminderService</b><br/>권한 상태와 반복 알림 예약"]
+        delegate["Component<br/><b>PraylistAppDelegate</b><br/>알림 표시·탭 이벤트를 화면 상태로 전달"]
+        locale["Component<br/><b>LanguageSettings / L10n</b><br/>언어 선택, 문자열·날짜·시간 현지화"]
+        publicPages["Component<br/><b>PublicPages</b><br/>언어별 지원·정책 HTTPS URL 구성"]
+    end
+
+    subgraph externals["기기 저장소 및 외부 시스템"]
+        direction TB
+        json[("Application Support<br/><b>praylist-v1.json</b>")]
+        defaults[("<b>UserDefaults</b><br/>praylist.language")]
+        notifications["<b>iOS UserNotifications</b>"]
+        files["<b>Files / 파일 제공자</b>"]
+        website["<b>VXD 공개 웹사이트</b>"]
+    end
+
+    user --> views
+    composition -->|환경 주입| views
+    composition --> store
+    composition --> locale
+    composition --> delegate
+    views -->|조회·명령| store
+    views -->|알림 설정| reminder
+    views -->|내보내기·복원| backup
+    views -->|문구와 locale| locale
+    views -->|지원·정책 링크| publicPages
+    store -->|검증| model
+    store <-->|ISO 8601 JSON, atomic write| json
+    backup -->|encode / decode| store
+    backup <-->|사용자 선택 파일| files
+    locale <-->|선택값| defaults
+    reminder <-->|예약·권한 조회| notifications
+    delegate <-->|표시·탭 callback| notifications
+    delegate -->|openPrayer 상태| reminder
+    publicPages -->|HTTPS| website
+
+    classDef person fill:#FFF7ED,stroke:#9A3412,color:#431407,stroke-width:2px;
+    classDef component fill:#ECFDF5,stroke:#047857,color:#022C22,stroke-width:1.5px;
+    classDef boundary fill:#FFFFFF,stroke:#94A3B8,color:#0F172A,stroke-dasharray:5 5;
+    classDef store fill:#F5F3FF,stroke:#6D28D9,color:#2E1065,stroke-width:1.5px;
+    classDef external fill:#EFF6FF,stroke:#1D4ED8,color:#172554,stroke-width:1.5px;
+    class user person;
+    class composition,views,store,model,backup,reminder,delegate,locale,publicPages component;
+    class json,defaults store;
+    class notifications,files,website external;
+    style externals fill:transparent,stroke:#CBD5E1,stroke-dasharray:5 5;

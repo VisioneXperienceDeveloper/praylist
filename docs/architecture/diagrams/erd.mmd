@@ -1,0 +1,35 @@
+erDiagram
+    PRAY_DATA ||--o{ PRAY_CATEGORY : "categories 배열"
+    PRAY_DATA ||--o{ PRAYER_DAY : "prayerDays 배열"
+    PRAY_DATA ||--|| REMINDER_PREFERENCE : "reminder 객체"
+    PRAY_CATEGORY ||--o{ PRAY : "prays 배열"
+
+    PRAY_DATA {
+        int schemaVersion "현재 1"
+        boolean onboarded
+    }
+
+    PRAY_CATEGORY {
+        UUID id PK
+        string title "1~24자"
+        string symbol "허용된 SF Symbol"
+        string subtitle "최대 100자"
+    }
+
+    PRAY {
+        UUID id PK
+        string title "1~80자"
+        string note "최대 2000자"
+        datetime createdAt "ISO 8601"
+        datetime achievedAt_nullable "ISO 8601, 미래 불가"
+    }
+
+    PRAYER_DAY {
+        string dateKey PK "yyyy-MM-dd"
+    }
+
+    REMINDER_PREFERENCE {
+        boolean enabled
+        int hour "0~23"
+        int minute "0~59"
+    }

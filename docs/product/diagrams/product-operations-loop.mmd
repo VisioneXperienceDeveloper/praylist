@@ -1,0 +1,24 @@
+flowchart TB
+    evidence["<b>1. 입력과 근거</b><br/>지원 문의 · App Store 리뷰·심사 피드백<br/>Apple 충돌·성능 진단 · 회귀 검사·기기 QA<br/>제품 목표·정책 변경"]
+    product["<b>2. 제품 결정</b><br/>문제·기회 분류<br/>사용자 가치·위험·비용 평가<br/>릴리스 범위와 성공 조건 확정"]
+    delivery["<b>3. 구현과 검증</b><br/>구현<br/>단위·UI·접근성·현지화 검사<br/>아키텍처·지원·정책·릴리스 문서 갱신<br/>아카이브·서명·IPA 검증"]
+    release["<b>4. 배포</b><br/>스토어 문안·이미지·영상 검증<br/>App Store Connect 업로드<br/>처리 완료 확인 · 빌드 연결 · 심사 제출"]
+    approval{"Apple 승인?"}
+    live["공개 상태와<br/>실제 버전 확인"]
+    operate["<b>5. 운영과 학습</b><br/>사용자 지원<br/>회귀·정책 문제 대응<br/>결과 기록과 다음 우선순위 갱신"]
+
+    evidence --> product --> delivery --> release --> approval
+    approval -- 수정 필요 --> product
+    approval -- 승인 --> live --> operate
+    operate -- 새 근거와 우선순위 --> product
+
+    classDef evidenceClass fill:#EFF6FF,stroke:#1D4ED8,color:#172554,stroke-width:1.5px;
+    classDef productClass fill:#FFF7ED,stroke:#9A3412,color:#431407,stroke-width:1.5px;
+    classDef deliveryClass fill:#ECFDF5,stroke:#047857,color:#022C22,stroke-width:1.5px;
+    classDef releaseClass fill:#F5F3FF,stroke:#6D28D9,color:#2E1065,stroke-width:1.5px;
+    classDef operateClass fill:#FDF2F8,stroke:#BE185D,color:#500724,stroke-width:1.5px;
+    class evidence evidenceClass;
+    class product productClass;
+    class delivery deliveryClass;
+    class release,approval,live releaseClass;
+    class operate operateClass;

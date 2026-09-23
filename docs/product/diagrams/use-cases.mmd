@@ -1,0 +1,49 @@
+flowchart LR
+    user["Actor<br/><b>Praylist 사용자</b>"]
+    ios["Supporting Actor<br/><b>iOS 알림 시스템</b>"]
+    files["Supporting Actor<br/><b>Files / 파일 제공자</b>"]
+    web["Supporting Actor<br/><b>VXD 공개 웹사이트</b>"]
+
+    subgraph system["System Boundary: Praylist"]
+        direction TB
+        onboarding([온보딩 완료])
+        manageCategory([항목 관리])
+        managePray([Pray 작성·수정·삭제])
+        achievement([달성일 기록·취소])
+        dailyPrayer([오늘의 기도 진행])
+        history([응답·기도 기록 조회])
+        reminder([일일 알림 설정])
+        language([표시 언어 선택])
+        exportBackup([백업 내보내기])
+        restoreBackup([백업 검증·복원])
+        help([사용 안내·지원·정책 열기])
+        recover([손상 파일 보존·복구 시도])
+    end
+
+    user --> onboarding
+    user --> manageCategory
+    user --> managePray
+    user --> achievement
+    user --> dailyPrayer
+    user --> history
+    user --> reminder
+    user --> language
+    user --> exportBackup
+    user --> restoreBackup
+    user --> help
+    user --> recover
+
+    onboarding -. 포함 .-> manageCategory
+    onboarding -. 포함 .-> managePray
+    dailyPrayer -. 결과 기록 .-> history
+    reminder <-->|권한·예약·알림 탭| ios
+    exportBackup <-->|JSON 파일| files
+    restoreBackup <-->|JSON 파일| files
+    help -->|HTTPS 페이지| web
+
+    classDef actor fill:#FFF7ED,stroke:#9A3412,color:#431407,stroke-width:2px;
+    classDef supporting fill:#EFF6FF,stroke:#1D4ED8,color:#172554,stroke-width:1.5px;
+    classDef usecase fill:#ECFDF5,stroke:#047857,color:#022C22,stroke-width:1.5px;
+    class user actor;
+    class ios,files,web supporting;
+    class onboarding,manageCategory,managePray,achievement,dailyPrayer,history,reminder,language,exportBackup,restoreBackup,help,recover usecase;

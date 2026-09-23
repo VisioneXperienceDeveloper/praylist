@@ -1,0 +1,33 @@
+flowchart LR
+    user["Person<br/><b>Praylist 사용자</b>"]
+
+    subgraph boundary["Software System: Praylist"]
+        app["Container<br/><b>Praylist iOS App</b><br/>Swift 6 · SwiftUI · UIKit bridge<br/>화면, 도메인 규칙, 저장 조정"]
+        json[("Data Store<br/><b>praylist-v1.json</b><br/>Application Support<br/>노트·기도일·알림 설정")]
+        defaults[("Data Store<br/><b>UserDefaults</b><br/>기기별 언어 선택")]
+    end
+
+    subgraph externals["외부 시스템"]
+        direction LR
+        notifications["External System<br/><b>iOS Notification Center</b>"]
+        files["External System<br/><b>Files / 파일 제공자</b>"]
+        website["External System<br/><b>VXD 공개 웹사이트</b>"]
+        notifications ~~~ files ~~~ website
+    end
+
+    user -->|SwiftUI 화면 조작| app
+    app <-->|검증 후 원자적 JSON 읽기·쓰기| json
+    app <-->|praylist.language 읽기·쓰기| defaults
+    app <-->|UNNotificationRequest 예약·응답| notifications
+    app <-->|FileDocument·보안 범위 URL로 JSON 내보내기·복원| files
+    app -->|HTTPS 지원·정책 페이지 열기| website
+
+    classDef person fill:#FFF7ED,stroke:#9A3412,color:#431407,stroke-width:2px;
+    classDef container fill:#ECFDF5,stroke:#047857,color:#022C22,stroke-width:2px;
+    classDef store fill:#F5F3FF,stroke:#6D28D9,color:#2E1065,stroke-width:1.5px;
+    classDef external fill:#EFF6FF,stroke:#1D4ED8,color:#172554,stroke-width:1.5px;
+    class user person;
+    class app container;
+    class json,defaults store;
+    class notifications,files,website external;
+    style externals fill:transparent,stroke:#CBD5E1,stroke-dasharray:5 5;

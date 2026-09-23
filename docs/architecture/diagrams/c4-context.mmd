@@ -1,0 +1,24 @@
+flowchart LR
+    user["Person<br/><b>Praylist 사용자</b><br/>pray 작성<br/>기도·달성 기록 관리"]
+    praylist["Software System<br/><b>Praylist</b><br/>계정 없는 로컬 우선<br/>iPhone pray 노트"]
+
+    subgraph externals["외부 시스템"]
+        direction TB
+        notifications["External System<br/><b>iOS UserNotifications</b><br/>반복 알림<br/>알림 탭 이벤트"]
+        files["External System<br/><b>Files / 파일 제공자</b><br/>사용자가 선택한<br/>JSON 백업 위치"]
+        website["External System<br/><b>VXD 공개 웹사이트</b><br/>지원·개인정보 처리방침"]
+    end
+
+    user -->|pray 작성, 기도 기록, 설정| praylist
+    praylist -->|일일 알림 예약·취소| notifications
+    notifications -->|알림 표시 및 탭 전달| user
+    praylist <-->|사용자 요청 시 JSON 내보내기·복원| files
+    praylist -->|지원·정책 URL을 브라우저로 열기| website
+
+    classDef person fill:#FFF7ED,stroke:#9A3412,color:#431407,stroke-width:2px;
+    classDef system fill:#ECFDF5,stroke:#047857,color:#022C22,stroke-width:2px;
+    classDef external fill:#EFF6FF,stroke:#1D4ED8,color:#172554,stroke-width:1.5px;
+    class user person;
+    class praylist system;
+    class notifications,files,website external;
+    style externals fill:transparent,stroke:#CBD5E1,stroke-dasharray:5 5;

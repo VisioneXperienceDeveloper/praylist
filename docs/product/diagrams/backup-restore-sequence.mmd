@@ -1,0 +1,47 @@
+sequenceDiagram
+    autonumber
+    actor User as 사용자
+    participant Settings as SettingsView
+    participant Store as PrayStore
+    participant Model as PrayData
+    participant Files as Files / 파일 제공자
+    participant Disk as praylist-v1.json
+    participant Reminder as ReminderService
+
+    rect rgb(236, 253, 245)
+        Note over User,Files: 백업 내보내기
+        User->>Settings: 백업 파일 내보내기
+        Settings->>Store: encode(current data)
+        Store->>Store: JSONEncoder로 ISO 8601 JSON 인코딩
+        Store-->>Settings: JSON Data
+        Settings->>Settings: BackupDocument 생성
+        Settings->>Files: 저장 위치 선택 및 쓰기
+        Files-->>User: 내보내기 결과 표시
+    end
+
+    rect rgb(239, 246, 255)
+        Note over User,Reminder: 백업 복원
+        User->>Settings: 백업에서 복원하기
+        Settings->>Files: JSON 파일 선택
+        Files-->>Settings: security-scoped URL
+        Settings->>Settings: 파일 크기 10MB 이하 확인
+        Settings->>Store: decode(file data)
+        Store->>Model: schema v1 및 전체 불변 조건 검증
+        alt 파일 또는 데이터가 유효하지 않음
+            Model-->>Settings: 오류
+            Settings-->>User: 기존 노트를 유지하고 오류 표시
+        else 검증 성공
+            Model-->>Settings: 복원 후보와 항목·Pray 수
+            Settings-->>User: 현재 노트 교체 확인
+            alt 사용자가 취소
+                Settings-->>User: 기존 노트 유지
+            else 사용자가 복원 승인
+                Settings->>Store: restore(candidate)
+                Store->>Store: reminder.enabled = false
+                Store->>Disk: JSON 원자적 쓰기
+                Disk-->>Store: 쓰기 성공
+                Store->>Reminder: 기기 알림 상태 다시 적용
+                Settings-->>User: 복원 완료 및 알림 재설정 안내
+            end
+        end
+    end

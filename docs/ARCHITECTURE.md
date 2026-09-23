@@ -1,5 +1,7 @@
 # 데이터와 동작 설계
 
+구조를 한눈에 보는 C4 컨텍스트·컨테이너·컴포넌트 다이어그램과 논리 ERD는 [C4 다이어그램과 ERD](architecture/C4-ERD.md)에 정리되어 있다. 사용자 흐름, 유스케이스, 상태 전이, 백업·복원 및 지속 운영 흐름은 [제품·운영 다이어그램](product/PRODUCT-DIAGRAMS.md)에서 확인한다.
+
 ## 저장 경계
 
 `@MainActor @Observable PrayStore`가 `PrayData`의 유일한 쓰기 소유자다. 변경은 값 복사 → 검증 → JSON 인코딩 → `.atomic` 쓰기 → 메모리 반영 순으로 진행한다. 파일 쓰기가 실패하면 화면 데이터도 바뀌지 않는다. 저장 위치는 `Application Support/Praylist/praylist-v1.json`이며 `completeFileProtectionUntilFirstUserAuthentication`을 사용한다.

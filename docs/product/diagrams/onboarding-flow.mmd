@@ -1,0 +1,79 @@
+flowchart TB
+    launch([앱 실행]) --> load[PrayStore가 로컬 JSON 읽기]
+    load --> readable{읽기 성공?}
+    readable -- 아니요 --> recovery[복구 화면<br/>다시 열기 · 원본 파일 내보내기]
+    recovery -->|다시 열기| load
+    readable -- 예 --> onboarded{onboarded = true?}
+    onboarded -- 예 --> notebook([노트 화면])
+    onboarded -- 아니요 --> step1
+
+    subgraph onboarding["OnboardingView · 2단계"]
+        direction TB
+
+        language["언어 메뉴<br/>한국어 · English · 지역 설정에 맞춤"]
+        language --> defaults[("UserDefaults<br/>praylist.language")]
+
+        subgraph first["01 / 02 · 항목 선택"]
+            direction TB
+            step1["6개 기본 항목 표시<br/>기본 선택: 되고 싶은 나 · 가보고 싶은 곳"]
+            select[항목 복수 선택·해제]
+            hasCategory{1개 이상 선택?}
+            disabled1[이 항목으로 시작하기<br/>비활성화]
+            normalize[첫 Pray 대상이 해제됐다면<br/>선택된 첫 항목으로 변경]
+
+            step1 --> select --> hasCategory
+            hasCategory -- 아니요 --> disabled1 --> select
+            hasCategory -- 예 --> normalize
+        end
+
+        subgraph second["02 / 02 · 첫 Pray 작성"]
+            direction TB
+            chooseTarget[선택한 항목 중<br/>첫 Pray를 담을 항목 선택]
+            enterTitle[첫 Pray 제목 입력<br/>최대 80자]
+            validTitle{공백 제거 후<br/>제목이 남는가?}
+            disabled2[나의 Praylist 열기<br/>비활성화]
+            back[이전]
+            submit[나의 Praylist 열기<br/>키보드 닫기]
+
+            chooseTarget --> enterTitle --> validTitle
+            validTitle -- 아니요 --> disabled2 --> enterTitle
+            validTitle -- 예 --> submit
+            back --> step1
+        end
+
+        normalize --> chooseTarget
+        chooseTarget -. 사용자가 이전 선택 .-> back
+        language -. 두 단계에서 언제든 변경 .-> step1
+        language -. 선택 문구 즉시 현지화 .-> chooseTarget
+    end
+
+    submit --> transaction
+
+    subgraph persistence["PrayStore.finishOnboarding"]
+        direction TB
+        transaction[현재 PrayData 복사]
+        apply["선택 항목 저장<br/>대상 항목에 첫 Pray 1개 생성<br/>onboarded = true"]
+        validate[PrayData 전체 불변 조건 검증]
+        write[praylist-v1.json 원자적 쓰기]
+        success{저장 성공?}
+        error[오류 알림<br/>온보딩 2단계 유지]
+        memory[메모리 상태 교체]
+
+        transaction --> apply --> validate --> write --> success
+        success -- 아니요 --> error
+        success -- 예 --> memory
+    end
+
+    error --> enterTitle
+    memory --> notebook
+
+    classDef entry fill:#FFF7ED,stroke:#9A3412,color:#431407,stroke-width:2px;
+    classDef action fill:#ECFDF5,stroke:#047857,color:#022C22,stroke-width:1.5px;
+    classDef decision fill:#EFF6FF,stroke:#1D4ED8,color:#172554,stroke-width:1.5px;
+    classDef store fill:#F5F3FF,stroke:#6D28D9,color:#2E1065,stroke-width:1.5px;
+    classDef blocked fill:#FEF2F2,stroke:#B91C1C,color:#450A0A,stroke-width:1.5px;
+    class launch,notebook entry;
+    class readable,onboarded,hasCategory,validTitle,success decision;
+    class defaults store;
+    class disabled1,disabled2,error blocked;
+    class load,recovery,language,step1,select,normalize,chooseTarget,enterTitle,back,submit,transaction,apply,validate,write,memory action;
