@@ -32,3 +32,4 @@ __pycache__/
 .vercel/
 node_modules/
 .venv/
+.codex-pptx-build/
