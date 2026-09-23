@@ -4,13 +4,23 @@ import UserNotifications
 
 struct BackupDocument: FileDocument {
     static var readableContentTypes: [UTType] { [.json] }
+
     var data: Data
-    init(data: Data) { self.data = data }
-    init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents else { throw PrayError.unreadable }
+
+    init(data: Data) {
         self.data = data
     }
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper { FileWrapper(regularFileWithContents: data) }
+
+    init(configuration: ReadConfiguration) throws {
+        guard let data = configuration.file.regularFileContents else {
+            throw PrayError.unreadable
+        }
+        self.data = data
+    }
+
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        FileWrapper(regularFileWithContents: data)
+    }
 }
 
 struct SettingsView: View {
@@ -25,74 +35,38 @@ struct SettingsView: View {
     @State private var pendingBackup: PrayData?
     @State private var error: String?
     @State private var notice: String?
+
     var body: some View {
         let _ = language.locale
         NavigationStack {
             Form {
-                Section {
-                    NavigationLink { ReminderSettingsView() } label: {
-                        Label {
-                            HStack {
-                                Text(L10n.text("매일 기도 알림"))
-                                Spacer()
-                                Text(store.data.reminder.enabled ? L10n.time(store.data.reminder.time) : L10n.text("꺼짐")).foregroundStyle(Color.quiet)
-                            }
-                        } icon: { Image(systemName: "bell") }
-                    }
-                    Button { categoriesVisible = true } label: { Label(L10n.text("항목 관리"), systemImage: "rectangle.grid.1x2") }
-                    NavigationLink { LanguageSettingsView() } label: {
-                        Label(L10n.text("언어"), systemImage: "globe")
-                    }.accessibilityIdentifier("languageSettings")
+                SettingsGeneralSection(reminder: store.data.reminder) {
+                    categoriesVisible = true
                 }
-                Section {
-                    Button(L10n.text("백업 파일 내보내기"), systemImage: "square.and.arrow.up") {
-                        do { document = BackupDocument(data: try PrayStore.encode(store.data)); exporting = true }
-                        catch { self.error = error.localizedDescription }
-                    }
-                    Button(L10n.text("백업에서 복원하기"), systemImage: "square.and.arrow.down") { importing = true }
-                } header: { Text(L10n.text("소중한 기록 보관하기")) } footer: {
-                    Text(L10n.text("Pray는 이 기기에 저장돼요. 앱을 삭제하거나 기기를 바꾸기 전에 파일 앱에 백업해 주세요. 내보낸 파일에는 Pray와 기록이 포함돼요."))
+                SettingsBackupSection(exportBackup: prepareExport) {
+                    importing = true
                 }
-                Section {
-                    NavigationLink { HelpView() } label: { Label(L10n.text("사용 방법"), systemImage: "questionmark.circle") }
-                    NavigationLink { PrivacyView() } label: { Label(L10n.text("개인정보 처리방침"), systemImage: "hand.raised") }
+                SettingsSupportSection()
+                SettingsAppSection(version: appVersion)
+            }
+            .paperSheet()
+            .navigationTitle(L10n.text("설정"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(L10n.text("닫기")) { dismiss() }
                 }
-                Section {
-                    HStack(spacing: 14) {
-                        BookMark(size: 42)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("praylist").font(.system(size: 23, design: .serif))
-                            Text(L10n.text("소망을 담고, 매일 기도하다")).font(.caption).foregroundStyle(Color.quiet)
-                        }
-                        Spacer()
-                        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0").font(.caption).foregroundStyle(Color.quiet)
-                    }.padding(.vertical, 6)
-                }
-            }.paperSheet().navigationTitle(L10n.text("설정")).navigationBarTitleDisplayMode(.inline)
-                .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L10n.text("닫기")) { dismiss() } } }
+            }
                 .sheet(isPresented: $categoriesVisible) { CategoryManagerView() }
                 .fileExporter(isPresented: $exporting, document: document, contentType: .json, defaultFilename: "Praylist-\(PrayData.dayKey(Date()))") { result in
                     if case .failure(let failure) = result { error = failure.localizedDescription }
                 }
                 .fileImporter(isPresented: $importing, allowedContentTypes: [.json]) { result in
-                    do {
-                        let url = try result.get()
-                        let accessed = url.startAccessingSecurityScopedResource()
-                        defer { if accessed { url.stopAccessingSecurityScopedResource() } }
-                        let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
-                        guard size <= 10_000_000 else { throw PrayError.invalidBackup(L10n.text("10MB 이하의 백업 파일을 선택해 주세요.")) }
-                        pendingBackup = try PrayStore.decode(Data(contentsOf: url))
-                    } catch { self.error = error.localizedDescription }
+                    importBackup(from: result)
                 }
                 .confirmationDialog(L10n.text("백업으로 현재 노트를 바꿀까요?"), isPresented: Binding(get: { pendingBackup != nil }, set: { if !$0 { pendingBackup = nil } }), titleVisibility: .visible) {
                     Button(L10n.text("이 백업으로 복원"), role: .destructive) {
-                        guard let backup = pendingBackup else { return }
-                        do {
-                            try store.restore(backup)
-                            pendingBackup = nil
-                            Task { _ = try? await reminders.apply(store.data.reminder, requestPermission: false) }
-                            notice = L10n.text("복원했어요. 기도 알림은 이 기기에서 다시 설정해 주세요.")
-                        } catch { self.error = error.localizedDescription }
+                        restorePendingBackup()
                     }
                     Button(L10n.text("취소"), role: .cancel) { pendingBackup = nil }
                 } message: { Text(L10n.format("backup.replace.message", pendingBackup?.categories.count ?? 0, pendingBackup?.prayCount ?? 0)) }
@@ -100,6 +74,160 @@ struct SettingsView: View {
                 .alert(L10n.text("복원 완료"), isPresented: Binding(get: { notice != nil }, set: { if !$0 { notice = nil } })) {
                     Button(L10n.text("확인"), role: .cancel) { notice = nil }
                 } message: { Text(notice ?? "") }
+        }
+    }
+
+    private var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0"
+    }
+
+    private func prepareExport() {
+        do {
+            document = BackupDocument(data: try PrayStore.encode(store.data))
+            exporting = true
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+
+    private func importBackup(from result: Result<URL, any Error>) {
+        do {
+            let url = try result.get()
+            let accessed = url.startAccessingSecurityScopedResource()
+            defer {
+                if accessed {
+                    url.stopAccessingSecurityScopedResource()
+                }
+            }
+
+            let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+            guard size <= 10_000_000 else {
+                throw PrayError.invalidBackup(L10n.text("10MB 이하의 백업 파일을 선택해 주세요."))
+            }
+            pendingBackup = try PrayStore.decode(Data(contentsOf: url))
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+
+    private func restorePendingBackup() {
+        guard let pendingBackup else { return }
+
+        do {
+            try store.restore(pendingBackup)
+            self.pendingBackup = nil
+            Task {
+                _ = try? await reminders.apply(store.data.reminder, requestPermission: false)
+            }
+            notice = L10n.text("복원했어요. 기도 알림은 이 기기에서 다시 설정해 주세요.")
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+}
+
+private struct SettingsGeneralSection: View {
+    @Environment(AppearanceSettings.self) private var appearance
+    let reminder: ReminderPreference
+    let showCategories: () -> Void
+
+    var body: some View {
+        Section {
+            NavigationLink {
+                ReminderSettingsView()
+            } label: {
+                Label {
+                    HStack {
+                        Text(L10n.text("매일 기도 알림"))
+                        Spacer()
+                        Text(reminder.enabled ? L10n.time(reminder.time) : L10n.text("꺼짐"))
+                            .foregroundStyle(Color.quiet)
+                    }
+                } icon: {
+                    Image(systemName: "bell")
+                }
+            }
+            Button(action: showCategories) {
+                Label(L10n.text("항목 관리"), systemImage: "rectangle.grid.1x2")
+            }
+            NavigationLink {
+                LanguageSettingsView()
+            } label: {
+                Label(L10n.text("언어"), systemImage: "globe")
+            }
+            .accessibilityIdentifier("languageSettings")
+            NavigationLink {
+                AppearanceSettingsView()
+            } label: {
+                Label {
+                    HStack {
+                        Text(L10n.text("화면 모드"))
+                        Spacer()
+                        Text(L10n.text(appearance.preference.localizationKey)).foregroundStyle(Color.quiet)
+                            .accessibilityIdentifier("appearanceCurrent")
+                    }
+                } icon: {
+                    Image(systemName: "circle.lefthalf.filled")
+                }
+            }
+            .accessibilityIdentifier("appearanceSettings")
+        }
+    }
+}
+
+private struct SettingsBackupSection: View {
+    let exportBackup: () -> Void
+    let importBackup: () -> Void
+
+    var body: some View {
+        Section {
+            Button(L10n.text("백업 파일 내보내기"), systemImage: "square.and.arrow.up", action: exportBackup)
+            Button(L10n.text("백업에서 복원하기"), systemImage: "square.and.arrow.down", action: importBackup)
+        } header: {
+            Text(L10n.text("소중한 기록 보관하기"))
+        } footer: {
+            Text(L10n.text("Pray는 이 기기에 저장돼요. 앱을 삭제하거나 기기를 바꾸기 전에 파일 앱에 백업해 주세요. 내보낸 파일에는 Pray와 기록이 포함돼요."))
+        }
+    }
+}
+
+private struct SettingsSupportSection: View {
+    var body: some View {
+        Section {
+            NavigationLink {
+                HelpView()
+            } label: {
+                Label(L10n.text("사용 방법"), systemImage: "questionmark.circle")
+            }
+            NavigationLink {
+                PrivacyView()
+            } label: {
+                Label(L10n.text("개인정보 처리방침"), systemImage: "hand.raised")
+            }
+        }
+    }
+}
+
+private struct SettingsAppSection: View {
+    let version: String
+
+    var body: some View {
+        Section {
+            HStack(spacing: 14) {
+                AppStoreIcon(size: 42)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("praylist")
+                        .font(.system(size: 23, design: .serif))
+                    Text(L10n.text("나의 소망을 담은 작은 책"))
+                        .font(.caption)
+                        .foregroundStyle(Color.quiet)
+                }
+                Spacer()
+                Text(version)
+                    .font(.caption)
+                    .foregroundStyle(Color.quiet)
+            }
+            .padding(.vertical, 6)
         }
     }
 }
@@ -181,6 +309,38 @@ struct LanguageSettingsView: View {
                 Text(L10n.text("한국에서는 한국어, 그 외 지역에서는 영어를 사용해요. 직접 선택한 언어는 다음에도 유지돼요."))
             }
         }.paperSheet().navigationTitle(L10n.text("언어")).navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct AppearanceSettingsView: View {
+    @Environment(LanguageSettings.self) private var language
+    @Environment(AppearanceSettings.self) private var appearance
+    @Environment(\.colorScheme) private var colorScheme
+
+    var body: some View {
+        let _ = language.locale
+        List {
+            Section {
+                ForEach(AppAppearance.allCases) { option in
+                    Button { appearance.preference = option } label: {
+                        HStack {
+                            Text(L10n.text(option.localizationKey))
+                            Spacer()
+                            if appearance.preference == option { Image(systemName: "checkmark").foregroundStyle(Color.forest) }
+                        }.foregroundStyle(Color.ink)
+                    }
+                    .accessibilityIdentifier("appearance-" + option.rawValue)
+                    .accessibilityAddTraits(appearance.preference == option ? .isSelected : [])
+                }
+            } footer: {
+                Text(L10n.text("시스템 설정을 선택하면 기기의 화면 모드를 따라요. 직접 선택한 모드는 다음에도 유지돼요."))
+                    .accessibilityIdentifier("appearanceResolved")
+                    .accessibilityValue(colorScheme == .dark ? "dark" : "light")
+            }
+        }
+        .paperSheet()
+        .navigationTitle(L10n.text("화면 모드"))
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

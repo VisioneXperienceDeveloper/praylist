@@ -31,6 +31,21 @@ struct PrayCategory: Codable, Identifiable, Equatable {
             return category
         }
     }
+
+    static func isSameSuggestion(_ lhs: PrayCategory, _ rhs: PrayCategory) -> Bool {
+        guard let left = suggestionIndex(matching: lhs), let right = suggestionIndex(matching: rhs) else { return false }
+        return left == right
+    }
+
+    private static func suggestionIndex(matching category: PrayCategory) -> Int? {
+        templates.firstIndex { template in
+            guard template.symbol == category.symbol else { return false }
+            return [AppLanguage.korean, .english].contains { language in
+                category.title == L10n.text(template.title, language: language)
+                    && category.subtitle == L10n.text(template.subtitle, language: language)
+            }
+        }
+    }
     static let symbols = ["sparkles", "gift", "globe.asia.australia", "sun.horizon", "heart", "leaf", "book", "mountain.2", "house", "music.note", "figure.walk", "star"]
 }
 

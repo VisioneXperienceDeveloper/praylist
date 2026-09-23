@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 extension Color {
     static let ink = Color("Ink")
@@ -56,6 +57,34 @@ struct BookMark: View {
             Image(systemName: "book").font(.system(size: size * 0.43, weight: .light)).foregroundStyle(Color(red: 0.98, green: 0.95, blue: 0.84)).offset(y: size * 0.045)
             Image(systemName: "sparkle").font(.system(size: size * 0.20, weight: .light)).foregroundStyle(Color(red: 0.98, green: 0.95, blue: 0.84)).offset(x: size * 0.20, y: -size * 0.22)
         }.frame(width: size, height: size)
+    }
+}
+
+struct AppStoreIcon: View {
+    var size: CGFloat = 100
+
+    var body: some View {
+        Group {
+            if let image = UIImage.appStoreIcon {
+                Image(uiImage: image).resizable().scaledToFill()
+            } else {
+                BookMark(size: size)
+            }
+        }
+        .frame(width: size, height: size)
+        .clipShape(RoundedRectangle(cornerRadius: size * 0.225, style: .continuous))
+        .accessibilityHidden(true)
+    }
+}
+
+private extension UIImage {
+    static var appStoreIcon: UIImage? {
+        guard
+            let icons = Bundle.main.object(forInfoDictionaryKey: "CFBundleIcons") as? [String: Any],
+            let primary = icons["CFBundlePrimaryIcon"] as? [String: Any],
+            let files = primary["CFBundleIconFiles"] as? [String]
+        else { return UIImage(named: "AppIcon") }
+        return files.reversed().compactMap { UIImage(named: $0) }.first
     }
 }
 
