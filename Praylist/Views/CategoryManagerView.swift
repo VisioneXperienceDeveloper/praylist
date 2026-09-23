@@ -7,6 +7,7 @@ struct CategoryManagerView: View {
     @State private var editing: PrayCategory?
     @State private var deleting: PrayCategory?
     @State private var error: String?
+    @State private var editMode: EditMode = .inactive
     var body: some View {
         let _ = language.locale
         NavigationStack {
@@ -32,10 +33,15 @@ struct CategoryManagerView: View {
                     }
                 } footer: { Text(L10n.text("항목을 눌러 이름을 바꾸고, 편집을 눌러 순서를 바꿔보세요. 각 항목에는 달성한 Pray를 포함해 10개까지 보관해요.")) }
                 Section { Button(L10n.text("새 항목 만들기"), systemImage: "plus") { editing = .init(title: "", symbol: "star", subtitle: "") } }
-            }.paperSheet().navigationTitle(L10n.text("항목 관리")).navigationBarTitleDisplayMode(.inline)
+            }.environment(\.editMode, $editMode)
+                .paperSheet().navigationTitle(L10n.text("항목 관리")).navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .topBarLeading) { EditButton() }
-                    ToolbarItem(placement: .confirmationAction) { Button(L10n.text("닫기")) { dismiss() } }
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(editMode == .active ? "Done" : "Edit") {
+                            withAnimation { editMode = editMode == .active ? .inactive : .active }
+                        }
+                    }
+                    ToolbarItem(placement: .confirmationAction) { Button("Close") { dismiss() } }
                 }
                 .sheet(item: $editing) { CategoryEditorView(category: $0) }
                 .confirmationDialog(L10n.text("항목을 삭제할까요?"), isPresented: Binding(get: { deleting != nil }, set: { if !$0 { deleting = nil } }), titleVisibility: .visible) {
@@ -44,7 +50,7 @@ struct CategoryManagerView: View {
                         do { try store.update { $0.categories.removeAll { $0.id == deleting.id } }; self.deleting = nil }
                         catch { self.error = error.localizedDescription }
                     }
-                    Button(L10n.text("취소"), role: .cancel) { deleting = nil }
+                    Button("Cancel", role: .cancel) { deleting = nil }
                 } message: { Text(L10n.format("category.delete.message", deleting?.title ?? "", deleting?.prays.count ?? 0)) }
                 .errorAlert($error)
         }
@@ -57,6 +63,12 @@ struct CategoryEditorView: View {
     @Environment(\.dismiss) private var dismiss
     @State var category: PrayCategory
     @State private var error: String?
+    private var isNew: Bool { !store.data.categories.contains { $0.id == category.id } }
+    private var availableSuggestions: [PrayCategory] {
+        PrayCategory.suggestions.filter { suggestion in
+            !store.data.categories.contains { PrayCategory.isSameSuggestion($0, suggestion) }
+        }
+    }
     var body: some View {
         let _ = language.locale
         NavigationStack {
@@ -80,14 +92,45 @@ struct CategoryEditorView: View {
                         }
                     }.padding(.vertical, 8)
                 }
+                if isNew, !availableSuggestions.isEmpty {
+                    Section {
+                        ForEach(availableSuggestions) { suggestion in
+                            Button { apply(suggestion) } label: {
+                                HStack(spacing: 14) {
+                                    Image(systemName: suggestion.symbol).frame(width: 26).foregroundStyle(Color.forest)
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(suggestion.title).foregroundStyle(Color.ink)
+                                        Text(suggestion.subtitle).font(.caption).foregroundStyle(Color.quiet)
+                                    }
+                                    Spacer()
+                                    if PrayCategory.isSameSuggestion(category, suggestion) {
+                                        Image(systemName: "checkmark.circle.fill").foregroundStyle(Color.forest)
+                                    }
+                                }.padding(.vertical, 5)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityIdentifier("defaultCategory-\(suggestion.symbol)")
+                            .accessibilityAddTraits(PrayCategory.isSameSuggestion(category, suggestion) ? .isSelected : [])
+                        }
+                    } header: {
+                        Text(L10n.text("기본 카테고리"))
+                    } footer: {
+                        Text(L10n.text("아직 사용하지 않은 기본 카테고리를 선택하면 이름, 설명, 아이콘이 입력돼요."))
+                    }
+                }
             }.paperSheet().navigationTitle(L10n.text("나만의 항목")).navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItem(placement: .cancellationAction) { Button(L10n.text("취소")) { dismiss() } }
+                    ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                     ToolbarItem(placement: .confirmationAction) {
-                        Button(L10n.text("저장")) { save() }.disabled(category.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                        Button("Save") { save() }.disabled(category.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                     }
                 }.errorAlert($error)
         }
+    }
+    private func apply(_ suggestion: PrayCategory) {
+        category.title = suggestion.title
+        category.subtitle = suggestion.subtitle
+        category.symbol = suggestion.symbol
     }
     private func save() {
         category.title = category.title.trimmingCharacters(in: .whitespacesAndNewlines)
