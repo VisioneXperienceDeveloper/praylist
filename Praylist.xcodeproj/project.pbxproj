@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10000000000000000000001 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* Analytics.swift */; };
+		A10000000000000000000002 /* AnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* AnalyticsTests.swift */; };
 		0A3C1D6439F07BC86FD26E7B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1FF0898E5028EDE92200B0 /* HistoryView.swift */; };
 		126706284F454995C7FD4BE4 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8815EBD7B4DFDECC5AA436D0 /* LocalizationTests.swift */; };
 		200FD82EF88FA79AF5B00173 /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C2E18579A20CE231D788CE /* ReminderService.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A20000000000000000000001 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/Analytics.swift; sourceTree = "<group>"; };
+		A20000000000000000000002 /* AnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTests.swift; sourceTree = "<group>"; };
 		044CD795C7DE7462E885E668 /* CategoryManagerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryManagerView.swift; path = Views/CategoryManagerView.swift; sourceTree = "<group>"; };
 		0F36AF1CA7E323512058458D /* PreviewData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewData.swift; path = Models/PreviewData.swift; sourceTree = "<group>"; };
 		188EE78BE39A7BCB775381F9 /* PrayerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerView.swift; path = Views/PrayerView.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 		1536D5C008B761DCBDE506C8 /* Praylist */ = {
 			isa = PBXGroup;
 			children = (
+				A20000000000000000000001 /* Analytics.swift */,
 				311CAAC8104CA91D08B218DE /* PraylistApp.swift */,
 				3FAE772FDB26D5221C9D1D9E /* PrayData.swift */,
 				0F36AF1CA7E323512058458D /* PreviewData.swift */,
@@ -161,6 +166,7 @@
 		838F9AC168263419A6BF69DC /* PraylistTests */ = {
 			isa = PBXGroup;
 			children = (
+				A20000000000000000000002 /* AnalyticsTests.swift */,
 				8815EBD7B4DFDECC5AA436D0 /* LocalizationTests.swift */,
 				E69F6026A9BD13F058DA877B /* PrayStoreTests.swift */,
 			);
@@ -316,7 +322,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DB3E021424BB9556C0A8357 /* PraylistApp.swift in Sources */,
+		8DB3E021424BB9556C0A8357 /* PraylistApp.swift in Sources */,
+				A10000000000000000000001 /* Analytics.swift in Sources */,
 				DAC6C1AA2549DD5FC6F27EF8 /* PrayData.swift in Sources */,
 				2AAFFCA9F5D12FFA30A2BA4A /* PreviewData.swift in Sources */,
 				5D92535AD9376B667C6A5C98 /* Localization.swift in Sources */,
@@ -340,6 +347,7 @@
 			files = (
 				126706284F454995C7FD4BE4 /* LocalizationTests.swift in Sources */,
 				5B905EF5A3F4DF1139D60D16 /* PrayStoreTests.swift in Sources */,
+				A10000000000000000000002 /* AnalyticsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
