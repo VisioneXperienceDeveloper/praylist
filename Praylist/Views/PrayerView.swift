@@ -27,11 +27,13 @@ enum PrayerSessionState: Equatable {
 struct PrayerView: View {
     @Environment(LanguageSettings.self) private var language
     @Environment(PrayStore.self) private var store
+    @Environment(AnalyticsService.self) private var analytics
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let categories: [PrayCategory]
     @State private var page = 0
     @State private var state: PrayerSessionState
+    @State private var analyticsSession: PrayerAnalyticsSession?
 
     init(categories: [PrayCategory], prayedToday: Bool) {
         self.categories = categories
@@ -54,6 +56,7 @@ struct PrayerView: View {
             }
             .navigationTitle(L10n.text("오늘의 기도")).navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L10n.text("닫기")) { dismiss() } } }
+            .onAppear { recordPrayerView() }
         }
     }
 
@@ -75,7 +78,10 @@ struct PrayerView: View {
                 .accessibilityIdentifier("prayerStateAlreadyPrayed")
             Text(L10n.text("원한다면 다시 천천히 읽어도 좋아요.")).font(.subheadline).foregroundStyle(Color.quiet).multilineTextAlignment(.center)
             Spacer()
-            PrimaryButton(title: L10n.text("다시 기도하기"), symbol: "arrow.clockwise") { state = .reading }
+            PrimaryButton(title: L10n.text("다시 기도하기"), symbol: "arrow.clockwise") {
+                state = .reading
+                startPrayerSession()
+            }
                 .accessibilityIdentifier("prayerAgainButton")
         }
         .padding(32)
@@ -114,6 +120,7 @@ struct PrayerView: View {
             HStack(spacing: 16) {
                 if page > 0 { Button(L10n.text("이전")) { withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.2)) { page -= 1 } }.frame(minWidth: 44, minHeight: 44) }
                 PrimaryButton(title: page == categories.count - 1 ? L10n.text("오늘 기도했어요") : L10n.text("다음 항목"), symbol: page == categories.count - 1 ? "checkmark" : "arrow.right") {
+                    startPrayerSession()
                     if page < categories.count - 1 { withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.2)) { page += 1 } }
                     else { completePrayer() }
                 }.accessibilityIdentifier("prayerContinueButton")
@@ -161,12 +168,26 @@ struct PrayerView: View {
     }
 
     private func completePrayer() {
+        startPrayerSession()
+        guard let analyticsSession, analyticsSession.beginCompletionAttempt() else { return }
         state = .saving
         do {
             try store.recordPrayer()
+            analyticsSession.finishCompletionAttempt(succeeded: true)
             state = .completed(.select())
         } catch {
+            analyticsSession.finishCompletionAttempt(succeeded: false)
             state = .saveFailed(error.localizedDescription)
         }
+    }
+
+    private func recordPrayerView() {
+        if analyticsSession == nil { analyticsSession = PrayerAnalyticsSession(analytics: analytics) }
+        analyticsSession?.recordViewed(categoryCount: categories.count)
+    }
+
+    private func startPrayerSession() {
+        recordPrayerView()
+        analyticsSession?.start()
     }
 }

@@ -97,8 +97,8 @@ Analytics remains an optional dependency with a no-op default. Remove the event 
 | #46 Taxonomy | Implemented | Versioned typed allowlist and privacy contract; strict unknown-key rejection covered by #47 tests | Continue with provider boundary |
 | #47 Abstraction | Implemented | `AnalyticsTests`: five focused tests passed, including unknown fields/version, payload allowlist, validation matrix, opt-out/no-op/recorder, and provider failure isolation | Instrument onboarding |
 | #48 Onboarding | Passed | Six analytics tests passed, including milestone idempotency across service recreation; existing `testEnglishOnboardingAndLanguageChoicePersistWithoutTranslatingUserText` UI test passed on iPhone 18 Pro Simulator | Implement daily-prayer funnel |
-| #49 Daily prayer | Pending | — | — |
-| Integration | Pending | — | — |
+| #49 Daily prayer | Passed focused gate | Eight analytics tests passed for event ordering, success, failure, deduplication, and retry; Simulator UI tests for completion/same-day re-entry and persistence failure both passed | Run final regression and inspect integrated Simulator build |
+| Integration | In progress | App build and focused unit/UI tests pass. Full-suite test workers reported completion in scheduling diagnostics, but Xcode remained stuck finalizing the result bundle; no complete result bundle was available, so full-suite pass is not claimed | Retry full suite after integration; document result or limitation |
 
 # Issue #56 — Activation and First Prayer implementation plan
 
