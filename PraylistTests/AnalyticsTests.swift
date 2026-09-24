@@ -46,6 +46,22 @@ struct AnalyticsTests {
         #expect(recorder.events == [event])
     }
 
+    @Test func onboardingMilestonesAreExactlyOnceAcrossServiceRecreation() throws {
+        let suite = "AnalyticsMilestoneTests-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let recorder = AnalyticsRecorder()
+        let settings = AnalyticsSettings(defaults: defaults)
+        let firstLaunch = AnalyticsService(client: recorder, settings: settings, milestones: defaults)
+        let event = try AnalyticsEvent(name: .onboardingStarted, source: .onboarding)
+        firstLaunch.trackOnce(event)
+        AnalyticsService(client: recorder, settings: settings, milestones: defaults).trackOnce(event)
+        #expect(recorder.events == [event])
+        #expect(defaults.bool(forKey: "praylist.analytics.milestone.onboarding_started"))
+        let milestoneKeys = defaults.dictionaryRepresentation().keys.filter { $0.hasPrefix("praylist.analytics.milestone.") }
+        #expect(Array(milestoneKeys) == ["praylist.analytics.milestone.onboarding_started"])
+    }
+
     @Test func clientFailureIsIsolatedFromPrayerPersistence() throws {
         struct BrokenClient: AnalyticsClient {
             func record(_ event: AnalyticsEvent) throws { throw CocoaError(.fileWriteOutOfSpace) }

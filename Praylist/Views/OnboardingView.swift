@@ -3,6 +3,7 @@ import SwiftUI
 struct OnboardingView: View {
     @Environment(LanguageSettings.self) private var language
     @Environment(PrayStore.self) private var store
+    @Environment(AnalyticsService.self) private var analytics
     @State private var step = 0
     @State private var selected: Set<UUID> = [PrayCategory.suggestions[0].id, PrayCategory.suggestions[2].id]
     @State private var firstCategory = PrayCategory.suggestions[0].id
@@ -46,6 +47,11 @@ struct OnboardingView: View {
                 if step == 1 { ToolbarItem(placement: .topBarLeading) { Button(L10n.text("이전"), systemImage: "chevron.left") { step = 0 } } }
             }
             .errorAlert($error)
+        }
+        .task {
+            if let event = try? AnalyticsEvent(name: .onboardingStarted, source: .onboarding) {
+                analytics.trackOnce(event)
+            }
         }
     }
     private var selectionPage: some View {
@@ -97,10 +103,21 @@ struct OnboardingView: View {
     private func advance() {
         if step == 0 {
             if !selected.contains(firstCategory), let first = choices.first { firstCategory = first.id }
+            if let event = try? AnalyticsEvent(name: .categorySelectionCompleted, source: .onboarding, count: choices.count) {
+                analytics.trackOnce(event)
+            }
             withAnimation(.easeInOut(duration: 0.2)) { step = 1 }
         } else {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            do { try store.finishOnboarding(categories: choices, title: title, categoryID: firstCategory) }
+            do {
+                try store.finishOnboarding(categories: choices, title: title, categoryID: firstCategory)
+                if let created = try? AnalyticsEvent(name: .firstPrayerCreated, source: .onboarding, status: .success) {
+                    analytics.trackOnce(created)
+                }
+                if let completed = try? AnalyticsEvent(name: .onboardingCompleted, source: .onboarding, status: .success) {
+                    analytics.trackOnce(completed)
+                }
+            }
             catch { self.error = error.localizedDescription }
         }
     }

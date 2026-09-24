@@ -92,7 +92,13 @@ Analytics remains an optional dependency with a no-op default. Remove the event 
 
 ## Verification record
 
-Pending; each stage and final integration result will be recorded here before marking #45 Done.
+| Stage | Result | Evidence | Next action |
+| --- | --- | --- | --- |
+| #46 Taxonomy | Implemented | Versioned typed allowlist and privacy contract; strict unknown-key rejection covered by #47 tests | Continue with provider boundary |
+| #47 Abstraction | Implemented | `AnalyticsTests`: five focused tests passed, including unknown fields/version, payload allowlist, validation matrix, opt-out/no-op/recorder, and provider failure isolation | Instrument onboarding |
+| #48 Onboarding | Passed | Six analytics tests passed, including milestone idempotency across service recreation; existing `testEnglishOnboardingAndLanguageChoicePersistWithoutTranslatingUserText` UI test passed on iPhone 18 Pro Simulator | Implement daily-prayer funnel |
+| #49 Daily prayer | Pending | — | — |
+| Integration | Pending | — | — |
 
 # Issue #56 — Activation and First Prayer implementation plan
 
