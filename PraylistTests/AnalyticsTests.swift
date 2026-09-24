@@ -75,4 +75,41 @@ struct AnalyticsTests {
         #expect(throws: Never.self) { try store.recordPrayer() }
         #expect(store.data.prayedToday)
     }
+
+    @Test func prayerFunnelOrdersViewStartAndSuccessAfterPersistence() throws {
+        let suite = "PrayerAnalyticsTests-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let recorder = AnalyticsRecorder()
+        let analytics = AnalyticsService(client: recorder, settings: AnalyticsSettings(defaults: defaults), milestones: defaults)
+        let session = PrayerAnalyticsSession(analytics: analytics)
+        let start = Date(timeIntervalSince1970: 1_000)
+        let finish = start.addingTimeInterval(42)
+        session.recordViewed(categoryCount: 2)
+        session.recordViewed(categoryCount: 2)
+        #expect(session.beginCompletionAttempt(at: start))
+        #expect(!session.beginCompletionAttempt(at: start))
+        session.finishCompletionAttempt(succeeded: true, at: finish)
+        session.finishCompletionAttempt(succeeded: true, at: finish)
+        #expect(recorder.events.map(\.name) == [.dailyPrayerViewed, .dailyPrayerStarted, .dailyPrayerCompleted])
+        #expect(recorder.events.last?.durationBucket == .from30to60s)
+        #expect(recorder.events.last?.status == .success)
+        #expect(session.correlationToken != UUID())
+    }
+
+    @Test func prayerPersistenceFailureIsNotCountedAsSuccessAndRetryCanSucceed() throws {
+        let suite = "PrayerFailureAnalyticsTests-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let recorder = AnalyticsRecorder()
+        let session = PrayerAnalyticsSession(analytics: AnalyticsService(client: recorder, settings: AnalyticsSettings(defaults: defaults)))
+        let now = Date(timeIntervalSince1970: 1_000)
+        #expect(session.beginCompletionAttempt(at: now))
+        session.finishCompletionAttempt(succeeded: false, at: now.addingTimeInterval(5))
+        #expect(recorder.events.filter { $0.name == .dailyPrayerCompleted }.map(\.status) == [.failure])
+        #expect(session.beginCompletionAttempt(at: now.addingTimeInterval(10)))
+        session.finishCompletionAttempt(succeeded: true, at: now.addingTimeInterval(20))
+        #expect(recorder.events.filter { $0.name == .dailyPrayerCompleted }.map(\.status) == [.failure, .success])
+        #expect(!session.beginCompletionAttempt(at: now.addingTimeInterval(30)))
+    }
 }

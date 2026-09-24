@@ -171,6 +171,60 @@ final class AnalyticsService {
 }
 
 @MainActor
+final class PrayerAnalyticsSession {
+    // In-memory correlation only. This identifier is never added to an event or persisted.
+    let correlationToken = UUID()
+    private let analytics: AnalyticsService
+    private(set) var startedAt: Date?
+    private(set) var viewed = false
+    private(set) var completionInFlight = false
+    private(set) var completedSuccessfully = false
+
+    init(analytics: AnalyticsService) { self.analytics = analytics }
+
+    func recordViewed(categoryCount: Int) {
+        guard !viewed, let event = try? AnalyticsEvent(name: .dailyPrayerViewed, source: .today, count: categoryCount) else { return }
+        viewed = true
+        analytics.track(event)
+    }
+
+    func start(at date: Date = .now) {
+        guard startedAt == nil, date.timeIntervalSince1970.isFinite,
+              let event = try? AnalyticsEvent(name: .dailyPrayerStarted, source: .today, timestamp: date) else { return }
+        startedAt = date
+        analytics.track(event)
+    }
+
+    func beginCompletionAttempt(at date: Date = .now) -> Bool {
+        guard !completionInFlight, !completedSuccessfully else { return false }
+        start(at: date)
+        guard startedAt != nil else { return false }
+        completionInFlight = true
+        return true
+    }
+
+    func finishCompletionAttempt(succeeded: Bool, at date: Date = .now) {
+        guard completionInFlight, let startedAt,
+              let event = try? AnalyticsEvent(name: .dailyPrayerCompleted, source: .today,
+                                              durationBucket: Self.bucket(max(0, date.timeIntervalSince(startedAt))),
+                                              status: succeeded ? .success : .failure, timestamp: date) else { return }
+        completionInFlight = false
+        if succeeded { completedSuccessfully = true }
+        analytics.track(event)
+    }
+
+    private static func bucket(_ seconds: TimeInterval) -> AnalyticsDurationBucket {
+        switch seconds {
+        case ..<10: .under10s
+        case ..<30: .from10to30s
+        case ..<60: .from30to60s
+        case ..<180: .from1to3m
+        default: .over3m
+        }
+    }
+}
+
+@MainActor
 final class AnalyticsSettings {
     static let preferenceKey = "praylist.analytics.enabled"
     private let defaults: UserDefaults
