@@ -14,6 +14,8 @@ struct AnalyticsTests {
         #expect(object["taxonomyVersion"] as? Int == 1)
         #expect(object["name"] as? String == "daily_prayer_completed")
         #expect(object["durationBucket"] as? String == "10to30s")
+        #expect(object["timestamp"] as? String == "1970-01-01T00:16:40.000Z")
+        #expect(try JSONDecoder().decode(AnalyticsEvent.self, from: data) == event)
     }
 
     @Test func unknownFieldsAndUnsupportedVersionsAreRejected() throws {

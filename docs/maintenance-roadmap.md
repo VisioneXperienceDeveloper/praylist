@@ -2,7 +2,7 @@
 
 이 문서는 현재 로컬 우선 SwiftUI 앱을 제품 방향과 GitHub Project backlog로 연결하기 위한 실행 기준이다. 상세 작업은 GitHub Project **VXD's Praylist**와 이슈 #1–#59에 관리한다.
 
-현재 Ready phase의 구현 계획은 [Issue #1 — Daily Prayer Experience](plans/issue-1-daily-prayer-experience.md)에 정리한다.
+현재 구현 중인 Foundation 단계는 [Issue #45 — Product Analytics Foundation](plans/issue-45-product-analytics-foundation.md), 다음 Activation 단계는 [Issue #56 — Activation and First Prayer](plans/issue-56-activation-and-first-prayer.md)에 정리한다.
 
 ## Product direction
 
@@ -17,6 +17,8 @@ Praylist는 기도 목록을 단순히 저장하는 앱이 아니라, 오늘의 
 
 | Phase | GitHub issues | Outcome |
 | --- | --- | --- |
+| Product Foundation | #45–#55 | 콘텐츠 없는 분석 계약과 신뢰할 수 있는 퍼널 측정 기반을 제공한다. |
+| Activation and First Prayer | #56–#59 | 첫 Pray까지 부담 없이 도달하고 선택 권한을 보장한다. |
 | Daily Prayer Experience | #1, #10–#13 | 오늘의 Praylist와 완료 상태가 한눈에 이해된다. |
 | Widget Experience | #2, #14–#19 | 개인정보를 보호하는 홈/잠금화면 진입점이 동작한다. |
 | Prayer Journey | #3, #20–#24 | 기도 이벤트와 선택적 메모가 시간순 여정을 만든다. |
@@ -40,14 +42,14 @@ Foundation is now explicit in GitHub issues #45–#55. Activation is represented
 
 ## Phase: Product Foundation — Analytics
 
-Status: In progress — implementing #45–#49
-Updated: 2026-09-24 12:00 Australia/Sydney
+Status: First delivery slice #46–#49 complete; epic #45 continues
+Updated: 2026-09-24 12:32 Australia/Sydney
 
-Implementation is sequenced in [Issue #45 — Product Analytics Foundation](plans/issue-45-product-analytics-foundation.md). Child stages #46–#49 are gated individually; no provider SDK or remote transport is included. Payloads are restricted by [analytics event taxonomy v1](analytics-event-taxonomy.md).
+Implementation is sequenced in [Issue #45 — Product Analytics Foundation](plans/issue-45-product-analytics-foundation.md). First-slice children #46–#49 passed focused gates; 35 unit tests and related onboarding/prayer UI tests passed. The complete UI-suite worker finished, but Xcode did not finalize a readable result bundle, so that run is not counted as a full-suite pass. Sibling issues #50–#55 remain open for later work. No provider SDK or remote transport is included. Payloads are restricted by [analytics event taxonomy v1](analytics-event-taxonomy.md).
 
 ## First delivery slice
 
-첫 구현 단위는 analytics 기반(#45–#49), 3단계 온보딩(#56–#59), 그리고 #10, #11, #12, #13이다. Activation의 상세 순서는 [Issue #56 — Activation and First Prayer](plans/issue-45-product-analytics-foundation.md#issue-56--activation-and-first-prayer-implementation-plan)에 정리한다.
+첫 구현 단위는 analytics 기반(#45–#49), 3단계 온보딩(#56–#59), 그리고 #10, #11, #12, #13이다. Activation의 상세 순서는 [Issue #56 — Activation and First Prayer](plans/issue-56-activation-and-first-prayer.md)에 정리한다.
 
 1. 오늘 화면에서 현재 기도와 다음 행동을 즉시 이해할 수 있어야 한다.
 2. 기도 전·진행 중·완료 상태를 시각적으로 구분하되 죄책감이나 연속성 압박을 만들지 않는다.

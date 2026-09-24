@@ -1,7 +1,7 @@
 # Issue #45 — Product Analytics Foundation implementation plan
 
-Status: In progress
-Updated: 2026-09-24 12:00 Australia/Sydney
+Status: First delivery slice #46–#49 complete; epic continues with #50–#55
+Updated: 2026-09-24 12:32 Australia/Sydney
 
 ## Decision
 
@@ -25,6 +25,8 @@ Included:
 - Daily prayer viewed/started/completed signals and persistence outcome
 - Local opt-out setting and privacy tests
 - Next phase (#56–#59) implementation plan
+
+The next phase is planned separately in [Issue #56 — Activation and First Prayer](issue-56-activation-and-first-prayer.md).
 
 Excluded:
 
@@ -94,11 +96,13 @@ Analytics remains an optional dependency with a no-op default. Remove the event 
 
 | Stage | Result | Evidence | Next action |
 | --- | --- | --- | --- |
-| #46 Taxonomy | Implemented | Versioned typed allowlist and privacy contract; strict unknown-key rejection covered by #47 tests | Continue with provider boundary |
-| #47 Abstraction | Implemented | `AnalyticsTests`: five focused tests passed, including unknown fields/version, payload allowlist, validation matrix, opt-out/no-op/recorder, and provider failure isolation | Instrument onboarding |
-| #48 Onboarding | Passed | Six analytics tests passed, including milestone idempotency across service recreation; existing `testEnglishOnboardingAndLanguageChoicePersistWithoutTranslatingUserText` UI test passed on iPhone 18 Pro Simulator | Implement daily-prayer funnel |
-| #49 Daily prayer | Passed focused gate | Eight analytics tests passed for event ordering, success, failure, deduplication, and retry; Simulator UI tests for completion/same-day re-entry and persistence failure both passed | Run final regression and inspect integrated Simulator build |
-| Integration | In progress | App build and focused unit/UI tests pass. Full-suite test workers reported completion in scheduling diagnostics, but Xcode remained stuck finalizing the result bundle; no complete result bundle was available, so full-suite pass is not claimed | Retry full suite after integration; document result or limitation |
+| #46 Taxonomy | Passed | Versioned typed allowlist; strict unknown-key/version rejection and ISO-8601 timestamp serialization are covered by tests | Continue with provider boundary |
+| #47 Abstraction | Passed | Validated protocol boundary, no-op/recorder, opt-out, and provider failure isolation | Instrument onboarding |
+| #48 Onboarding | Passed | Exactly-once milestone flags; onboarding persistence/language UI test passed on iPhone 18 Pro Simulator | Instrument daily-prayer funnel |
+| #49 Daily prayer | Passed focused gate | Funnel ordering, success/failure, retry, deduplication unit tests; completion/re-entry and write-failure UI tests passed | Integrated regression |
+| Integration | First slice complete | 35 unit tests passed; onboarding and two daily-prayer UI tests passed; versioned app build passed and launched on iPhone 18 Pro Simulator. Full UI suite worker finished but Xcode did not finalize a readable result bundle, so this is not reported as a full-suite pass | Continue later with sibling funnel/metrics issues #50–#55 |
+
+Issue #45 remains open as an epic: #50–#55 (widget funnel, revisit, retention definitions, opt-out controls, mix funnel, and internal dashboard contract) remain outside this first delivery slice. Their Definition of Done is intentionally not checked prematurely. The roadmap-defined Activation slice #56–#59 is planned next in a separate document.
 
 # Issue #56 — Activation and First Prayer implementation plan
 

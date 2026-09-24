@@ -73,7 +73,10 @@ struct AnalyticsEvent: Codable, Equatable {
         let count = try container.decodeIfPresent(Int.self, forKey: .count)
         let duration = try container.decodeIfPresent(AnalyticsDurationBucket.self, forKey: .durationBucket)
         let status = try container.decodeIfPresent(AnalyticsStatus.self, forKey: .status)
-        let timestamp = try container.decode(Date.self, forKey: .timestamp)
+        let timestampString = try container.decode(String.self, forKey: .timestamp)
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        guard let timestamp = formatter.date(from: timestampString) else { throw AnalyticsValidationError.invalidEvent }
         guard version == 1 else { throw AnalyticsValidationError.unsupportedVersion }
         try self.init(name: name, source: source, count: count, durationBucket: duration, status: status, timestamp: timestamp)
     }
@@ -86,7 +89,9 @@ struct AnalyticsEvent: Codable, Equatable {
         try container.encodeIfPresent(count, forKey: .count)
         try container.encodeIfPresent(durationBucket, forKey: .durationBucket)
         try container.encodeIfPresent(status, forKey: .status)
-        try container.encode(timestamp, forKey: .timestamp)
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        try container.encode(formatter.string(from: timestamp), forKey: .timestamp)
     }
 
     private static func allowed(name: AnalyticsEventName, source: AnalyticsSource, hasCount: Bool,
