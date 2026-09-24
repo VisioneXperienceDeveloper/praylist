@@ -38,9 +38,16 @@ The updated delivery order is:
 
 Foundation is now explicit in GitHub issues #45–#55. Activation is represented by #56–#59. These two phases come before adding more surface area because the product must first make the first Prayer easy to start and then make returning Prayer measurable.
 
+## Phase: Product Foundation — Analytics
+
+Status: In progress — implementing #45–#49
+Updated: 2026-09-24 12:00 Australia/Sydney
+
+Implementation is sequenced in [Issue #45 — Product Analytics Foundation](plans/issue-45-product-analytics-foundation.md). Child stages #46–#49 are gated individually; no provider SDK or remote transport is included. Payloads are restricted by [analytics event taxonomy v1](analytics-event-taxonomy.md).
+
 ## First delivery slice
 
-첫 구현 단위는 analytics 기반(#45–#49), 3단계 온보딩(#56–#59), 그리고 #10, #11, #12, #13이다.
+첫 구현 단위는 analytics 기반(#45–#49), 3단계 온보딩(#56–#59), 그리고 #10, #11, #12, #13이다. Activation의 상세 순서는 [Issue #56 — Activation and First Prayer](plans/issue-45-product-analytics-foundation.md#issue-56--activation-and-first-prayer-implementation-plan)에 정리한다.
 
 1. 오늘 화면에서 현재 기도와 다음 행동을 즉시 이해할 수 있어야 한다.
 2. 기도 전·진행 중·완료 상태를 시각적으로 구분하되 죄책감이나 연속성 압박을 만들지 않는다.
