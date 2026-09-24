@@ -31,6 +31,7 @@ struct PraylistApp: App {
     @State private var store: PrayStore
     @State private var language: LanguageSettings
     @State private var appearance: AppearanceSettings
+    @State private var analytics: AnalyticsService
     @UIApplicationDelegateAdaptor(PraylistAppDelegate.self) private var appDelegate
 
     init() {
@@ -40,6 +41,7 @@ struct PraylistApp: App {
         #endif
         _language = State(initialValue: LanguageSettings())
         _appearance = State(initialValue: AppearanceSettings())
+        _analytics = State(initialValue: AnalyticsService())
         #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("--uitesting"), ProcessInfo.processInfo.arguments.contains("--prayer-empty") {
             _store = State(initialValue: PrayStore(
@@ -72,7 +74,7 @@ struct PraylistApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            RootView().environment(store).environment(appDelegate.reminders).environment(language).environment(appearance)
+            RootView().environment(store).environment(appDelegate.reminders).environment(language).environment(appearance).environment(analytics)
                 .environment(\.locale, language.locale).preferredColorScheme(appearance.preference.colorScheme).tint(.forest)
         }
     }

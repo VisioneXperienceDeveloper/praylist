@@ -1,4 +1,5 @@
 import Foundation
+import Observation
 
 enum AnalyticsSource: String, Codable, CaseIterable {
     case onboarding, today, widget, system
@@ -142,19 +143,30 @@ final class AnalyticsRecorder: AnalyticsClient {
     func record(_ event: AnalyticsEvent) throws { events.append(event) }
 }
 
-@MainActor
+@MainActor @Observable
 final class AnalyticsService {
     private let client: any AnalyticsClient
     private let settings: AnalyticsSettings
+    private let milestones: UserDefaults
 
-    init(client: any AnalyticsClient = NoopAnalyticsClient(), settings: AnalyticsSettings = AnalyticsSettings()) {
+    init(client: any AnalyticsClient = NoopAnalyticsClient(), settings: AnalyticsSettings = AnalyticsSettings(),
+         milestones: UserDefaults = L10n.defaults) {
         self.client = client
         self.settings = settings
+        self.milestones = milestones
     }
 
     func track(_ event: AnalyticsEvent) {
         guard settings.isEnabled else { return }
         try? client.record(event)
+    }
+
+    func trackOnce(_ event: AnalyticsEvent) {
+        let key = "praylist.analytics.milestone.\(event.name.rawValue)"
+        guard !milestones.bool(forKey: key) else { return }
+        // Store only an event-name completion flag, never the event or user-entered content.
+        milestones.set(true, forKey: key)
+        track(event)
     }
 }
 
