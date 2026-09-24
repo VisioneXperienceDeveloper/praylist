@@ -1,0 +1,425 @@
+{"kind":"deck","id":"pr/5szmek","name":"Deck"}
+{"kind":"layout","layoutId":"00c2757a-7cd8-456e-aaff-5824addcc3f0","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"fed35b9d-285d-4815-8e2c-3e5c245b3ffd","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/mi9cz2","slide":1,"title":"PRAYLIST · UX AUDIT","textShapes":8}
+{"kind":"textbox","id":"sh/8vmxgzm5","slide":1,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/nudgnu5k","slide":1,"name":"Page number","text":"01/10","textPreview":"01/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/mt4fep4z","slide":1,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"shape","id":"sh/l8vylknu","slide":1,"name":"Audit pill-bg","bbox":[64,134,214,44]}
+{"kind":"textbox","id":"sh/07mxcfm9","slide":1,"name":"Audit pill-text","text":"SELF UX AUDIT","textPreview":"SELF UX AUDIT","textChars":13,"textLines":1,"bbox":[64,136,214,40]}
+{"kind":"textbox","id":"sh/z6tgja5o","slide":1,"name":"Main title","text":"내 앱 UX,\n내가 직접 깠습니다","textPreview":"내 앱 UX, | 내가 직접 깠습니다","textChars":18,"textLines":2,"bbox":[64,210,575,210]}
+{"kind":"textbox","id":"sh/y5kfa543","slide":1,"name":"Subtitle","text":"Praylist의 잘한 것 3개 · 못한 것 3개","textPreview":"Praylist의 잘한 것 3개 · 못한 것 3개","textChars":27,"textLines":1,"bbox":[64,438,560,52]}
+{"kind":"shape","id":"sh/d4behkni","slide":1,"name":"Hero screenshot-shadow","bbox":[629,167,370,744]}
+{"kind":"shape","id":"sh/mdgn2lwb","slide":1,"name":"Quote card","bbox":[64,790,540,333]}
+{"kind":"textbox","id":"sh/7ep4vqdw","slide":1,"name":"Quote","text":"감성은 정확하다.\n길 찾기는 부족하다.","textPreview":"감성은 정확하다. | 길 찾기는 부족하다.","textChars":21,"textLines":2,"bbox":[104,842,460,132]}
+{"kind":"textbox","id":"sh/8fy54beh","slide":1,"name":"Evidence line","text":"화면과 실제 플로우로만 판정","textPreview":"화면과 실제 플로우로만 판정","textChars":15,"textLines":1,"bbox":[104,1025,455,42]}
+{"kind":"textbox","id":"sh/9grmxgv2","slide":1,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/9gbe9s72","slide":1,"name":"","geometry":"roundRect","alt":"Praylist main notebook screenshot","bbox":[620,155,370,744]}
+{"kind":"notes","id":"nt/mi9cz2","slide":1,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/egu0b9","slide":2,"title":"PRAYLIST · UX AUDIT","textShapes":12}
+{"kind":"textbox","id":"sh/apo361sv","slide":2,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/xsf2hwbm","slide":2,"name":"Page number","text":"02/10","textPreview":"02/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/wr6l8ra1","slide":2,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"shape","id":"sh/n2xkbmtk","slide":2,"name":"Verdict pill-bg","bbox":[64,134,160,44]}
+{"kind":"textbox","id":"sh/m1432hsz","slide":2,"name":"Verdict pill-text","text":"VERDICT","textPreview":"VERDICT","textChars":7,"textLines":1,"bbox":[64,136,160,40]}
+{"kind":"textbox","id":"sh/94f2dwba","slide":2,"name":"Main title","text":"좋은 노트다.\n아직 좋은 시스템은 아니다.","textPreview":"좋은 노트다. | 아직 좋은 시스템은 아니다.","textChars":23,"textLines":2,"bbox":[64,210,900,180]}
+{"kind":"shape","id":"sh/836l4ra5","slide":2,"name":"Good card","bbox":[64,438,952,238]}
+{"kind":"shape","id":"sh/zydk72t8","slide":2,"name":"Good label-bg","bbox":[96,474,128,44]}
+{"kind":"textbox","id":"sh/ex4jyhsn","slide":2,"name":"Good label-text","text":"GOOD","textPreview":"GOOD","textChars":4,"textLines":1,"bbox":[96,476,128,40]}
+{"kind":"textbox","id":"sh/g3up8n25","slide":2,"name":"Good headline","text":"집중 · 감정 · 기록의 연결","textPreview":"집중 · 감정 · 기록의 연결","textChars":16,"textLines":1,"bbox":[96,542,830,54]}
+{"kind":"textbox","id":"sh/ho3q1s3q","slide":2,"name":"Good detail","text":"입력부터 기도, 회고까지 제품의 감정선은 일관된다.","textPreview":"입력부터 기도, 회고까지 제품의 감정선은 일관된다.","textChars":28,"textLines":1,"bbox":[96,610,830,40]}
+{"kind":"shape","id":"sh/u1s76d4f","slide":2,"name":"Bad card","bbox":[64,704,952,238]}
+{"kind":"shape","id":"sh/v218zil0","slide":2,"name":"Bad label-bg","bbox":[96,740,128,44]}
+{"kind":"textbox","id":"sh/8zap43m9","slide":2,"name":"Bad label-text","text":"BAD","textPreview":"BAD","textChars":3,"textLines":1,"bbox":[96,742,128,40]}
+{"kind":"textbox","id":"sh/t0jqx83u","slide":2,"name":"Bad headline","text":"탐색 · 저장 확신 · 언어 일관성","textPreview":"탐색 · 저장 확신 · 언어 일관성","textChars":19,"textLines":1,"bbox":[96,808,830,54]}
+{"kind":"textbox","id":"sh/6xs72t43","slide":2,"name":"Bad detail","text":"예쁜 화면 뒤에서 사용자는 현재 위치와 결과를 추측한다.","textPreview":"예쁜 화면 뒤에서 사용자는 현재 위치와 결과를 추측한다.","textChars":31,"textLines":1,"bbox":[96,876,830,40]}
+{"kind":"shape","id":"sh/7y18vylo","slide":2,"name":"Evidence card","bbox":[64,975,952,196]}
+{"kind":"textbox","id":"sh/sve9g72d","slide":2,"name":"Evidence","text":"근거: 현재 iPhone 화면과 실제 조작 흐름\n제외: 사용자 인터뷰, 전환율, 장기 사용 데이터","textPreview":"근거: 현재 iPhone 화면과 실제 조작 흐름 | 제외: 사용자 인터뷰, 전환율, 장기 사용 데이터","textChars":54,"textLines":2,"bbox":[96,1016,840,102]}
+{"kind":"textbox","id":"sh/dwnq9c3y","slide":2,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"notes","id":"nt/egu0b9","slide":2,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/mlp9ar","slide":3,"title":"PRAYLIST · UX AUDIT","textShapes":11}
+{"kind":"textbox","id":"sh/54fidcbq","slide":3,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/ih4j2xsz","slide":3,"name":"Page number","text":"03/10","textPreview":"03/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/32d0b2tk","slide":3,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/s7618ra1","slide":3,"name":"Good section-index","text":"GOOD 01","textPreview":"GOOD 01","textChars":7,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/d8fihwbm","slide":3,"name":"Good section-label","text":"DIRECT ENTRY","textPreview":"DIRECT ENTRY","textChars":12,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/q5oj6hsv","slide":3,"name":"Main title","text":"빈 줄이 곧\n입력창이다","textPreview":"빈 줄이 곧 | 입력창이다","textChars":12,"textLines":2,"bbox":[64,205,500,160]}
+{"kind":"shape","id":"sh/r6x0fmtg","slide":3,"name":"Bullet 1-dot","bbox":[64,446,13,13]}
+{"kind":"textbox","id":"sh/8b2hwnax","slide":3,"name":"Bullet 1-text","text":"첫 행동을 설명 없이 시작","textPreview":"첫 행동을 설명 없이 시작","textChars":14,"textLines":1,"bbox":[94,435,440,52]}
+{"kind":"shape","id":"sh/tcvi5sbi","slide":3,"name":"Bullet 2-dot","bbox":[64,526,13,13]}
+{"kind":"textbox","id":"sh/h4z6h0jy","slide":3,"name":"Bullet 2-text","text":"저장용 화면을 따로 열지 않음","textPreview":"저장용 화면을 따로 열지 않음","textChars":16,"textLines":1,"bbox":[94,515,440,52]}
+{"kind":"shape","id":"sh/w3qpov2t","slide":3,"name":"Bullet 3-dot","bbox":[64,606,13,13]}
+{"kind":"textbox","id":"sh/v2hofq18","slide":3,"name":"Bullet 3-text","text":"10칸 구조가 현재 상태를 보여줌","textPreview":"10칸 구조가 현재 상태를 보여줌","textChars":18,"textLines":1,"bbox":[94,595,440,52]}
+{"kind":"shape","id":"sh/u187mlkn","slide":3,"name":"Evidence screenshot-shadow","bbox":[594,217,390,780]}
+{"kind":"shape","id":"sh/47apsf2p","slide":3,"name":"Verdict card","bbox":[64,770,480,248]}
+{"kind":"textbox","id":"sh/j61oja14","slide":3,"name":"Verdict label","text":"판정","textPreview":"판정","textChars":2,"textLines":1,"bbox":[100,812,390,35]}
+{"kind":"textbox","id":"sh/i5s7q5kj","slide":3,"name":"Verdict","text":"메타포와 행동이\n붙어 있다.","textPreview":"메타포와 행동이 | 붙어 있다.","textChars":15,"textLines":2,"bbox":[100,872,390,92]}
+{"kind":"textbox","id":"sh/dw3qpkj6","slide":3,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/qtgjulwn","slide":3,"name":"","geometry":"roundRect","alt":"Praylist direct entry interface","bbox":[585,205,390,780]}
+{"kind":"notes","id":"nt/mlp9ar","slide":3,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/55c3mr","slide":4,"title":"PRAYLIST · UX AUDIT","textShapes":11}
+{"kind":"textbox","id":"sh/zixwr61k","slide":4,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/0jqxkbi5","slide":4,"name":"Page number","text":"04/10","textPreview":"04/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/1kzetgjq","slide":4,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/qtove103","slide":4,"name":"Good section-index","text":"GOOD 02","textPreview":"GOOD 02","textChars":7,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/rexwn61o","slide":4,"name":"Good section-label","text":"FOCUS","textPreview":"FOCUS","textChars":5,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/cf6dgbi9","slide":4,"name":"Main title","text":"기도할 때는\n기도만 남긴다","textPreview":"기도할 때는 | 기도만 남긴다","textChars":14,"textLines":2,"bbox":[64,205,500,160]}
+{"kind":"shape","id":"sh/dgfepwju","slide":4,"name":"Bullet 1-dot","bbox":[64,446,13,13]}
+{"kind":"textbox","id":"sh/ap8fql07","slide":4,"name":"Bullet 1-text","text":"진행률 1/1로 끝을 예고","textPreview":"진행률 1/1로 끝을 예고","textChars":14,"textLines":1,"bbox":[94,435,440,52]}
+{"kind":"shape","id":"sh/ba1wzq1s","slide":4,"name":"Bullet 2-dot","bbox":[64,526,13,13]}
+{"kind":"textbox","id":"sh/fmp4neh8","slide":4,"name":"Bullet 2-text","text":"읽기 → 완료, 한 방향 흐름","textPreview":"읽기 → 완료, 한 방향 흐름","textChars":16,"textLines":1,"bbox":[94,515,440,52]}
+{"kind":"shape","id":"sh/e1gne9gn","slide":4,"name":"Bullet 3-dot","bbox":[64,606,13,13]}
+{"kind":"textbox","id":"sh/1o7mpozy","slide":4,"name":"Bullet 3-text","text":"부드러운 문장이 행동 압박을 낮춤","textPreview":"부드러운 문장이 행동 압박을 낮춤","textChars":18,"textLines":1,"bbox":[94,595,440,52]}
+{"kind":"shape","id":"sh/0ny5gjyd","slide":4,"name":"Evidence screenshot-shadow","bbox":[594,217,390,780]}
+{"kind":"shape","id":"sh/2pgnitgj","slide":4,"name":"Verdict card","bbox":[64,770,480,248]}
+{"kind":"textbox","id":"sh/psrmt8za","slide":4,"name":"Verdict label","text":"판정","textPreview":"판정","textChars":2,"textLines":1,"bbox":[100,812,390,35]}
+{"kind":"textbox","id":"sh/ori5k3yp","slide":4,"name":"Verdict","text":"앱의 목적이 가장\n선명한 화면.","textPreview":"앱의 목적이 가장 | 선명한 화면.","textChars":17,"textLines":2,"bbox":[100,872,390,92]}
+{"kind":"textbox","id":"sh/bu94vyh0","slide":4,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/gvil83md","slide":4,"name":"","geometry":"roundRect","alt":"Praylist prayer reading screen","bbox":[585,205,390,780]}
+{"kind":"notes","id":"nt/55c3mr","slide":4,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/kv1onk","slide":5,"title":"PRAYLIST · UX AUDIT","textShapes":8}
+{"kind":"textbox","id":"sh/wfy9gba1","slide":5,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/vep8769g","slide":5,"name":"Page number","text":"05/10","textPreview":"05/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/adwre1sv","slide":5,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/9cnq5wra","slide":5,"name":"Good section-index","text":"GOOD 03","textPreview":"GOOD 03","textChars":7,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/8be9crap","slide":5,"name":"Good section-label","text":"MEANINGFUL HISTORY","textPreview":"MEANINGFUL HISTORY","textChars":18,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/nq583694","slide":5,"name":"Main title","text":"달성을 체크가 아니라\n날짜로 남긴다","textPreview":"달성을 체크가 아니라 | 날짜로 남긴다","textChars":19,"textLines":2,"bbox":[64,205,900,160]}
+{"kind":"shape","id":"sh/mpwra1sj","slide":5,"name":"Left screenshot-shadow","bbox":[73,442,426,700]}
+{"kind":"shape","id":"sh/0nep8rat","slide":5,"name":"Right screenshot-shadow","bbox":[564,442,426,700]}
+{"kind":"shape","id":"sh/nidsr2l8","slide":5,"name":"Meaning card","bbox":[180,850,720,252]}
+{"kind":"textbox","id":"sh/8j69k7mt","slide":5,"name":"Meaning label","text":"기록 → 회고","textPreview":"기록 → 회고","textChars":7,"textLines":1,"bbox":[225,894,630,38]}
+{"kind":"textbox","id":"sh/9kfatc3y","slide":5,"name":"Meaning","text":"완료의 의미를 붙이고\n다시 볼 이유를 만든다.","textPreview":"완료의 의미를 붙이고 | 다시 볼 이유를 만든다.","textChars":25,"textLines":2,"bbox":[225,958,630,104]}
+{"kind":"textbox","id":"sh/yd4rex4b","slide":5,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/43atofmx","slide":5,"name":"","geometry":"roundRect","alt":"Praylist achievement sheet","bbox":[64,430,426,700]}
+{"kind":"image","id":"im/d8ba9gfq","slide":5,"name":"","geometry":"roundRect","alt":"Praylist history calendar","bbox":[555,430,426,700]}
+{"kind":"notes","id":"nt/kv1onk","slide":5,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/yqq7dy","slide":6,"title":"PRAYLIST · UX AUDIT","textShapes":13}
+{"kind":"textbox","id":"sh/d8jetg76","slide":6,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/q58vy1of","slide":6,"name":"Page number","text":"06/10","textPreview":"06/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/b6hwr6p0","slide":6,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/0bad4v6h","slide":6,"name":"Bad section-index","text":"BAD 01","textPreview":"BAD 01","textChars":6,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/lwjex072","slide":6,"name":"Bad section-label","text":"LOCALIZATION","textPreview":"LOCALIZATION","textChars":12,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/y9sv2lor","slide":6,"name":"Main title","text":"한국어인데\n핵심 버튼은 영어다","textPreview":"한국어인데 | 핵심 버튼은 영어다","textChars":16,"textLines":2,"bbox":[64,205,900,160]}
+{"kind":"shape","id":"sh/za1wvqpw","slide":6,"name":"Example 1 card","bbox":[64,455,286,484]}
+{"kind":"textbox","id":"sh/903e107e","slide":6,"name":"Example 1 label","text":"설정","textPreview":"설정","textChars":2,"textLines":1,"bbox":[82,825,250,32]}
+{"kind":"shape","id":"sh/1of25o7i","slide":6,"name":"Example 1 issue box","bbox":[118,866,178,50]}
+{"kind":"textbox","id":"sh/0n61wj6x","slide":6,"name":"Example 1 issue","text":"Close","textPreview":"Close","textChars":5,"textLines":1,"bbox":[118,870,178,40]}
+{"kind":"shape","id":"sh/zmxk3epc","slide":6,"name":"Example 2 card","bbox":[376,455,286,484]}
+{"kind":"textbox","id":"sh/9cf29o7u","slide":6,"name":"Example 2 label","text":"나의 발자취","textPreview":"나의 발자취","textChars":6,"textLines":1,"bbox":[394,825,250,32]}
+{"kind":"shape","id":"sh/ob610369","slide":6,"name":"Example 2 issue box","bbox":[430,866,178,50]}
+{"kind":"textbox","id":"sh/naxk7ypo","slide":6,"name":"Example 2 issue","text":"Edit","textPreview":"Edit","textChars":4,"textLines":1,"bbox":[430,870,178,40]}
+{"kind":"shape","id":"sh/m9ojyto3","slide":6,"name":"Example 3 card","bbox":[688,455,286,484]}
+{"kind":"textbox","id":"sh/4fm1oz6p","slide":6,"name":"Example 3 label","text":"카테고리 관리","textPreview":"카테고리 관리","textChars":7,"textLines":1,"bbox":[706,825,250,32]}
+{"kind":"shape","id":"sh/wzq14zel","slide":6,"name":"Example 3 issue box","bbox":[742,866,178,50]}
+{"kind":"textbox","id":"sh/h0z2d4f6","slide":6,"name":"Example 3 issue","text":"Edit","textPreview":"Edit","textChars":4,"textLines":1,"bbox":[742,870,178,40]}
+{"kind":"shape","id":"sh/uxoj2pwv","slide":6,"name":"Conclusion card","bbox":[64,982,952,166]}
+{"kind":"textbox","id":"sh/vyxkbux0","slide":6,"name":"Conclusion","text":"Close · Edit · Cancel · Save: 전부 현지화 필요","textPreview":"Close · Edit · Cancel · Save: 전부 현지화 필요","textChars":39,"textLines":1,"bbox":[96,1030,840,60]}
+{"kind":"textbox","id":"sh/43q18jex","slide":6,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/1oz6d0fq","slide":6,"name":"","geometry":"roundRect","alt":"설정 screenshot","bbox":[82,482,250,318]}
+{"kind":"image","id":"im/xk7q54rm","slide":6,"name":"","geometry":"roundRect","alt":"나의 발자취 screenshot","bbox":[394,482,250,318]}
+{"kind":"image","id":"im/ypw7m5sn","slide":6,"name":"","geometry":"roundRect","alt":"카테고리 관리 screenshot","bbox":[706,482,250,318]}
+{"kind":"notes","id":"nt/yqq7dy","slide":6,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/r38uex","slide":7,"title":"PRAYLIST · UX AUDIT","textShapes":11}
+{"kind":"textbox","id":"sh/to7u947q","slide":7,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/61gbep8z","slide":7,"name":"Page number","text":"07/10","textPreview":"07/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/72ps7upk","slide":7,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/gritkjq1","slide":7,"name":"Bad section-index","text":"BAD 02","textPreview":"BAD 02","textChars":6,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/hsrud47m","slide":7,"name":"Bad section-label","text":"NAVIGATION","textPreview":"NAVIGATION","textChars":10,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/up0bi98v","slide":7,"name":"Main title","text":"페이지 메타포가\n정보 구조를 숨긴다","textPreview":"페이지 메타포가 | 정보 구조를 숨긴다","textChars":19,"textLines":2,"bbox":[64,205,520,160]}
+{"kind":"shape","id":"sh/fq9cbepg","slide":7,"name":"Bullet 1-dot","bbox":[64,446,13,13]}
+{"kind":"textbox","id":"sh/ovitojqd","slide":7,"name":"Bullet 1-text","text":"1/3은 보이지만 전체 목록은 안 보임","textPreview":"1/3은 보이지만 전체 목록은 안 보임","textChars":21,"textLines":1,"bbox":[94,435,460,52]}
+{"kind":"shape","id":"sh/pwruho7i","slide":7,"name":"Bullet 2-dot","bbox":[64,526,13,13]}
+{"kind":"textbox","id":"sh/pc3q9c36","slide":7,"name":"Bullet 2-text","text":"원하는 카테고리로 바로 갈 수 없음","textPreview":"원하는 카테고리로 바로 갈 수 없음","textChars":19,"textLines":1,"bbox":[94,515,460,52]}
+{"kind":"shape","id":"sh/obup07ml","slide":7,"name":"Bullet 3-dot","bbox":[64,606,13,13]}
+{"kind":"textbox","id":"sh/na1o72l0","slide":7,"name":"Bullet 3-text","text":"관리 화면은 설정 안쪽에 숨어 있음","textPreview":"관리 화면은 설정 안쪽에 숨어 있음","textChars":19,"textLines":1,"bbox":[94,595,460,52]}
+{"kind":"shape","id":"sh/29s7yx4f","slide":7,"name":"Evidence screenshot-shadow","bbox":[599,217,390,780]}
+{"kind":"shape","id":"sh/cfup47mh","slide":7,"name":"Verdict card","bbox":[64,765,490,270]}
+{"kind":"textbox","id":"sh/bel8b2lw","slide":7,"name":"Verdict label","text":"적나라한 판정","textPreview":"적나라한 판정","textChars":7,"textLines":1,"bbox":[100,810,390,34]}
+{"kind":"textbox","id":"sh/adc72h4r","slide":7,"name":"Verdict","text":"카테고리 3개일 땐 낭만.\n10개가 되면 노동.","textPreview":"카테고리 3개일 땐 낭만. | 10개가 되면 노동.","textChars":26,"textLines":2,"bbox":[100,872,400,108]}
+{"kind":"textbox","id":"sh/dkj61s3y","slide":7,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/q9o32to7","slide":7,"name":"","geometry":"roundRect","alt":"Praylist page navigation","bbox":[590,205,390,780]}
+{"kind":"notes","id":"nt/r38uex","slide":7,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/yr4nqj","slide":8,"title":"PRAYLIST · UX AUDIT","textShapes":11}
+{"kind":"textbox","id":"sh/gjmhozm1","slide":8,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/fid0vu5g","slide":8,"name":"Page number","text":"08/10","textPreview":"08/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/uh4zmp4v","slide":8,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/pofi14ni","slide":8,"name":"Bad section-index","text":"BAD 03","textPreview":"BAD 03","textChars":6,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/on61szmd","slide":8,"name":"Bad section-label","text":"SAVE CONFIDENCE","textPreview":"SAVE CONFIDENCE","textChars":15,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/3mx0zu5s","slide":8,"name":"Main title","text":"자동 저장은 편하다.\n그런데 저장됐다는 증거가 없다.","textPreview":"자동 저장은 편하다. | 그런데 저장됐다는 증거가 없다.","textChars":29,"textLines":2,"bbox":[64,205,900,160]}
+{"kind":"shape","id":"sh/2lozqp47","slide":8,"name":"Evidence screenshot-shadow","bbox":[73,432,402,690]}
+{"kind":"shape","id":"sh/kr2hgfmt","slide":8,"name":"Behavior card","bbox":[505,420,510,205]}
+{"kind":"textbox","id":"sh/y1gze10z","slide":8,"name":"Behavior label","text":"실제 동작","textPreview":"실제 동작","textChars":5,"textLines":1,"bbox":[545,457,420,32]}
+{"kind":"textbox","id":"sh/z2p076hk","slide":8,"name":"Behavior","text":"키보드 ‘완료’ 또는\n다른 곳을 누르면 저장","textPreview":"키보드 ‘완료’ 또는 | 다른 곳을 누르면 저장","textChars":24,"textLines":2,"bbox":[545,513,420,82]}
+{"kind":"shape","id":"sh/03yhgbi5","slide":8,"name":"Visible card","bbox":[505,652,510,205]}
+{"kind":"textbox","id":"sh/l4ri9gzq","slide":8,"name":"Visible label","text":"사용자에게 보이는 것","textPreview":"사용자에게 보이는 것","textChars":11,"textLines":1,"bbox":[545,689,420,32]}
+{"kind":"textbox","id":"sh/m50zil0b","slide":8,"name":"Visible","text":"저장됨 표시 0\n되돌리기 0","textPreview":"저장됨 표시 0 | 되돌리기 0","textChars":15,"textLines":2,"bbox":[545,745,420,82]}
+{"kind":"shape","id":"sh/n690bqhw","slide":8,"name":"Solution card","bbox":[505,884,510,226]}
+{"kind":"textbox","id":"sh/87ihkvih","slide":8,"name":"Solution","text":"해법: 1초짜리 ‘저장됨’\n+ 편집 직후 실행 취소","textPreview":"해법: 1초짜리 ‘저장됨’ | + 편집 직후 실행 취소","textChars":28,"textLines":2,"bbox":[545,937,420,110]}
+{"kind":"textbox","id":"sh/98rid0zm","slide":8,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/0zypsbit","slide":8,"name":"","geometry":"roundRect","alt":"Praylist note entry screen","bbox":[64,420,402,690]}
+{"kind":"notes","id":"nt/yr4nqj","slide":8,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/x5lqh4","slide":9,"title":"PRAYLIST · UX AUDIT","textShapes":17}
+{"kind":"textbox","id":"sh/ut0vyhc7","slide":9,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/hwrutwvy","slide":9,"name":"Page number","text":"09/10","textPreview":"09/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/gvid0rud","slide":9,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"shape","id":"sh/7q9cnmdw","slide":9,"name":"Fix order pill-bg","bbox":[64,134,180,44]}
+{"kind":"textbox","id":"sh/6p0buhcb","slide":9,"name":"Fix order pill-text","text":"FIX ORDER","textPreview":"FIX ORDER","textChars":9,"textLines":1,"bbox":[64,136,180,40]}
+{"kind":"textbox","id":"sh/tsrupwvm","slide":9,"name":"Main title","text":"먼저 고칠 순서","textPreview":"먼저 고칠 순서","textChars":8,"textLines":1,"bbox":[64,210,900,90]}
+{"kind":"shape","id":"sh/8ritwru1","slide":9,"name":"Priority 1 card","bbox":[64,350,952,172]}
+{"kind":"shape","id":"sh/j2pcj2dk","slide":9,"name":"Priority 1 badge-bg","bbox":[94,400,92,44]}
+{"kind":"textbox","id":"sh/y1gbqxcz","slide":9,"name":"Priority 1 badge-text","text":"P0","textPreview":"P0","textChars":2,"textLines":1,"bbox":[94,402,92,40]}
+{"kind":"textbox","id":"sh/0nupo7y5","slide":9,"name":"Priority 1 title","text":"언어 일관성","textPreview":"언어 일관성","textChars":6,"textLines":1,"bbox":[230,385,690,48]}
+{"kind":"textbox","id":"sh/1o3qxsfq","slide":9,"name":"Priority 1 detail","text":"Close / Edit / Cancel / Save를 모두 현지화","textPreview":"Close / Edit / Cancel / Save를 모두 현지화","textChars":36,"textLines":1,"bbox":[230,444,700,45]}
+{"kind":"shape","id":"sh/e1c7mxgz","slide":9,"name":"Priority 2 card","bbox":[64,555,952,172]}
+{"kind":"shape","id":"sh/f2l8v2xk","slide":9,"name":"Priority 2 badge-bg","bbox":[94,605,92,44]}
+{"kind":"textbox","id":"sh/szapkny9","slide":9,"name":"Priority 2 badge-text","text":"P1","textPreview":"P1","textChars":2,"textLines":1,"bbox":[94,607,92,40]}
+{"kind":"textbox","id":"sh/d0jqtsfe","slide":9,"name":"Priority 2 title","text":"카테고리 바로가기","textPreview":"카테고리 바로가기","textChars":9,"textLines":1,"bbox":[230,590,690,48]}
+{"kind":"textbox","id":"sh/qxs7idg3","slide":9,"name":"Priority 2 detail","text":"페이지 표시를 누르면 전체 목록과 현재 위치 노출","textPreview":"페이지 표시를 누르면 전체 목록과 현재 위치 노출","textChars":27,"textLines":1,"bbox":[230,649,700,45]}
+{"kind":"shape","id":"sh/ry1orixo","slide":9,"name":"Priority 3 card","bbox":[64,760,952,172]}
+{"kind":"shape","id":"sh/cvepwryd","slide":9,"name":"Priority 3 badge-bg","bbox":[94,810,92,44]}
+{"kind":"textbox","id":"sh/xwnqpcfy","slide":9,"name":"Priority 3 badge-text","text":"P1","textPreview":"P1","textChars":2,"textLines":1,"bbox":[94,812,92,40]}
+{"kind":"textbox","id":"sh/lcjq9c72","slide":9,"name":"Priority 3 title","text":"저장 확신","textPreview":"저장 확신","textChars":5,"textLines":1,"bbox":[230,795,690,48]}
+{"kind":"textbox","id":"sh/kbapg76h","slide":9,"name":"Priority 3 detail","text":"가벼운 저장 완료 피드백 + 즉시 실행 취소","textPreview":"가벼운 저장 완료 피드백 + 즉시 실행 취소","textChars":24,"textLines":1,"bbox":[230,854,700,45]}
+{"kind":"shape","id":"sh/ja1872pw","slide":9,"name":"Priority 4 card","bbox":[64,965,952,172]}
+{"kind":"shape","id":"sh/y9s7eh8b","slide":9,"name":"Priority 4 badge-bg","bbox":[94,1015,92,44]}
+{"kind":"textbox","id":"sh/x8j65c7q","slide":9,"name":"Priority 4 badge-text","text":"P2","textPreview":"P2","textChars":2,"textLines":1,"bbox":[94,1017,92,40]}
+{"kind":"textbox","id":"sh/w7qpc7ql","slide":9,"name":"Priority 4 title","text":"안내문 다이어트","textPreview":"안내문 다이어트","textChars":8,"textLines":1,"bbox":[230,1000,690,48]}
+{"kind":"textbox","id":"sh/bmho32p0","slide":9,"name":"Priority 4 detail","text":"긴 설명은 첫 사용 힌트와 상황별 안내로 분리","textPreview":"긴 설명은 첫 사용 힌트와 상황별 안내로 분리","textChars":25,"textLines":1,"bbox":[230,1059,700,45]}
+{"kind":"textbox","id":"sh/al87ax8f","slide":9,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"notes","id":"nt/x5lqh4","slide":9,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/fgf49c","slide":10,"title":"PRAYLIST · UX AUDIT","textShapes":9}
+{"kind":"textbox","id":"sh/x03ud4fq","slide":10,"name":"Header","text":"PRAYLIST · UX AUDIT","textPreview":"PRAYLIST · UX AUDIT","textChars":19,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/axcv2pwz","slide":10,"name":"Page number","text":"10/10","textPreview":"10/10","textChars":5,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/bylcbuxk","slide":10,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/l4neh4fm","slide":10,"name":"Product name","text":"praylist","textPreview":"praylist","textChars":8,"textLines":1,"bbox":[210,154,400,42]}
+{"kind":"textbox","id":"sh/y1wv69wb","slide":10,"name":"Series meta","text":"UX AUDIT · 2026","textPreview":"UX AUDIT · 2026","textChars":15,"textLines":1,"bbox":[210,205,400,30]}
+{"kind":"textbox","id":"sh/j25cfexw","slide":10,"name":"Closing title dark","text":"예쁜 노트는\n이미 됐다.","textPreview":"예쁜 노트는 | 이미 됐다.","textChars":13,"textLines":2,"bbox":[64,350,850,170]}
+{"kind":"textbox","id":"sh/07adwfex","slide":10,"name":"Closing title green","text":"이제 길 잃지 않는\n제품으로.","textPreview":"이제 길 잃지 않는 | 제품으로.","textChars":16,"textLines":2,"bbox":[64,545,850,170]}
+{"kind":"shape","id":"sh/18ju5kfi","slide":10,"name":"CTA card","bbox":[64,800,952,292]}
+{"kind":"textbox","id":"sh/l0rq1kzu","slide":10,"name":"CTA question","text":"당신이라면 무엇부터 고칠까요?","textPreview":"당신이라면 무엇부터 고칠까요?","textChars":16,"textLines":1,"bbox":[110,854,860,62]}
+{"kind":"textbox","id":"sh/kzip8fy9","slide":10,"name":"CTA options","text":"언어 · 탐색 · 저장 확신","textPreview":"언어 · 탐색 · 저장 확신","textChars":15,"textLines":1,"bbox":[110,956,860,50]}
+{"kind":"textbox","id":"sh/zy98zaho","slide":10,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/ds7u5grq","slide":10,"name":"","geometry":"roundRect","alt":"Praylist app icon","bbox":[64,142,116,116]}
+{"kind":"notes","id":"nt/fgf49c","slide":10,"text":"편집 가능한 슬라이드입니다. 텍스트, 라벨, 카드와 강조 도형은 모두 PowerPoint에서 수정할 수 있습니다. 이미지 요소는 선택 후 그림 변경으로 교체할 수 있습니다."}
+{"kind":"slide","id":"sl/q2t7e5","slide":11,"title":"PRAYLIST FEED TEMPLATE","textShapes":9}
+{"kind":"textbox","id":"sh/2lgzmdgv","slide":11,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/porihsz6","slide":11,"name":"Page number","text":"T01/10","textPreview":"T01/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/onyhonyl","slide":11,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"shape","id":"sh/fip0bih4","slide":11,"name":"Audit pill-bg","bbox":[64,134,214,44]}
+{"kind":"textbox","id":"sh/exgzidgj","slide":11,"name":"Audit pill-text","text":"[시리즈 라벨]","textPreview":"[시리즈 라벨]","textChars":8,"textLines":1,"bbox":[64,136,214,40]}
+{"kind":"textbox","id":"sh/1k7id8za","slide":11,"name":"Main title","text":"[메인 제목을\n입력하세요]","textPreview":"[메인 제목을 | 입력하세요]","textChars":14,"textLines":2,"bbox":[64,210,575,210]}
+{"kind":"textbox","id":"sh/0jyhknyp","slide":11,"name":"Subtitle","text":"[부제목 또는 핵심 요약]","textPreview":"[부제목 또는 핵심 요약]","textChars":14,"textLines":1,"bbox":[64,438,560,52]}
+{"kind":"shape","id":"sh/ze90n2h8","slide":11,"name":"Hero screenshot-shadow","bbox":[629,167,370,744]}
+{"kind":"shape","id":"sh/0325876p","slide":11,"name":"Hero screenshot-replace-bg","bbox":[636,171,116,44]}
+{"kind":"textbox","id":"sh/14bmhcna","slide":11,"name":"Hero screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[636,173,116,40]}
+{"kind":"shape","id":"sh/e1kn6hoz","slide":11,"name":"Quote card","bbox":[64,790,540,333]}
+{"kind":"textbox","id":"sh/f2t4fm54","slide":11,"name":"Quote","text":"[핵심 문장을\n입력하세요]","textPreview":"[핵심 문장을 | 입력하세요]","textChars":14,"textLines":2,"bbox":[104,842,460,132]}
+{"kind":"textbox","id":"sh/sz2l476t","slide":11,"name":"Evidence line","text":"[판정 기준 또는 근거]","textPreview":"[판정 기준 또는 근거]","textChars":13,"textLines":1,"bbox":[104,1025,455,42]}
+{"kind":"textbox","id":"sh/d0bmdcne","slide":11,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/zih0vep8","slide":11,"name":"","geometry":"roundRect","alt":"Praylist main notebook screenshot","bbox":[620,155,370,744]}
+{"kind":"notes","id":"nt/q2t7e5","slide":11,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/zzz1a3","slide":12,"title":"PRAYLIST FEED TEMPLATE","textShapes":12}
+{"kind":"textbox","id":"sh/tkj69cn2","slide":12,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/6h8nehor","slide":12,"name":"Page number","text":"T02/10","textPreview":"T02/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/7iho7m5w","slide":12,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"shape","id":"sh/kvq5c76l","slide":12,"name":"Verdict pill-bg","bbox":[64,134,160,44]}
+{"kind":"textbox","id":"sh/lgz65cn6","slide":12,"name":"Verdict pill-text","text":"[섹션 라벨]","textPreview":"[섹션 라벨]","textChars":7,"textLines":1,"bbox":[64,136,160,40]}
+{"kind":"textbox","id":"sh/yt8naxof","slide":12,"name":"Main title","text":"[한 줄 총평을\n입력하세요]","textPreview":"[한 줄 총평을 | 입력하세요]","textChars":15,"textLines":2,"bbox":[64,210,900,180]}
+{"kind":"shape","id":"sh/juho3250","slide":12,"name":"Good card","bbox":[64,438,952,238]}
+{"kind":"shape","id":"sh/4rupob6p","slide":12,"name":"Good label-bg","bbox":[96,474,128,44]}
+{"kind":"textbox","id":"sh/pc36hwna","slide":12,"name":"Good label-text","text":"[강점]","textPreview":"[강점]","textChars":4,"textLines":1,"bbox":[96,476,128,40]}
+{"kind":"textbox","id":"sh/hw7uhobe","slide":12,"name":"Good headline","text":"[잘한 점을 한 문장으로]","textPreview":"[잘한 점을 한 문장으로]","textChars":14,"textLines":1,"bbox":[96,542,830,54]}
+{"kind":"textbox","id":"sh/wbytojut","slide":12,"name":"Good detail","text":"[근거와 사용자 효과를 입력하세요]","textPreview":"[근거와 사용자 효과를 입력하세요]","textChars":19,"textLines":1,"bbox":[96,610,830,40]}
+{"kind":"shape","id":"sh/vapcfyt8","slide":12,"name":"Bad card","bbox":[64,704,952,238]}
+{"kind":"shape","id":"sh/u9wbmtcn","slide":12,"name":"Bad label-bg","bbox":[96,740,128,44]}
+{"kind":"textbox","id":"sh/98nudob2","slide":12,"name":"Bad label-text","text":"[약점]","textPreview":"[약점]","textChars":4,"textLines":1,"bbox":[96,742,128,40]}
+{"kind":"textbox","id":"sh/87etkjuh","slide":12,"name":"Bad headline","text":"[못한 점을 한 문장으로]","textPreview":"[못한 점을 한 문장으로]","textChars":14,"textLines":1,"bbox":[96,808,830,54]}
+{"kind":"textbox","id":"sh/765cbetc","slide":12,"name":"Bad detail","text":"[근거와 사용자 비용을 입력하세요]","textPreview":"[근거와 사용자 비용을 입력하세요]","textChars":19,"textLines":1,"bbox":[96,876,830,40]}
+{"kind":"shape","id":"sh/m5wbi9cr","slide":12,"name":"Evidence card","bbox":[64,975,952,196]}
+{"kind":"textbox","id":"sh/t4rup8bm","slide":12,"name":"Evidence","text":"근거: [검토한 화면과 플로우]\n제외: [이번 평가에서 다루지 않은 데이터]","textPreview":"근거: [검토한 화면과 플로우] | 제외: [이번 평가에서 다루지 않은 데이터]","textChars":42,"textLines":2,"bbox":[96,1016,840,102]}
+{"kind":"textbox","id":"sh/s3idwnu1","slide":12,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"notes","id":"nt/zzz1a3","slide":12,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/urxe9h","slide":13,"title":"PRAYLIST FEED TEMPLATE","textShapes":12}
+{"kind":"textbox","id":"sh/98n69svu","slide":13,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/mlwnydw3","slide":13,"name":"Page number","text":"T03/10","textPreview":"T03/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/n65o7ido","slide":13,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/0ju5w3ex","slide":13,"name":"Good section-index","text":"[GOOD 01]","textPreview":"[GOOD 01]","textChars":9,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/lk3658vi","slide":13,"name":"Good section-label","text":"[DIRECT ENTRY]","textPreview":"[DIRECT ENTRY]","textChars":14,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/yhcnutw7","slide":13,"name":"Main title","text":"[좋았던 UX를\n두 줄로 요약]","textPreview":"[좋았던 UX를 | 두 줄로 요약]","textChars":17,"textLines":2,"bbox":[64,205,500,160]}
+{"kind":"shape","id":"sh/zilo3yds","slide":13,"name":"Bullet 1-dot","bbox":[64,446,13,13]}
+{"kind":"textbox","id":"sh/kfyp87uh","slide":13,"name":"Bullet 1-text","text":"[근거 1]","textPreview":"[근거 1]","textChars":6,"textLines":1,"bbox":[94,435,440,52]}
+{"kind":"shape","id":"sh/5g76hcv2","slide":13,"name":"Bullet 2-dot","bbox":[64,526,13,13]}
+{"kind":"textbox","id":"sh/h4f2dovu","slide":13,"name":"Bullet 2-text","text":"[근거 2]","textPreview":"[근거 2]","textChars":6,"textLines":1,"bbox":[94,515,440,52]}
+{"kind":"shape","id":"sh/g36lkjep","slide":13,"name":"Bullet 3-dot","bbox":[64,606,13,13]}
+{"kind":"textbox","id":"sh/v2xkbed4","slide":13,"name":"Bullet 3-text","text":"[근거 3]","textPreview":"[근거 3]","textChars":6,"textLines":1,"bbox":[94,595,440,52]}
+{"kind":"shape","id":"sh/u1o3i9wj","slide":13,"name":"Evidence screenshot-shadow","bbox":[594,217,390,780]}
+{"kind":"shape","id":"sh/8z6lgjed","slide":13,"name":"Evidence screenshot-replace-bg","bbox":[601,221,116,44]}
+{"kind":"textbox","id":"sh/7ydk7eds","slide":13,"name":"Evidence screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[601,223,116,40]}
+{"kind":"shape","id":"sh/6x43e9w7","slide":13,"name":"Verdict card","bbox":[64,770,480,248]}
+{"kind":"textbox","id":"sh/dwzml8v2","slide":13,"name":"Verdict label","text":"[판정 라벨]","textPreview":"[판정 라벨]","textChars":7,"textLines":1,"bbox":[100,812,390,35]}
+{"kind":"textbox","id":"sh/svqls3eh","slide":13,"name":"Verdict","text":"[판정 문장을 입력하세요]","textPreview":"[판정 문장을 입력하세요]","textChars":14,"textLines":1,"bbox":[100,872,390,92]}
+{"kind":"textbox","id":"sh/cbix4b65","slide":13,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/etkn2lwv","slide":13,"name":"","geometry":"roundRect","alt":"Praylist direct entry interface","bbox":[585,205,390,780]}
+{"kind":"notes","id":"nt/urxe9h","slide":13,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/1wb4e6","slide":14,"title":"PRAYLIST FEED TEMPLATE","textShapes":12}
+{"kind":"textbox","id":"sh/54ba9g7m","slide":14,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/i1kbe18v","slide":14,"name":"Page number","text":"T04/10","textPreview":"T04/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/32ts76pg","slide":14,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/gzitcbq5","slide":14,"name":"Good section-index","text":"[GOOD 02]","textPreview":"[GOOD 02]","textChars":9,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/h0ra5w7a","slide":14,"name":"Good section-label","text":"[FOCUS]","textPreview":"[FOCUS]","textChars":7,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/ud0ba18z","slide":14,"name":"Main title","text":"[집중 경험을\n두 줄로 요약]","textPreview":"[집중 경험을 | 두 줄로 요약]","textChars":16,"textLines":2,"bbox":[64,205,500,160]}
+{"kind":"shape","id":"sh/ve9s36pk","slide":14,"name":"Bullet 1-dot","bbox":[64,446,13,13]}
+{"kind":"textbox","id":"sh/0vmtov69","slide":14,"name":"Bullet 1-text","text":"[근거 1]","textPreview":"[근거 1]","textChars":6,"textLines":1,"bbox":[94,435,440,52]}
+{"kind":"shape","id":"sh/1wvuh07u","slide":14,"name":"Bullet 2-dot","bbox":[64,526,13,13]}
+{"kind":"textbox","id":"sh/1gnqps7i","slide":14,"name":"Bullet 2-text","text":"[근거 2]","textPreview":"[근거 2]","textChars":6,"textLines":1,"bbox":[94,515,440,52]}
+{"kind":"shape","id":"sh/0fepwn6x","slide":14,"name":"Bullet 3-dot","bbox":[64,606,13,13]}
+{"kind":"textbox","id":"sh/ze5onipc","slide":14,"name":"Bullet 3-text","text":"[근거 3]","textPreview":"[근거 3]","textChars":6,"textLines":1,"bbox":[94,595,440,52]}
+{"kind":"shape","id":"sh/edw7udor","slide":14,"name":"Evidence screenshot-shadow","bbox":[594,217,390,780]}
+{"kind":"shape","id":"sh/srupsn6l","slide":14,"name":"Evidence screenshot-replace-bg","bbox":[601,221,116,44]}
+{"kind":"textbox","id":"sh/rqlojipg","slide":14,"name":"Evidence screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[601,223,116,40]}
+{"kind":"shape","id":"sh/qpc7qd8v","slide":14,"name":"Verdict card","bbox":[64,770,480,248]}
+{"kind":"textbox","id":"sh/x87qxc7q","slide":14,"name":"Verdict label","text":"[판정 라벨]","textPreview":"[판정 라벨]","textChars":7,"textLines":1,"bbox":[100,812,390,35]}
+{"kind":"textbox","id":"sh/wnyp4765","slide":14,"name":"Verdict","text":"[판정 문장을 입력하세요]","textPreview":"[판정 문장을 입력하세요]","textChars":14,"textLines":1,"bbox":[100,872,390,92]}
+{"kind":"textbox","id":"sh/g3q1gfid","slide":14,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/ut8reh8j","slide":14,"name":"","geometry":"roundRect","alt":"Praylist prayer reading screen","bbox":[585,205,390,780]}
+{"kind":"notes","id":"nt/1wb4e6","slide":14,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/qad9vb","slide":15,"title":"PRAYLIST FEED TEMPLATE","textShapes":10}
+{"kind":"textbox","id":"sh/107ahgby","slide":15,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/edwb6lc7","slide":15,"name":"Page number","text":"T05/10","textPreview":"T05/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/fe5sfqds","slide":15,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/sbet4bu1","slide":15,"name":"Good section-index","text":"[GOOD 03]","textPreview":"[GOOD 03]","textChars":9,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/dcnadgvm","slide":15,"name":"Good section-label","text":"[MEANINGFUL HISTORY]","textPreview":"[MEANINGFUL HISTORY]","textChars":20,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/q9wr21cb","slide":15,"name":"Main title","text":"[가치 있는 기록을\n두 줄로 요약]","textPreview":"[가치 있는 기록을 | 두 줄로 요약]","textChars":19,"textLines":2,"bbox":[64,205,900,160]}
+{"kind":"shape","id":"sh/ra5sb6dg","slide":15,"name":"Left screenshot-shadow","bbox":[73,442,426,700]}
+{"kind":"shape","id":"sh/58na9wvq","slide":15,"name":"Left screenshot-replace-bg","bbox":[80,446,116,44]}
+{"kind":"textbox","id":"sh/lcrmpsn2","slide":15,"name":"Left screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[80,448,116,40]}
+{"kind":"shape","id":"sh/kbilw7mh","slide":15,"name":"Right screenshot-shadow","bbox":[564,442,426,700]}
+{"kind":"shape","id":"sh/y903ux4b","slide":15,"name":"Right screenshot-replace-bg","bbox":[571,446,116,44]}
+{"kind":"textbox","id":"sh/x8rmlsnq","slide":15,"name":"Right screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[571,448,116,40]}
+{"kind":"shape","id":"sh/c7ilsnml","slide":15,"name":"Meaning card","bbox":[180,850,720,252]}
+{"kind":"textbox","id":"sh/bmp4ji50","slide":15,"name":"Meaning label","text":"[변화 라벨]","textPreview":"[변화 라벨]","textChars":7,"textLines":1,"bbox":[225,894,630,38]}
+{"kind":"textbox","id":"sh/alg3qd4f","slide":15,"name":"Meaning","text":"[기능이 만든 의미와\n재방문 이유를 입력하세요]","textPreview":"[기능이 만든 의미와 | 재방문 이유를 입력하세요]","textChars":26,"textLines":2,"bbox":[225,958,630,104]}
+{"kind":"textbox","id":"sh/pk7mh8nu","slide":15,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/9gvuxcrm","slide":15,"name":"","geometry":"roundRect","alt":"Praylist achievement sheet","bbox":[64,430,426,700]}
+{"kind":"image","id":"im/gvmt0vy5","slide":15,"name":"","geometry":"roundRect","alt":"Praylist history calendar","bbox":[555,430,426,700]}
+{"kind":"notes","id":"nt/qad9vb","slide":15,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/bw6c04","slide":16,"title":"PRAYLIST FEED TEMPLATE","textShapes":16}
+{"kind":"textbox","id":"sh/6pozeloj","slide":16,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/tsfyp07u","slide":16,"name":"Page number","text":"T06/10","textPreview":"T06/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/8r6hgv69","slide":16,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/vuhgrap0","slide":16,"name":"Bad section-index","text":"[BAD 01]","textPreview":"[BAD 01]","textChars":8,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/ut8zi5of","slide":16,"name":"Bad section-label","text":"[LOCALIZATION]","textPreview":"[LOCALIZATION]","textChars":14,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/hwzyt076","slide":16,"name":"Main title","text":"[일관성 문제를\n두 줄로 요약]","textPreview":"[일관성 문제를 | 두 줄로 요약]","textChars":17,"textLines":2,"bbox":[64,205,900,160]}
+{"kind":"shape","id":"sh/gvqhkv6l","slide":16,"name":"Example 1 card","bbox":[64,455,286,484]}
+{"kind":"shape","id":"sh/ax4f61ob","slide":16,"name":"Example 1 screenshot-replace-bg","bbox":[98,498,116,44]}
+{"kind":"textbox","id":"sh/4jutc7i9","slide":16,"name":"Example 1 screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[98,500,116,40]}
+{"kind":"textbox","id":"sh/5k3u5cze","slide":16,"name":"Example 1 label","text":"[화면 1]","textPreview":"[화면 1]","textChars":6,"textLines":1,"bbox":[82,825,250,32]}
+{"kind":"shape","id":"sh/ihsbax03","slide":16,"name":"Example 1 issue box","bbox":[118,866,178,50]}
+{"kind":"textbox","id":"sh/3i1c32ho","slide":16,"name":"Example 1 issue","text":"[영문 버튼]","textPreview":"[영문 버튼]","textChars":7,"textLines":1,"bbox":[118,870,178,40]}
+{"kind":"shape","id":"sh/snutg7i5","slide":16,"name":"Example 2 card","bbox":[376,455,286,484]}
+{"kind":"shape","id":"sh/qlcbex0z","slide":16,"name":"Example 2 screenshot-replace-bg","bbox":[410,498,116,44]}
+{"kind":"textbox","id":"sh/rmlc72hk","slide":16,"name":"Example 2 screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[410,500,116,40]}
+{"kind":"textbox","id":"sh/8rqt4ni1","slide":16,"name":"Example 2 label","text":"[화면 2]","textPreview":"[화면 2]","textChars":6,"textLines":1,"bbox":[394,825,250,32]}
+{"kind":"shape","id":"sh/tsjaxsjm","slide":16,"name":"Example 2 issue box","bbox":[430,866,178,50]}
+{"kind":"textbox","id":"sh/9obq14ba","slide":16,"name":"Example 2 issue","text":"[영문 버튼]","textPreview":"[영문 버튼]","textChars":7,"textLines":1,"bbox":[430,870,178,40]}
+{"kind":"shape","id":"sh/8ni98zap","slide":16,"name":"Example 3 card","bbox":[688,455,286,484]}
+{"kind":"shape","id":"sh/ml0r69sj","slide":16,"name":"Example 3 screenshot-replace-bg","bbox":[722,498,116,44]}
+{"kind":"textbox","id":"sh/xcba5ob6","slide":16,"name":"Example 3 screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[722,500,116,40]}
+{"kind":"textbox","id":"sh/wb29cja1","slide":16,"name":"Example 3 label","text":"[화면 3]","textPreview":"[화면 3]","textChars":6,"textLines":1,"bbox":[706,825,250,32]}
+{"kind":"shape","id":"sh/vat83etg","slide":16,"name":"Example 3 issue box","bbox":[742,866,178,50]}
+{"kind":"textbox","id":"sh/apkra9sv","slide":16,"name":"Example 3 issue","text":"[영문 버튼]","textPreview":"[영문 버튼]","textChars":7,"textLines":1,"bbox":[742,870,178,40]}
+{"kind":"shape","id":"sh/5gva9obi","slide":16,"name":"Conclusion card","bbox":[64,982,952,166]}
+{"kind":"textbox","id":"sh/kfm9gjax","slide":16,"name":"Conclusion","text":"[교체해야 할 용어와 원칙을 입력하세요]","textPreview":"[교체해야 할 용어와 원칙을 입력하세요]","textChars":22,"textLines":1,"bbox":[96,1030,840,60]}
+{"kind":"textbox","id":"sh/2lwnal8f","slide":16,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/a5ofitkn","slide":16,"name":"","geometry":"roundRect","alt":"설정 screenshot","bbox":[82,482,250,318]}
+{"kind":"image","id":"im/qp8ny9or","slide":16,"name":"","geometry":"roundRect","alt":"나의 발자취 screenshot","bbox":[394,482,250,318]}
+{"kind":"image","id":"im/sjq58zqd","slide":16,"name":"","geometry":"roundRect","alt":"카테고리 관리 screenshot","bbox":[706,482,250,318]}
+{"kind":"notes","id":"nt/bw6c04","slide":16,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/p2hw7e","slide":17,"title":"PRAYLIST FEED TEMPLATE","textShapes":12}
+{"kind":"textbox","id":"sh/3qlcfid8","slide":17,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/4rut8net","slide":17,"name":"Page number","text":"T07/10","textPreview":"T07/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/psnuhsve","slide":17,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/qtwbaxwz","slide":17,"name":"Bad section-index","text":"[BAD 02]","textPreview":"[BAD 02]","textChars":8,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/ru5cj2dk","slide":17,"name":"Bad section-label","text":"[NAVIGATION]","textPreview":"[NAVIGATION]","textChars":12,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/cvetc7e5","slide":17,"name":"Main title","text":"[탐색 문제를\n두 줄로 요약]","textPreview":"[탐색 문제를 | 두 줄로 요약]","textChars":16,"textLines":2,"bbox":[64,205,520,160]}
+{"kind":"shape","id":"sh/dwnulcvq","slide":17,"name":"Bullet 1-dot","bbox":[64,446,13,13]}
+{"kind":"textbox","id":"sh/6xsbydwv","slide":17,"name":"Bullet 1-text","text":"[문제 근거 1]","textPreview":"[문제 근거 1]","textChars":9,"textLines":1,"bbox":[94,435,460,52]}
+{"kind":"shape","id":"sh/7y1c7ydg","slide":17,"name":"Bullet 2-dot","bbox":[64,526,13,13]}
+{"kind":"textbox","id":"sh/b2tk7a9s","slide":17,"name":"Bullet 2-text","text":"[문제 근거 2]","textPreview":"[문제 근거 2]","textChars":9,"textLines":1,"bbox":[94,515,460,52]}
+{"kind":"shape","id":"sh/q1kje5sn","slide":17,"name":"Bullet 3-dot","bbox":[64,606,13,13]}
+{"kind":"textbox","id":"sh/dov290ry","slide":17,"name":"Bullet 3-text","text":"[문제 근거 3]","textPreview":"[문제 근거 3]","textChars":9,"textLines":1,"bbox":[94,595,460,52]}
+{"kind":"shape","id":"sh/c3m1gvad","slide":17,"name":"Evidence screenshot-shadow","bbox":[599,217,390,780]}
+{"kind":"shape","id":"sh/2xkjalsb","slide":17,"name":"Evidence screenshot-replace-bg","bbox":[606,221,116,44]}
+{"kind":"textbox","id":"sh/p0b250r2","slide":17,"name":"Evidence screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[606,223,116,40]}
+{"kind":"shape","id":"sh/oz21cvah","slide":17,"name":"Verdict card","bbox":[64,765,490,270]}
+{"kind":"textbox","id":"sh/fu9kzq90","slide":17,"name":"Verdict label","text":"[판정 라벨]","textPreview":"[판정 라벨]","textChars":7,"textLines":1,"bbox":[100,810,390,34]}
+{"kind":"textbox","id":"sh/et0j6lsf","slide":17,"name":"Verdict","text":"[현재 규모와 미래 규모의\n비용을 비교하세요]","textPreview":"[현재 규모와 미래 규모의 | 비용을 비교하세요]","textChars":25,"textLines":2,"bbox":[100,872,400,108]}
+{"kind":"textbox","id":"sh/i503ilc7","slide":17,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/sna58b2d","slide":17,"name":"","geometry":"roundRect","alt":"Praylist page navigation","bbox":[590,205,390,780]}
+{"kind":"notes","id":"nt/p2hw7e","slide":17,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/s5fhyt","slide":18,"title":"PRAYLIST FEED TEMPLATE","textShapes":12}
+{"kind":"textbox","id":"sh/36xknqpo","slide":18,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/47q1gv69","slide":18,"name":"Page number","text":"T08/10","textPreview":"T08/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/58z2p07u","slide":18,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"textbox","id":"sh/q98ji5of","slide":18,"name":"Bad section-index","text":"[BAD 03]","textPreview":"[BAD 03]","textChars":8,"textLines":1,"bbox":[64,132,150,30]}
+{"kind":"textbox","id":"sh/rahkrap0","slide":18,"name":"Bad section-label","text":"[SAVE CONFIDENCE]","textPreview":"[SAVE CONFIDENCE]","textChars":17,"textLines":1,"bbox":[205,132,330,30]}
+{"kind":"textbox","id":"sh/sbq1kf6l","slide":18,"name":"Main title","text":"[피드백 문제를\n두 줄로 요약]","textPreview":"[피드백 문제를 | 두 줄로 요약]","textChars":17,"textLines":2,"bbox":[64,205,900,160]}
+{"kind":"shape","id":"sh/dcz2tk76","slide":18,"name":"Evidence screenshot-shadow","bbox":[73,432,402,690]}
+{"kind":"shape","id":"sh/fe1kvapw","slide":18,"name":"Evidence screenshot-replace-bg","bbox":[80,436,116,44]}
+{"kind":"textbox","id":"sh/7yh4vy1c","slide":18,"name":"Evidence screenshot-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[80,438,116,40]}
+{"kind":"shape","id":"sh/6x8nmt0r","slide":18,"name":"Behavior card","bbox":[505,420,510,205]}
+{"kind":"textbox","id":"sh/t0zmx8ji","slide":18,"name":"Behavior label","text":"[실제 동작]","textPreview":"[실제 동작]","textChars":7,"textLines":1,"bbox":[545,457,420,32]}
+{"kind":"textbox","id":"sh/szq5o3ix","slide":18,"name":"Behavior","text":"[시스템이 실제로\n수행하는 동작]","textPreview":"[시스템이 실제로 | 수행하는 동작]","textChars":18,"textLines":2,"bbox":[545,513,420,82]}
+{"kind":"shape","id":"sh/jax4re1g","slide":18,"name":"Visible card","bbox":[505,652,510,205]}
+{"kind":"textbox","id":"sh/i9o3it0v","slide":18,"name":"Visible label","text":"[사용자가 보는 것]","textPreview":"[사용자가 보는 것]","textChars":11,"textLines":1,"bbox":[545,689,420,32]}
+{"kind":"textbox","id":"sh/5wzmtoj6","slide":18,"name":"Visible","text":"[피드백 0]\n[복구 수단 0]","textPreview":"[피드백 0] | [복구 수단 0]","textChars":17,"textLines":2,"bbox":[545,745,420,82]}
+{"kind":"shape","id":"sh/kbqlkji1","slide":18,"name":"Solution card","bbox":[505,884,510,226]}
+{"kind":"textbox","id":"sh/36143i1k","slide":18,"name":"Solution","text":"해법: [짧은 피드백]\n+ [복구 수단]","textPreview":"해법: [짧은 피드백] | + [복구 수단]","textChars":22,"textLines":2,"bbox":[545,937,420,110]}
+{"kind":"textbox","id":"sh/25snud0z","slide":18,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/fut836hg","slide":18,"name":"","geometry":"roundRect","alt":"Praylist note entry screen","bbox":[64,420,402,690]}
+{"kind":"notes","id":"nt/s5fhyt","slide":18,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/ydn4de","slide":19,"title":"PRAYLIST FEED TEMPLATE","textShapes":17}
+{"kind":"textbox","id":"sh/adgjupsr","slide":19,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/xgr254bi","slide":19,"name":"Page number","text":"T09/10","textPreview":"T09/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/cfi1wzax","slide":19,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"shape","id":"sh/nap0zutg","slide":19,"name":"Fix order pill-bg","bbox":[64,134,180,44]}
+{"kind":"textbox","id":"sh/29gjqpcv","slide":19,"name":"Fix order pill-text","text":"[섹션 라벨]","textPreview":"[섹션 라벨]","textChars":7,"textLines":1,"bbox":[64,136,180,40]}
+{"kind":"textbox","id":"sh/pc7i14b6","slide":19,"name":"Main title","text":"[우선순위 제목]","textPreview":"[우선순위 제목]","textChars":9,"textLines":1,"bbox":[64,210,900,90]}
+{"kind":"shape","id":"sh/oby1szu1","slide":19,"name":"Priority 1 card","bbox":[64,350,952,172]}
+{"kind":"shape","id":"sh/f650vat4","slide":19,"name":"Priority 1 badge-bg","bbox":[94,400,92,44]}
+{"kind":"textbox","id":"sh/e5wjm5cj","slide":19,"name":"Priority 1 badge-text","text":"P0","textPreview":"P0","textChars":2,"textLines":1,"bbox":[94,402,92,40]}
+{"kind":"textbox","id":"sh/cnex0ryp","slide":19,"name":"Priority 1 title","text":"[가장 시급한 문제]","textPreview":"[가장 시급한 문제]","textChars":11,"textLines":1,"bbox":[230,385,690,48]}
+{"kind":"textbox","id":"sh/d8ny9wzu","slide":19,"name":"Priority 1 detail","text":"[작고 명확한 수정 범위]","textPreview":"[작고 명확한 수정 범위]","textChars":14,"textLines":1,"bbox":[230,444,700,45]}
+{"kind":"shape","id":"sh/qlwfy1gj","slide":19,"name":"Priority 2 card","bbox":[64,555,952,172]}
+{"kind":"shape","id":"sh/rm5w76h4","slide":19,"name":"Priority 2 badge-bg","bbox":[94,605,92,44]}
+{"kind":"textbox","id":"sh/4jexwryd","slide":19,"name":"Priority 2 badge-text","text":"P1","textPreview":"P1","textChars":2,"textLines":1,"bbox":[94,607,92,40]}
+{"kind":"textbox","id":"sh/pkne5wzy","slide":19,"name":"Priority 2 title","text":"[중요한 문제 1]","textPreview":"[중요한 문제 1]","textChars":10,"textLines":1,"bbox":[230,590,690,48]}
+{"kind":"textbox","id":"sh/2hcfuhg7","slide":19,"name":"Priority 2 detail","text":"[사용자 흐름을 개선할 수정]","textPreview":"[사용자 흐름을 개선할 수정]","textChars":16,"textLines":1,"bbox":[230,649,700,45]}
+{"kind":"shape","id":"sh/3ilw3mhs","slide":19,"name":"Priority 3 card","bbox":[64,760,952,172]}
+{"kind":"shape","id":"sh/8fyx8vyh","slide":19,"name":"Priority 3 badge-bg","bbox":[94,810,92,44]}
+{"kind":"textbox","id":"sh/9g7yhgf2","slide":19,"name":"Priority 3 badge-text","text":"P1","textPreview":"P1","textChars":2,"textLines":1,"bbox":[94,812,92,40]}
+{"kind":"textbox","id":"sh/xk365w3a","slide":19,"name":"Priority 3 title","text":"[중요한 문제 2]","textPreview":"[중요한 문제 2]","textChars":10,"textLines":1,"bbox":[230,795,690,48]}
+{"kind":"textbox","id":"sh/wja5crmp","slide":19,"name":"Priority 3 detail","text":"[피드백과 복구 수단]","textPreview":"[피드백과 복구 수단]","textChars":12,"textLines":1,"bbox":[230,854,700,45]}
+{"kind":"shape","id":"sh/vi1o3ml4","slide":19,"name":"Priority 4 card","bbox":[64,965,952,172]}
+{"kind":"shape","id":"sh/ahsnah4j","slide":19,"name":"Priority 4 badge-bg","bbox":[94,1015,92,44]}
+{"kind":"textbox","id":"sh/9wj61c3y","slide":19,"name":"Priority 4 badge-text","text":"P2","textPreview":"P2","textChars":2,"textLines":1,"bbox":[94,1017,92,40]}
+{"kind":"textbox","id":"sh/ova587md","slide":19,"name":"Priority 4 title","text":"[후속 개선]","textPreview":"[후속 개선]","textChars":7,"textLines":1,"bbox":[230,1000,690,48]}
+{"kind":"textbox","id":"sh/nu1oz2l8","slide":19,"name":"Priority 4 detail","text":"[다음 반복에서 다룰 범위]","textPreview":"[다음 반복에서 다룰 범위]","textChars":15,"textLines":1,"bbox":[230,1059,700,45]}
+{"kind":"textbox","id":"sh/mtsn6h4n","slide":19,"name":"Footer","text":"PRAYLIST · HONEST BUILD LOG","textPreview":"PRAYLIST · HONEST BUILD LOG","textChars":27,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"notes","id":"nt/ydn4de","slide":19,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}
+{"kind":"slide","id":"sl/5ix6rw","slide":20,"title":"PRAYLIST FEED TEMPLATE","textShapes":10}
+{"kind":"textbox","id":"sh/f2tkvu58","slide":20,"name":"Header","text":"PRAYLIST FEED TEMPLATE","textPreview":"PRAYLIST FEED TEMPLATE","textChars":22,"textLines":1,"bbox":[64,42,410,34]}
+{"kind":"textbox","id":"sh/g32lofmt","slide":20,"name":"Page number","text":"T10/10","textPreview":"T10/10","textChars":6,"textLines":1,"bbox":[906,42,110,34]}
+{"kind":"shape","id":"sh/h4v2xkne","slide":20,"name":"Header rule","bbox":[64,90,952,2]}
+{"kind":"shape","id":"sh/7ytkra5c","slide":20,"name":"App icon-replace-bg","bbox":[80,158,116,44]}
+{"kind":"textbox","id":"sh/sz2lkfmx","slide":20,"name":"App icon-replace-text","text":"이미지 교체","textPreview":"이미지 교체","textChars":6,"textLines":1,"bbox":[80,160,116,40]}
+{"kind":"textbox","id":"sh/t0b2tkni","slide":20,"name":"Product name","text":"[제품명]","textPreview":"[제품명]","textChars":5,"textLines":1,"bbox":[210,154,400,42]}
+{"kind":"textbox","id":"sh/i90je54v","slide":20,"name":"Series meta","text":"[콘텐츠 유형 · 날짜]","textPreview":"[콘텐츠 유형 · 날짜]","textChars":13,"textLines":1,"bbox":[210,205,400,30]}
+{"kind":"textbox","id":"sh/ju9kna50","slide":20,"name":"Closing title dark","text":"[현재까지의\n성과를 입력하세요]","textPreview":"[현재까지의 | 성과를 입력하세요]","textChars":17,"textLines":2,"bbox":[64,350,850,170]}
+{"kind":"textbox","id":"sh/fydc7yd0","slide":20,"name":"Closing title green","text":"[다음 목표를\n입력하세요]","textPreview":"[다음 목표를 | 입력하세요]","textChars":14,"textLines":2,"bbox":[64,545,850,170]}
+{"kind":"shape","id":"sh/uxkvytcf","slide":20,"name":"CTA card","bbox":[64,800,952,292]}
+{"kind":"textbox","id":"sh/hkvu98v6","slide":20,"name":"CTA question","text":"[독자에게 던질 질문]","textPreview":"[독자에게 던질 질문]","textChars":12,"textLines":1,"bbox":[110,854,860,62]}
+{"kind":"textbox","id":"sh/gjmd03ul","slide":20,"name":"CTA options","text":"[선택지 1 · 선택지 2 · 선택지 3]","textPreview":"[선택지 1 · 선택지 2 · 선택지 3]","textChars":23,"textLines":1,"bbox":[110,956,860,50]}
+{"kind":"textbox","id":"sh/3mdwbydw","slide":20,"name":"Footer","text":"[브랜드 · 시리즈명]","textPreview":"[브랜드 · 시리즈명]","textChars":12,"textLines":1,"bbox":[64,1280,952,28]}
+{"kind":"image","id":"im/judg3a90","slide":20,"name":"","geometry":"roundRect","alt":"Praylist app icon","bbox":[64,142,116,116]}
+{"kind":"notes","id":"nt/5ix6rw","slide":20,"text":"템플릿 슬라이드입니다. 텍스트 요소는 직접 수정할 수 있습니다. 이미지 요소를 선택한 뒤 그림 변경으로 교체하세요."}

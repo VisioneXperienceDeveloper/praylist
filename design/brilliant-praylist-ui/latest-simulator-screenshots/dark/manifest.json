@@ -1,0 +1,161 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "C528136B-1754-4AD4-9178-6803B72E9171.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "17-privacy_0_E1062175-B991-4781-A32C-96F506383319.png",
+        "timestamp" : 1790142490.746
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "1F3760D6-1DF2-4036-B7BA-0B79B2D20BF6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "16-help_0_8A597F0C-4282-43E1-B437-464FE7CAE016.png",
+        "timestamp" : 1790142487.571
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "69BE2EB1-E9C5-4335-937C-4CF7DFF57668.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "15-language-settings_0_F252C026-B0E3-4043-A5FE-9FE3FF61B4B9.png",
+        "timestamp" : 1790142484.369
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "6FE9DEBF-22B8-45A9-B879-46A082D9A312.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "14-new-category-defaults_0_7482FC68-A399-4321-8B68-22A53F72637C.png",
+        "timestamp" : 1790142479.545
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "83F713DD-6544-46C2-9905-31697ED4ED18.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "13-new-category_0_DE96AE27-1FD3-440E-8AAE-1EDD9348A5D4.png",
+        "timestamp" : 1790142476.544
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "5616D103-CE3E-4125-977C-9B52B10F239F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "12-category-management_0_01081B54-0E49-431F-9E85-4884EDE3E7C3.png",
+        "timestamp" : 1790142473.764
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "B892D93B-207D-4142-839F-8C2E69B363A9.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "11-reminder-settings_0_38B89EDE-140D-4A2B-B9E1-345607FFE2F5.png",
+        "timestamp" : 1790142470.443
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "5F02E951-5C53-4C10-B388-4762DAA17396.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "10-settings_0_103E3CFB-A963-4B45-95BF-FBAF45A0B3C0.png",
+        "timestamp" : 1790142467.828
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "DB08D76F-9B9D-44C3-8D94-6280254F68CF.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "09-history-calendar_0_C6B740CD-DA27-489B-B0BD-016D95F1620F.png",
+        "timestamp" : 1790142464.377
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "B05C8D91-F803-4C8A-9C95-53EB6FF68D4F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "08-history-answered_0_E01F0D02-6099-4507-A3F4-BDBC3B01342A.png",
+        "timestamp" : 1790142460.508
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "6EE8987A-65EB-4966-93CA-0E2FEC2DBCA9.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "07-prayer-complete_0_4A175156-A1A6-403B-9847-E67DDC3246D2.png",
+        "timestamp" : 1790142457.179
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "90BC68EF-75AC-46C6-9345-6CB826AC65F8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "06-prayer-reading_0_7BDFF801-68A7-485D-A19F-C982C8FBE7CB.png",
+        "timestamp" : 1790142447.512
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "EA09433E-0EE3-4920-A0F5-7352B70E621B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "05-achievement-new_0_87D13576-0253-453B-8712-FC587880E7A7.png",
+        "timestamp" : 1790142444.214
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "8651732D-3159-4A48-93D2-17F7254D315B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "04-achievement-answered_0_82AA11DF-B92C-4D92-BDF8-7243B7726161.png",
+        "timestamp" : 1790142439.58
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "1CE5912D-FCFA-425B-A1CA-2E9A79276751.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "03-main-notebook_0_30499EA8-50D9-403A-A0FC-71846E1E1A7C.png",
+        "timestamp" : 1790142437.338
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "547103E9-C819-47A8-8178-46BF0B5B3020.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "02-onboarding-first-pray_0_9F492B1C-515B-4523-8EDC-94A55B7CC227.png",
+        "timestamp" : 1790142430.783
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2EFB3A3E-EE82-41ED-91B9-D8BDC1F166F2",
+        "deviceName" : "iPhone 18 Pro",
+        "exportedFileName" : "2A1D8AC3-90B3-4163-9DF5-E3150C5AFD3F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "01-onboarding-categories_0_E4C03D92-CE8C-4108-8580-287DEFBB6486.png",
+        "timestamp" : 1790142427.985
+      }
+    ],
+    "testIdentifier" : "PraylistUITests/testCaptureAllAppScreens()",
+    "testIdentifierURL" : "test://com.apple.xcode/Praylist/PraylistUITests/PraylistUITests/testCaptureAllAppScreens"
+  }
+]
