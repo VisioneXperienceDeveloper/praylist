@@ -2,7 +2,11 @@
 "노트를 열지 못했어요" = "Couldn't open your notebook";
 "다시 열기" = "Try again";
 "원본 파일 내보내기" = "Export original file";
-"소망을 담고, 매일 기도하다" = "Hold your prays. pray each day.";
+"나의 pray를 담은 list" = "A list of my prays";
+"테마" = "Appearance";
+"시스템" = "System";
+"라이트" = "Light";
+"다크 모드" = "Dark Mode";
 "기도 알림을 예약하지 못했어요. 설정에서 다시 저장해 주세요." = "Couldn't schedule your prayer reminder. Please save it again in Settings.";
 "되고 싶은 나" = "Becoming me";
 "어떤 사람이 되고 싶나요?" = "Who would you like to become?";
@@ -104,7 +108,6 @@
 "저장" = "Save";
 "같은 이름의 항목이 있어요." = "A category with this name already exists.";
 "오늘도 기도했어요" = "prayed today";
-"나의 소망을 담은 작은 책" = "A little book of my prays";
 "나의 발자취" = "My journey";
 "이전 항목" = "Previous category";
 "옆으로 넘겨 다음 소망 보기" = "Swipe to turn the page";

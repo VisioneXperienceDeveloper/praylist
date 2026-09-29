@@ -78,6 +78,7 @@ struct RootView: View {
     @State private var angle = 0.0
     @State private var startupError: String?
     @AppStorage("onboarding.stage") private var onboardingStage = 0
+    @AppStorage(AppAppearance.storageKey) private var appearance = AppAppearance.system.rawValue
 
     var body: some View {
         let _ = language.locale
@@ -95,8 +96,11 @@ struct RootView: View {
                 ZStack {
                     Color.paper
                     VStack(spacing: 20) {
-                        Text("praylist").font(.system(size: 42, weight: .regular, design: .serif))
-                        Text(L10n.text("소망을 담고, 매일 기도하다")).font(.subheadline).foregroundStyle(Color.quiet)
+                        PrayerHandsIcon(size: 88)
+                        VStack(spacing: 5) {
+                            Text("praylist").font(.system(size: 42, weight: .regular, design: .serif))
+                            Text(L10n.text("나의 pray를 담은 list")).font(.subheadline).foregroundStyle(Color.quiet)
+                        }
                     }
                 }
                 .overlay(alignment: .leading) { Rectangle().fill(Color.forest.opacity(0.12)).frame(width: 6) }
@@ -117,6 +121,7 @@ struct RootView: View {
             }
         }
         .foregroundStyle(Color.ink)
+        .preferredColorScheme(AppAppearance(rawValue: appearance)?.colorScheme)
         .errorAlert($startupError)
         .task { await syncReminders() }
         .onChange(of: language.resolved) { _, _ in Task { await syncReminders() } }

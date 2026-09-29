@@ -58,10 +58,7 @@ struct NotebookView: View {
     }
     private var topBar: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("praylist").font(.system(size: 28, design: .serif)).tracking(-0.8)
-                Text(L10n.text("나의 소망을 담은 작은 책")).font(.caption2).foregroundStyle(Color.quiet)
-            }
+            Text("praylist").font(.system(size: 28, design: .serif)).tracking(-0.8)
             Spacer()
             GlassGroup {
                 HStack(spacing: 10) {
