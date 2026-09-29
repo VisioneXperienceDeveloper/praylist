@@ -93,9 +93,11 @@ struct CategoryFieldsForm: View {
                 TextField(L10n.text("예: 배우고 싶은 것"), text: $category.title)
                     .autocorrectionDisabled()
                     .onChange(of: category.title) { _, value in if value.count > 24 { category.title = String(value.prefix(24)) } }
-                TextField(L10n.text("이 항목에 담을 Pray를 설명해 주세요"), text: $category.subtitle, axis: .vertical)
+                TextField(L10n.text("이 항목에 담을 Pray를 설명해 주세요"), text: Binding(
+                    get: { category.subtitle },
+                    set: { category.subtitle = String($0.prefix(100)) }
+                ), axis: .vertical)
                     .autocorrectionDisabled()
-                    .onChange(of: category.subtitle) { _, value in if value.count > 100 { category.subtitle = String(value.prefix(100)) } }
                 Text("\(category.title.count)/24 · \(category.subtitle.count)/100").font(.caption).foregroundStyle(Color.quiet)
             }
             Section(L10n.text("작은 상징")) {
