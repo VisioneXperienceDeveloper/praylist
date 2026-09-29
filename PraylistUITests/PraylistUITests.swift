@@ -126,7 +126,7 @@ final class PraylistUITests: XCTestCase {
         guard environment["PRAYLIST_VERIFY_DELIVERY"] == "1" || environment["TEST_RUNNER_PRAYLIST_VERIFY_DELIVERY"] == "1" else {
             throw XCTSkip("Waits for an actual daily reminder; see docs/QA.md.")
         }
-        let app = launch(["--uitesting", "--verify-reminder-delivery"])
+        let app = launch(["--uitesting", "--reset", "--verify-reminder-delivery"])
         XCTAssertTrue(app.buttons["prayerButton"].waitForExistence(timeout: 10))
         app.buttons["settingsButton"].tap()
         XCTAssertTrue(app.navigationBars["설정"].waitForExistence(timeout: 5))
