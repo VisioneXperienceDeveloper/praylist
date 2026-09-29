@@ -309,8 +309,17 @@ final class PraylistUITests: XCTestCase {
         capture("04-achievements", app: app)
         app.buttons["기도 기록"].tap()
         XCTAssertTrue(app.otherElements["prayerCalendar"].waitForExistence(timeout: 5))
-        let prayedDay = app.descendants(matching: .any).matching(NSPredicate(format: "value == %@", "circlebadge.fill")).firstMatch
-        XCTAssertTrue(prayedDay.exists)
+        let calendar = app.otherElements["prayerCalendar"]
+        let dayFormatter = DateFormatter()
+        dayFormatter.locale = Locale(identifier: "ko_KR")
+        dayFormatter.calendar = Calendar(identifier: .gregorian)
+        dayFormatter.dateFormat = "M월 d일"
+        let recordedDay = dayFormatter.string(from: Date().addingTimeInterval(-86400))
+        let prayedDay = calendar.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", recordedDay)).firstMatch
+        if !prayedDay.exists {
+            calendar.buttons["DatePicker.PreviousMonth"].tap()
+        }
+        XCTAssertTrue(prayedDay.waitForExistence(timeout: 5))
         prayedDay.tap()
         XCTAssertTrue(app.staticTexts["selectedPrayerDay"].waitForExistence(timeout: 5))
         capture("07-prayer-calendar", app: app)
