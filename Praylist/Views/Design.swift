@@ -7,6 +7,30 @@ extension Color {
     static let quiet = Color("Quiet")
 }
 
+enum AppAppearance: String, CaseIterable, Identifiable {
+    case system
+    case light
+    case dark
+
+    static let storageKey = "praylist.appearance"
+
+    var id: String { rawValue }
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .system: nil
+        case .light: .light
+        case .dark: .dark
+        }
+    }
+    var title: String {
+        switch self {
+        case .system: L10n.text("시스템")
+        case .light: L10n.text("라이트")
+        case .dark: L10n.text("다크 모드")
+        }
+    }
+}
+
 struct PaperBackground: View {
     var body: some View {
         Color.paper.overlay(alignment: .topTrailing) {
@@ -48,14 +72,15 @@ struct GlassCircle: ViewModifier {
     }
 }
 
-struct BookMark: View {
+struct PrayerHandsIcon: View {
     var size: CGFloat = 100
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: size * 0.26).fill(Color.forest.gradient)
-            Image(systemName: "book").font(.system(size: size * 0.43, weight: .light)).foregroundStyle(Color(red: 0.98, green: 0.95, blue: 0.84)).offset(y: size * 0.045)
-            Image(systemName: "sparkle").font(.system(size: size * 0.20, weight: .light)).foregroundStyle(Color(red: 0.98, green: 0.95, blue: 0.84)).offset(x: size * 0.20, y: -size * 0.22)
-        }.frame(width: size, height: size)
+        Image("PrayerHands")
+            .resizable()
+            .scaledToFit()
+            .frame(width: size, height: size)
+            .clipShape(RoundedRectangle(cornerRadius: size * 0.24, style: .continuous))
+            .accessibilityHidden(true)
     }
 }
 

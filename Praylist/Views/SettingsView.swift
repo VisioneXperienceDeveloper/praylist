@@ -25,6 +25,10 @@ struct SettingsView: View {
     @State private var pendingBackup: PrayData?
     @State private var error: String?
     @State private var notice: String?
+    @AppStorage(AppAppearance.storageKey) private var appearance = AppAppearance.system.rawValue
+    private var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "—"
+    }
     var body: some View {
         let _ = language.locale
         NavigationStack {
@@ -43,6 +47,11 @@ struct SettingsView: View {
                     NavigationLink { LanguageSettingsView() } label: {
                         Label(L10n.text("언어"), systemImage: "globe")
                     }.accessibilityIdentifier("languageSettings")
+                    Picker(L10n.text("테마"), selection: $appearance) {
+                        ForEach(AppAppearance.allCases) { option in
+                            Text(option.title).tag(option.rawValue)
+                        }
+                    }.accessibilityIdentifier("appearancePicker")
                 }
                 Section {
                     Button(L10n.text("백업 파일 내보내기"), systemImage: "square.and.arrow.up") {
@@ -59,13 +68,13 @@ struct SettingsView: View {
                 }
                 Section {
                     HStack(spacing: 14) {
-                        BookMark(size: 42)
+                        PrayerHandsIcon(size: 42)
                         VStack(alignment: .leading, spacing: 4) {
                             Text("praylist").font(.system(size: 23, design: .serif))
-                            Text(L10n.text("소망을 담고, 매일 기도하다")).font(.caption).foregroundStyle(Color.quiet)
+                            Text(L10n.text("나의 pray를 담은 list")).font(.caption).foregroundStyle(Color.quiet)
                         }
                         Spacer()
-                        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0").font(.caption).foregroundStyle(Color.quiet)
+                        Text(appVersion).font(.caption).foregroundStyle(Color.quiet)
                     }.padding(.vertical, 6)
                 }
             }.paperSheet().navigationTitle(L10n.text("설정")).navigationBarTitleDisplayMode(.inline)

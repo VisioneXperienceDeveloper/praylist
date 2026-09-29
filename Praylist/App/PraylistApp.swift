@@ -35,6 +35,9 @@ struct PraylistApp: App {
     init() {
         #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("--reset-language") { L10n.defaults.removeObject(forKey: L10n.preferenceKey) }
+        if ProcessInfo.processInfo.arguments.contains("--uitesting"), ProcessInfo.processInfo.arguments.contains("--reset") {
+            UserDefaults.standard.removeObject(forKey: "onboarding.stage")
+        }
         #endif
         _language = State(initialValue: LanguageSettings())
         #if DEBUG
@@ -50,6 +53,7 @@ struct PraylistApp: App {
             if ProcessInfo.processInfo.arguments.contains("--reset") { try? FileManager.default.removeItem(at: file) }
             _store = State(initialValue: PrayStore(fileURL: file))
         } else if ProcessInfo.processInfo.arguments.contains("--screenshots") {
+            UserDefaults.standard.removeObject(forKey: "onboarding.stage")
             _store = State(initialValue: PrayStore(fileURL: nil, initial: PreviewData.filled))
         } else { _store = State(initialValue: PrayStore()) }
         #else
@@ -73,6 +77,8 @@ struct RootView: View {
     @State private var coverVisible = true
     @State private var angle = 0.0
     @State private var startupError: String?
+    @AppStorage("onboarding.stage") private var onboardingStage = 0
+    @AppStorage(AppAppearance.storageKey) private var appearance = AppAppearance.system.rawValue
 
     var body: some View {
         let _ = language.locale
@@ -84,14 +90,17 @@ struct RootView: View {
                     Button(L10n.text("다시 열기")) { store.retryLoad() }
                     ShareLink(L10n.text("원본 파일 내보내기"), item: PrayStore.defaultURL)
                 }
-            } else if store.data.onboarded { NotebookView() }
+            } else if store.data.onboarded && onboardingStage == 0 { NotebookView() }
             else { OnboardingView() }
             if coverVisible {
                 ZStack {
                     Color.paper
                     VStack(spacing: 20) {
-                        Text("praylist").font(.system(size: 42, weight: .regular, design: .serif))
-                        Text(L10n.text("소망을 담고, 매일 기도하다")).font(.subheadline).foregroundStyle(Color.quiet)
+                        PrayerHandsIcon(size: 88)
+                        VStack(spacing: 5) {
+                            Text("praylist").font(.system(size: 42, weight: .regular, design: .serif))
+                            Text(L10n.text("나의 pray를 담은 list")).font(.subheadline).foregroundStyle(Color.quiet)
+                        }
                     }
                 }
                 .overlay(alignment: .leading) { Rectangle().fill(Color.forest.opacity(0.12)).frame(width: 6) }
@@ -112,6 +121,7 @@ struct RootView: View {
             }
         }
         .foregroundStyle(Color.ink)
+        .preferredColorScheme(AppAppearance(rawValue: appearance)?.colorScheme)
         .errorAlert($startupError)
         .task { await syncReminders() }
         .onChange(of: language.resolved) { _, _ in Task { await syncReminders() } }

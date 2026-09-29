@@ -58,10 +58,7 @@ struct NotebookView: View {
     }
     private var topBar: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("praylist").font(.system(size: 28, design: .serif)).tracking(-0.8)
-                Text(L10n.text("나의 소망을 담은 작은 책")).font(.caption2).foregroundStyle(Color.quiet)
-            }
+            Text("praylist").font(.system(size: 28, design: .serif)).tracking(-0.8)
             Spacer()
             GlassGroup {
                 HStack(spacing: 10) {
@@ -81,7 +78,6 @@ struct NotebookView: View {
                 .disabled(index == 0).opacity(index == 0 ? 0.3 : 1).accessibilityLabel(L10n.text("이전 항목"))
             VStack(spacing: 5) {
                 Text("\(index + 1) / \(store.data.categories.count)").font(.caption.monospacedDigit()).foregroundStyle(Color.ink)
-                Text(L10n.text("옆으로 넘겨 다음 소망 보기")).font(.system(size: 10)).foregroundStyle(Color.quiet)
             }.frame(minWidth: 150)
             Button { move(1) } label: { Image(systemName: "chevron.right").frame(width: 44, height: 36) }
                 .disabled(index >= store.data.categories.count - 1).opacity(index >= store.data.categories.count - 1 ? 0.3 : 1).accessibilityLabel(L10n.text("다음 항목"))

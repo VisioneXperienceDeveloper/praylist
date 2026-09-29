@@ -6,11 +6,13 @@ final class PraylistUITests: XCTestCase {
         let app = launch(["--uitesting", "--reset"], language: "en")
         XCTAssertTrue(app.buttons["onboardingContinue"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["onboardingContinue"].label, "Start with these categories")
-        XCTAssertTrue(app.buttons["Becoming me"].exists)
+        XCTAssertTrue(app.staticTexts["Becoming me"].exists)
         app.buttons["onboardingContinue"].tap()
         let first = app.textViews["firstPrayTitle"].exists ? app.textViews["firstPrayTitle"] : app.textFields["firstPrayTitle"]
         first.tap(); first.typeText("My family trip")
         app.buttons["onboardingContinue"].tap()
+        XCTAssertTrue(app.buttons["onboardingSkipReminder"].waitForExistence(timeout: 5))
+        app.buttons["onboardingSkipReminder"].tap()
         XCTAssertTrue(app.textFields["prayField0"].waitForExistence(timeout: 5))
         app.terminate()
         app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
@@ -163,6 +165,8 @@ final class PraylistUITests: XCTestCase {
         XCTAssertTrue(first.waitForExistence(timeout: 5))
         first.tap(); first.typeText("매일 감사하는 사람 되기")
         app.buttons["onboardingContinue"].tap()
+        XCTAssertTrue(app.buttons["onboardingSkipReminder"].waitForExistence(timeout: 5))
+        app.buttons["onboardingSkipReminder"].tap()
         XCTAssertTrue(app.textFields["prayField0"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.textFields["prayField0"].value as? String, "매일 감사하는 사람 되기")
         app.buttons["achievePray0"].tap()
@@ -188,6 +192,43 @@ final class PraylistUITests: XCTestCase {
         XCTAssertTrue(app.buttons["achievePray0"].label.contains("달성일 보기"))
         XCTAssertTrue(app.buttons["prayerButton"].label.contains("오늘도"))
         XCTAssertEqual(app.textFields["prayField0"].value as? String, savedTitle)
+    }
+    func testOnboardingCustomCategoryAndResumeAfterFirstPray() {
+        let app = launch(["--uitesting", "--reset"])
+        XCTAssertTrue(app.buttons["createOnboardingCategory"].waitForExistence(timeout: 10))
+        app.buttons["createOnboardingCategory"].tap()
+        let name = app.textFields["예: 배우고 싶은 것"]
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        name.tap(); name.typeText("배우고 싶은 기술")
+        app.buttons["추가"].tap()
+        XCTAssertTrue(app.staticTexts["배우고 싶은 기술"].waitForExistence(timeout: 5))
+        app.buttons["onboardingContinue"].tap()
+        let first = app.textViews["firstPrayTitle"].exists ? app.textViews["firstPrayTitle"] : app.textFields["firstPrayTitle"]
+        XCTAssertTrue(first.waitForExistence(timeout: 5))
+        first.tap(); first.typeText("매일 Swift 연습하기")
+        app.buttons["onboardingContinue"].tap()
+        XCTAssertTrue(app.buttons["onboardingSkipReminder"].waitForExistence(timeout: 5))
+
+        app.terminate()
+        app.launchArguments = ["--uitesting", "-AppleLanguages", "(ko)", "-AppleLocale", "ko_KR"]
+        app.launch()
+        XCTAssertTrue(app.buttons["onboardingSkipReminder"].waitForExistence(timeout: 10))
+        app.buttons["onboardingSkipReminder"].tap()
+        XCTAssertTrue(app.textFields["prayField0"].waitForExistence(timeout: 10))
+        app.buttons["다음 항목"].tap()
+        app.buttons["다음 항목"].tap()
+        let customPrayField = app.textFields.matching(identifier: "prayField0").firstMatch
+        let savedPray = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "매일 Swift 연습하기"), object: customPrayField)
+        XCTAssertEqual(XCTWaiter.wait(for: [savedPray], timeout: 5), .completed)
+        XCTAssertTrue(app.staticTexts["배우고 싶은 기술"].exists)
+        app.terminate()
+        app.launch()
+        XCTAssertTrue(app.textFields["prayField0"].waitForExistence(timeout: 10))
+        app.buttons["다음 항목"].tap()
+        app.buttons["다음 항목"].tap()
+        let relaunchedPrayField = app.textFields.matching(identifier: "prayField0").firstMatch
+        let savedAfterRelaunch = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "매일 Swift 연습하기"), object: relaunchedPrayField)
+        XCTAssertEqual(XCTWaiter.wait(for: [savedAfterRelaunch], timeout: 5), .completed)
     }
     func testTenRowsVisibleAndSwipeToNextCategory() {
         let app = launch(["--screenshots"])

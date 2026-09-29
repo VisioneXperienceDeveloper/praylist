@@ -72,7 +72,7 @@ struct PrayerView: View {
                 .font(.subheadline).multilineTextAlignment(.center).lineSpacing(6).foregroundStyle(Color.quiet)
             Text(L10n.date(Date(), style: .medium)).font(.caption).foregroundStyle(Color.forest)
             Spacer()
-            PrimaryButton(title: L10n.text("노트로 돌아가기"), symbol: "book") { dismiss() }.accessibilityIdentifier("prayerDoneButton")
+            PrimaryButton(title: L10n.text("list로 돌아가기"), symbol: "book") { dismiss() }.accessibilityIdentifier("prayerDoneButton")
         }.padding(32)
     }
 }

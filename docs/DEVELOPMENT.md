@@ -16,7 +16,17 @@ xcodebuild -project Praylist.xcodeproj -scheme Praylist \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro Max,OS=26.5' test
 ```
 
-현재 빌드 설정은 버전 **1.0.0 / 빌드 2**, Bundle ID `com.visionexperiencedeveloper.praylist`입니다. 실기기 빌드에는 해당 앱의 Apple Developer 서명 구성이 필요합니다. 서명·업로드·심사 제출 상태는 [출시 문서](../release/RELEASE.md)에서 별도로 관리합니다.
+현재 빌드 설정은 버전 **1.2.1 / 빌드 5**, Bundle ID `com.visionexperiencedeveloper.praylist`입니다. 실기기 빌드에는 해당 앱의 Apple Developer 서명 구성이 필요합니다. 서명·업로드·심사 제출 상태는 [출시 문서](../release/RELEASE.md)에서 별도로 관리합니다.
+
+## 버전 관리
+
+앱 버전은 `MAJOR.MINOR.PATCH` 형식의 Semantic Versioning을 따릅니다.
+
+- **MAJOR**: 앱의 핵심 목적이나 사용자 흐름이 크게 바뀌거나, 기존 기능과 호환되지 않거나, 전체 UI/UX 또는 아키텍처를 대규모로 개편할 때 올립니다. 예: `1.5.2` → `2.0.0`.
+- **MINOR**: 기존 기능을 유지하면서 새 사용자 기능·화면·외부 서비스 연동을 추가하거나 기존 기능을 의미 있게 확장할 때 올립니다. 예: `1.2.3` → `1.3.0`.
+- **PATCH**: 동작을 바꾸지 않는 버그 수정, UI 수정, 성능 개선, 작은 UX 개선, 오타 수정에 올립니다. 예: `1.3.0` → `1.3.1`.
+
+버전은 Xcode의 `MARKETING_VERSION`으로 관리합니다. `CURRENT_PROJECT_VERSION`은 앱 버전과 별개인 빌드 번호이며, 새 빌드를 만들 때 증가시킵니다. 아카이브 스크립트는 프로젝트 설정의 두 값을 사용합니다.
 
 ## 기능
 
