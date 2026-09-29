@@ -60,27 +60,7 @@ struct CategoryEditorView: View {
     var body: some View {
         let _ = language.locale
         NavigationStack {
-            Form {
-                Section(L10n.text("항목 이름")) {
-                    TextField(L10n.text("예: 배우고 싶은 것"), text: $category.title)
-                        .autocorrectionDisabled()
-                        .onChange(of: category.title) { _, value in if value.count > 24 { category.title = String(value.prefix(24)) } }
-                    TextField(L10n.text("이 항목에 담을 소망을 설명해 주세요"), text: $category.subtitle, axis: .vertical)
-                        .autocorrectionDisabled()
-                        .onChange(of: category.subtitle) { _, value in if value.count > 100 { category.subtitle = String(value.prefix(100)) } }
-                }
-                Section(L10n.text("작은 상징")) {
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 12) {
-                        ForEach(PrayCategory.symbols, id: \.self) { symbol in
-                            Button { category.symbol = symbol } label: {
-                                Image(systemName: symbol).font(.title2).frame(maxWidth: .infinity, minHeight: 52)
-                                    .background(category.symbol == symbol ? Color.forest.opacity(0.14) : .clear, in: RoundedRectangle(cornerRadius: 14))
-                            }.buttonStyle(.plain).foregroundStyle(Color.forest).accessibilityLabel(symbol)
-                                .accessibilityAddTraits(category.symbol == symbol ? .isSelected : [])
-                        }
-                    }.padding(.vertical, 8)
-                }
-            }.paperSheet().navigationTitle(L10n.text("나만의 항목")).navigationBarTitleDisplayMode(.inline)
+            CategoryFieldsForm(category: $category).paperSheet().navigationTitle(L10n.text("나만의 항목")).navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) { Button(L10n.text("취소")) { dismiss() } }
                     ToolbarItem(placement: .confirmationAction) {
@@ -99,5 +79,36 @@ struct CategoryEditorView: View {
             }
             dismiss()
         } catch { self.error = error.localizedDescription }
+    }
+}
+
+struct CategoryFieldsForm: View {
+    @Environment(LanguageSettings.self) private var language
+    @Binding var category: PrayCategory
+
+    var body: some View {
+        let _ = language.locale
+        Form {
+            Section(L10n.text("항목 이름")) {
+                TextField(L10n.text("예: 배우고 싶은 것"), text: $category.title)
+                    .autocorrectionDisabled()
+                    .onChange(of: category.title) { _, value in if value.count > 24 { category.title = String(value.prefix(24)) } }
+                TextField(L10n.text("이 항목에 담을 Pray를 설명해 주세요"), text: $category.subtitle, axis: .vertical)
+                    .autocorrectionDisabled()
+                    .onChange(of: category.subtitle) { _, value in if value.count > 100 { category.subtitle = String(value.prefix(100)) } }
+                Text("\(category.title.count)/24 · \(category.subtitle.count)/100").font(.caption).foregroundStyle(Color.quiet)
+            }
+            Section(L10n.text("작은 상징")) {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 4), spacing: 12) {
+                    ForEach(PrayCategory.symbols, id: \.self) { symbol in
+                        Button { category.symbol = symbol } label: {
+                            Image(systemName: symbol).font(.title2).frame(maxWidth: .infinity, minHeight: 52)
+                                .background(category.symbol == symbol ? Color.forest.opacity(0.14) : .clear, in: RoundedRectangle(cornerRadius: 14))
+                        }.buttonStyle(.plain).foregroundStyle(Color.forest).accessibilityLabel(symbol)
+                            .accessibilityAddTraits(category.symbol == symbol ? .isSelected : [])
+                    }
+                }.padding(.vertical, 8)
+            }
+        }
     }
 }
