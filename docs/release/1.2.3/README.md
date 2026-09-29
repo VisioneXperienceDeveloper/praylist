@@ -27,6 +27,8 @@
 - [한국어 업데이트 내용](whats-new.ko.txt)
 - [English What's New](whats-new.en-US.txt)
 - [App Review Notes](review-notes.en-US.txt)
+- Promotional Text (EN): `Start small, keep your prays close, and make a little room for prayer each day.`
+- Promotional Text (KO): `작게 시작하고, 나의 pray를 가까이 두며, 매일 기도할 시간을 만들어보세요.`
 
 기존 설명·스크린샷·가격·배포 지역·개인정보 설정을 이어받고 이번 업데이트 내용과 빌드 7을 연결합니다. 로그인이 필요 없는 무료 앱이며, 알림은 선택 사항입니다. 사용자 기록은 기기에 저장됩니다.
 
@@ -34,7 +36,7 @@
 
 - 최초 main: 29개 통과, 2개 UI 테스트 실패, 3개 선택 검사 생략.
 - 실패 원인: iOS 27 키보드 완료 버튼의 접근성 좌표와 달력 날짜의 Button/Cell 표현 차이. PR #61·#62에서 수정했습니다.
-- 수정 main 전체 재검증: 진행 중. 달력 검증은 수정 후 통과했습니다.
+- 수정 main 전체 재검증: 34개 중 31개 통과, 0개 실패, 3개 선택 검사 생략 (iPhone 18 Pro / iOS 27).
 - [실제 알림 수신·기도 화면 이동](evidence/reminder-test-summary.json): 1개 통과, 0개 실패. PR #63에서 이전 온보딩 테스트 상태의 영향을 제거했습니다.
 - 아카이브를 만든 `fd4deca` 이후 앱 소스와 Xcode 프로젝트에 차이가 없음을 확인했습니다. 후속 변경은 UI 테스트에 한정됩니다.
 - [배포 아카이브 검사](evidence/archive-verification.json): PASS.
@@ -45,9 +47,11 @@
 ## 업로드 상태
 
 - 2026-09-29 21:57 AEST: Xcode 업로드 성공, Apple 패키지 처리 시작.
+- 2026-09-29 22:16 AEST: App Store Connect에서 1.2.3(7)을 심사 제출, 현재 `Waiting for Review`.
+- 심사 승인 후 자동 출시 설정을 유지합니다. Apple 심사에는 최대 48시간이 걸릴 수 있습니다.
 - App Store Connect 새 버전 `1.2.3` 생성, 한·영 업데이트 내용과 심사 노트 저장 완료.
-- 빌드 처리 완료 후 연결 및 심사 제출 예정.
-- 기존 설정대로 심사 승인 후 자동 출시합니다.
+- 빌드 처리 완료 후 1.2.3(7)에 연결하고 심사 제출을 완료했습니다.
+- [App Store Connect 심사 제출 캡처](evidence/app-store-connect-submitted.png)
 
 [App Store Connect](https://appstoreconnect.apple.com/apps/6810881384/distribution)
 
