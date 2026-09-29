@@ -17,13 +17,13 @@ if [[ "$mode" == "--signed" ]]; then
     -derivedDataPath build/ArchiveDerivedData \
     -destination 'generic/platform=iOS' -archivePath build/Praylist.xcarchive \
     DEVELOPMENT_TEAM="$PRAYLIST_TEAM_ID" PRODUCT_BUNDLE_IDENTIFIER="$PRAYLIST_BUNDLE_ID" \
-    CODE_SIGN_STYLE=Automatic CURRENT_PROJECT_VERSION=2 \
+    CODE_SIGN_STYLE=Automatic \
     PRAYLIST_SUPPORT_URL="$PRAYLIST_SUPPORT_URL" archive
 else
   xcodebuild -project Praylist.xcodeproj -scheme Praylist -configuration Release \
     -derivedDataPath build/ArchiveDerivedData \
     -destination 'generic/platform=iOS' -archivePath build/Praylist-unsigned.xcarchive \
-    CURRENT_PROJECT_VERSION=2 CODE_SIGNING_ALLOWED=NO \
+    CODE_SIGNING_ALLOWED=NO \
     PRAYLIST_SUPPORT_URL="${PRAYLIST_SUPPORT_URL:-}" archive
 fi
 if [[ "$mode" == "--distribution" ]]; then
