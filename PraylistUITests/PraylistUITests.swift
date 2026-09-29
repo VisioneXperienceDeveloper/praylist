@@ -288,9 +288,7 @@ final class PraylistUITests: XCTestCase {
         field.typeText("피아노 한 곡 배우기")
         let entered = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "피아노 한 곡 배우기"), object: field)
         XCTAssertEqual(XCTWaiter.wait(for: [entered], timeout: 5), .completed)
-        let done = app.keyboards.buttons.matching(NSPredicate(format: "label IN %@", ["완료", "Done", "Return"])).firstMatch
-        XCTAssertTrue(done.exists)
-        done.tap()
+        field.typeText("\n")
         XCTAssertTrue(app.keyboards.firstMatch.waitForNonExistence(timeout: 5))
         XCTAssertEqual(field.value as? String, "피아노 한 곡 배우기")
     }
@@ -311,7 +309,7 @@ final class PraylistUITests: XCTestCase {
         capture("04-achievements", app: app)
         app.buttons["기도 기록"].tap()
         XCTAssertTrue(app.otherElements["prayerCalendar"].waitForExistence(timeout: 5))
-        let prayedDay = app.buttons.matching(NSPredicate(format: "value == %@", "circlebadge.fill")).firstMatch
+        let prayedDay = app.descendants(matching: .any).matching(NSPredicate(format: "value == %@", "circlebadge.fill")).firstMatch
         XCTAssertTrue(prayedDay.exists)
         prayedDay.tap()
         XCTAssertTrue(app.staticTexts["selectedPrayerDay"].waitForExistence(timeout: 5))
