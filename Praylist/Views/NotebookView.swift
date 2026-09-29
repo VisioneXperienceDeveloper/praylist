@@ -78,7 +78,6 @@ struct NotebookView: View {
                 .disabled(index == 0).opacity(index == 0 ? 0.3 : 1).accessibilityLabel(L10n.text("이전 항목"))
             VStack(spacing: 5) {
                 Text("\(index + 1) / \(store.data.categories.count)").font(.caption.monospacedDigit()).foregroundStyle(Color.ink)
-                Text(L10n.text("옆으로 넘겨 다음 소망 보기")).font(.system(size: 10)).foregroundStyle(Color.quiet)
             }.frame(minWidth: 150)
             Button { move(1) } label: { Image(systemName: "chevron.right").frame(width: 44, height: 36) }
                 .disabled(index >= store.data.categories.count - 1).opacity(index >= store.data.categories.count - 1 ? 0.3 : 1).accessibilityLabel(L10n.text("다음 항목"))
