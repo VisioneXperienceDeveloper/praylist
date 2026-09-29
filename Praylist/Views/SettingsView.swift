@@ -25,6 +25,9 @@ struct SettingsView: View {
     @State private var pendingBackup: PrayData?
     @State private var error: String?
     @State private var notice: String?
+    private var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "—"
+    }
     var body: some View {
         let _ = language.locale
         NavigationStack {
@@ -65,7 +68,7 @@ struct SettingsView: View {
                             Text(L10n.text("소망을 담고, 매일 기도하다")).font(.caption).foregroundStyle(Color.quiet)
                         }
                         Spacer()
-                        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0").font(.caption).foregroundStyle(Color.quiet)
+                        Text(appVersion).font(.caption).foregroundStyle(Color.quiet)
                     }.padding(.vertical, 6)
                 }
             }.paperSheet().navigationTitle(L10n.text("설정")).navigationBarTitleDisplayMode(.inline)
