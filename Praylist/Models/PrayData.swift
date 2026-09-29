@@ -96,12 +96,13 @@ struct PrayData: Codable, Equatable {
 }
 
 enum PrayError: LocalizedError {
-    case full, emptyTitle, missingCategory, invalidBackup(String), unreadable
+    case full, emptyTitle, missingCategory, noCategories, invalidBackup(String), unreadable
     var errorDescription: String? {
         switch self {
         case .full: L10n.text("한 항목에는 달성한 Pray를 포함해 최대 10개까지 담을 수 있어요.")
         case .emptyTitle: L10n.text("이름을 입력해 주세요.")
         case .missingCategory: L10n.text("항목을 찾을 수 없어요. 다시 열어 주세요.")
+        case .noCategories: L10n.text("항목을 하나 이상 선택해 주세요.")
         case .invalidBackup(let message): message
         case .unreadable: L10n.text("저장된 노트를 읽지 못했어요. 기존 파일은 그대로 보관되어 있어요.")
         }

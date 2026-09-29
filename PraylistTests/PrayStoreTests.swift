@@ -34,6 +34,22 @@ struct PrayStoreTests {
         #expect(store.data.categories[0].prays.isEmpty)
         #expect(store.data.categories[1].prays.first?.title == "책 출간하기")
     }
+    @Test func onboardingRejectsMissingCategoryAndOversizedFirstPray() throws {
+        let store = PrayStore(fileURL: nil)
+        let category = PrayCategory.suggestions[0]
+        #expect(throws: PrayError.self) { try store.finishOnboarding(categories: [], title: "첫 Pray", categoryID: category.id) }
+        #expect(throws: PrayError.self) { try store.finishOnboarding(categories: [category], title: String(repeating: "가", count: 81), categoryID: category.id) }
+        #expect(!store.data.onboarded)
+        #expect(store.data.prayCount == 0)
+    }
+    @Test func failedInitialOnboardingWriteDoesNotMarkOnboarded() {
+        let url = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+        let store = PrayStore(fileURL: url, write: { _, _ in throw CocoaError(.fileWriteOutOfSpace) })
+        let category = PrayCategory.suggestions[0]
+        #expect(throws: (any Error).self) { try store.finishOnboarding(categories: [category], title: "첫 Pray", categoryID: category.id) }
+        #expect(!store.data.onboarded)
+        #expect(store.data.categories.isEmpty)
+    }
     @Test func rejectsEleventhPrayIncludingCompletedPrays() throws {
         let store = store(); let category = store.data.categories[0].id
         for i in 0..<10 { try store.savePray(Pray(title: "소망 \(i)", achievedAt: i == 0 ? .now : nil), categoryID: category) }

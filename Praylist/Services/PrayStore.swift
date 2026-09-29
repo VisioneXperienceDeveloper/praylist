@@ -49,11 +49,12 @@ final class PrayStore {
         data = next
     }
     func finishOnboarding(categories: [PrayCategory], title: String, categoryID: UUID) throws {
+        guard !categories.isEmpty else { throw PrayError.noCategories }
         try update { next in
             next.categories = categories
             guard let index = next.categories.firstIndex(where: { $0.id == categoryID }) else { throw PrayError.missingCategory }
             let clean = title.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !clean.isEmpty else { throw PrayError.emptyTitle }
+            guard !clean.isEmpty, clean.count <= 80 else { throw PrayError.emptyTitle }
             next.categories[index].prays = [Pray(title: clean)]
             next.onboarded = true
         }
