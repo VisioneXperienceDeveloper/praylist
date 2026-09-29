@@ -70,6 +70,9 @@ struct OnboardingView: View {
                 if store.data.onboarded && onboardingStage < 2 { onboardingStage = 2 }
                 if !store.data.onboarded && onboardingStage > 1 { onboardingStage = 0 }
             }
+            .onChange(of: language.resolved) { _, _ in
+                refreshSuggestedCategories()
+            }
         }
     }
 
@@ -80,6 +83,12 @@ struct OnboardingView: View {
     private var validFirstPray: Bool {
         let clean = title.trimmingCharacters(in: .whitespacesAndNewlines)
         return !clean.isEmpty && clean.count <= 80 && choices.contains { $0.id == firstCategory && $0.prays.count < 10 }
+    }
+
+    private func refreshSuggestedCategories() {
+        let suggestions = PrayCategory.suggestions
+        let suggestionIDs = Set(suggestions.map(\.id))
+        categories = suggestions + categories.filter { !suggestionIDs.contains($0.id) }
     }
 
     private var selectionPage: some View {
