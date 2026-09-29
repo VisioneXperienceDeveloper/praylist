@@ -1,0 +1,9 @@
+Praylist is a free, local-only personal prayer journal. No account, login, subscription, or in-app purchase is required.
+
+For a fresh install, choose one or more categories (or create one), enter a first pray, then enable a reminder or choose "Maybe later". You will reach the notebook. Existing users keep their saved records and continue directly to the notebook.
+
+Settings contains language (Korean/English) and System/Light/Dark appearance choices. "Today's prayer" opens the prayer flow; completing it records the day in the prayer calendar.
+
+Notification permission is optional. Reminder notifications contain generic text, never the user's prayer content. All records remain on the device; users can explicitly export and restore a JSON backup from Settings. There is no account, advertising, tracking, analytics SDK, or backend service.
+
+This version adds resumable onboarding, appearance selection, localized suggestions, and small UI improvements. It does not add widgets or external service integrations.

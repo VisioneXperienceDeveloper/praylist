@@ -17,7 +17,19 @@ source.add_argument("--archive", type=Path)
 source.add_argument("--ipa", type=Path)
 parser.add_argument("--unsigned", action="store_true", help="Inspect an unsigned archive before distribution export")
 parser.add_argument("--support-url", required=True)
+parser.add_argument("--version", help="Expected app version; defaults to the Xcode project setting")
+parser.add_argument("--build", help="Expected build number; defaults to the Xcode project setting")
 args = parser.parse_args()
+
+def project_setting(name):
+    project = (ROOT / "Praylist.xcodeproj/project.pbxproj").read_text()
+    values = set(re.findall(r"\b" + re.escape(name) + r"\s*=\s*([^;]+);", project))
+    if len(values) != 1:
+        parser.error(f"Expected one consistent {name} in the Xcode project; got {sorted(values)}")
+    return values.pop().strip().strip('"')
+
+expected_version = args.version or project_setting("MARKETING_VERSION")
+expected_build = args.build or project_setting("CURRENT_PROJECT_VERSION")
 
 if args.ipa:
     if args.unsigned:
@@ -37,7 +49,7 @@ def require(condition, message):
 with (app / "Info.plist").open("rb") as file:
     info = plistlib.load(file)
 require(info["CFBundleIdentifier"] == "com.visionexperiencedeveloper.praylist", "Unexpected bundle ID")
-require(info["CFBundleShortVersionString"] == "1.0.0" and info["CFBundleVersion"] == "2", "Expected version 1.0.0, build 2")
+require(info["CFBundleShortVersionString"] == expected_version and info["CFBundleVersion"] == expected_build, f"Expected version {expected_version}, build {expected_build}")
 require(info.get("DTPlatformName") == "iphoneos", "Expected a device archive, not a Simulator app")
 require(info.get("PraylistSupportURL") == args.support_url, "Support URL is missing or does not match the verified public URL")
 url = urlparse(args.support_url)

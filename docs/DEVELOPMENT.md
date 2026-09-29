@@ -16,7 +16,7 @@ xcodebuild -project Praylist.xcodeproj -scheme Praylist \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro Max,OS=26.5' test
 ```
 
-현재 빌드 설정은 버전 **1.2.1 / 빌드 5**, Bundle ID `com.visionexperiencedeveloper.praylist`입니다. 실기기 빌드에는 해당 앱의 Apple Developer 서명 구성이 필요합니다. 서명·업로드·심사 제출 상태는 [출시 문서](../release/RELEASE.md)에서 별도로 관리합니다.
+현재 빌드 설정은 버전 **1.2.3 / 빌드 7**, Bundle ID `com.visionexperiencedeveloper.praylist`입니다. 실기기 빌드에는 해당 앱의 Apple Developer 서명 구성이 필요합니다. 서명·업로드·심사 제출 상태는 [1.2.3 출시 문서](release/1.2.3/README.md)에서 별도로 관리합니다.
 
 ## 버전 관리
 

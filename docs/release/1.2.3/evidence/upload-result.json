@@ -1,0 +1,8 @@
+{
+  "version": "1.2.3",
+  "build": "7",
+  "uploadedAt": "2026-09-29T21:57:16+10:00",
+  "status": "Upload succeeded",
+  "processing": "Uploaded package is processing",
+  "command": "xcodebuild -exportArchive -archivePath build/Praylist-1.2.3.xcarchive -exportOptionsPlist release/UploadOptions.plist -exportPath build/AppStoreUpload-1.2.3 -allowProvisioningUpdates"
+}
