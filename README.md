@@ -35,6 +35,12 @@ That is why each category holds up to ten prays, and why writing starts with a t
 
 The 1.2.3 App Store build is version 1.2.3 (7). Widgets and analytics experiments from separate development branches are not part of this release.
 
+## What I hope it brings to your day
+
+My hope is that Praylist helps you make room for what matters to you. A pray might be learning to listen well, making time for family, visiting a place you have long wanted to see, or finally starting something of your own.
+
+Some prays will take time. Some will change as you do. When you mark one as answered, you can keep its date and look back on it alongside the days you prayed. Over time, those entries can become a personal record of growth, gratitude, and the life you are building.
+
 ## A place for you, if…
 
 - **You write down plans and rarely return to them.** Gather them into categories that feel like you, then turn through your prays a page at a time.
