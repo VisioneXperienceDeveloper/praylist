@@ -6,7 +6,7 @@
 
 <p align="center"><strong>Your prays. A little book. A daily moment of prayer.</strong></p>
 
-<p align="center">English · <a href="README.ko.md">한국어로 읽기</a></p>
+<p align="center">Version 1.2.3 · English · <a href="README.ko.md">한국어로 읽기</a></p>
 
 Who would you like to become? Where would you like to go? What would you like to experience with the people you love?
 
@@ -26,11 +26,14 @@ I made Praylist to bring that writing and daily prayer together. I wanted it to 
 
 That is why each category holds up to ten prays, and why writing starts with a tap on an empty line. The app should make it easy to begin and easy to come back.
 
-## What I hope it brings to your day
+## What is new in 1.2.3
 
-My hope is that Praylist helps you make room for what matters to you. A pray might be learning to listen well, making time for family, visiting a place you have long wanted to see, or finally starting something of your own.
+- **A gentler first run.** Choose suggested categories, write your first pray, and optionally set a daily reminder. If you pause, onboarding resumes where you left off.
+- **Recommendations that follow your language.** Suggested categories refresh when you switch between English and Korean. You can also create your own category, with a description of up to 100 characters.
+- **A quieter visual choice.** Choose System, Light, or Dark appearance from Settings. The praying-hands icon and brand presentation are consistent throughout the app.
+- **A more reliable release experience.** Version 1.2.3 includes iOS 27 keyboard and calendar accessibility validation, including the completed keyboard action and recorded prayer dates.
 
-Some prays will take time. Some will change as you do. When you mark one as answered, you can keep its date and look back on it alongside the days you prayed. Over time, those entries can become a personal record of growth, gratitude, and the life you are building.
+The 1.2.3 App Store build is version 1.2.3 (7). Widgets and analytics experiments from separate development branches are not part of this release.
 
 ## A place for you, if…
 
@@ -41,9 +44,9 @@ Some prays will take time. Some will change as you do. When you mark one as answ
 
 ## From your first pray to your own daily rhythm
 
-1. **Choose your pages.** Pick categories for who you want to become, things to try, places to go, and more. Create your own whenever you need to.
+1. **Choose your pages.** Pick suggested categories for who you want to become, things to try, places to go, and more. Create your own whenever you need to.
 2. **Write one pray.** Tap an empty line, write what is on your mind, and finish with Done. Tap the same words whenever you want to edit them.
-3. **Return in prayer.** Swipe between pages, open today's prayer, and record the day when you finish. You choose whether to set a reminder.
+3. **Set your rhythm.** Continue onboarding when you are ready, choose a daily reminder or skip it, then swipe between pages and open today's prayer whenever you want.
 4. **Remember the answer.** Mark a pray as answered and save its date. My journey keeps those moments together with your prayer calendar.
 
 <p align="center">
@@ -58,22 +61,23 @@ Praylist uses familiar iPhone controls, a gentle book-opening animation, and Liq
 
 Use **English or Korean**, and switch languages in the app whenever you like. Automatic selection uses Korean when your iPhone Region is Korea and English elsewhere. Your own writing stays as you wrote it.
 
-Your notebook is stored locally. You can export a JSON backup to Files and restore it later. There is no app-managed cloud sync; iOS device backups may include your notebook according to your settings. Exported files contain your writing without a separate password, so keep them somewhere you trust.
+Choose System, Light, or Dark appearance. Your notebook is stored locally. You can export a JSON backup to Files and restore it later. There is no app-managed cloud sync; iOS device backups may include your notebook according to your settings. Exported files contain your writing without a separate password, so keep them somewhere you trust.
 
-*The images show the actual app with fictional example entries. Praylist supports iPhone with iOS 18 or later.*
+*The images show the actual app with fictional example entries. Praylist 1.2.3 supports iPhone with iOS 18 or later.*
 
 **Start with one pray you want to make time for.**
 
-[Support](https://www.visionexperiencedeveloper.com/en/supports/praylist) · [Privacy policy](https://www.visionexperiencedeveloper.com/en/policies/praylist) · [한국어 소개](README.ko.md)
+[Support](https://www.visionexperiencedeveloper.com/en/supports/praylist) · [Privacy policy](https://www.visionexperiencedeveloper.com/en/policies/praylist) · [1.2.3 release notes](docs/release/1.2.3/README.md) · [한국어 소개](README.ko.md)
 
 <details>
 <summary>For developers</summary>
 
 Built with Swift and SwiftUI, using native iOS frameworks and local storage.
 
-- [Build and development guide (Korean)](docs/DEVELOPMENT.md)
+- [Build and development guide](docs/DEVELOPMENT.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [QA evidence and scope](docs/QA.md)
-- [Release materials](release/RELEASE.md)
+- [Release 1.2.3 evidence](docs/release/1.2.3/README.md)
+- [Full changelog](docs/release/CHANGELOG.md)
 
 </details>
