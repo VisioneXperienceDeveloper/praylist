@@ -7,13 +7,15 @@ final class PrayStore {
     private(set) var loadError: String?
     private let fileURL: URL?
     private let write: (Data, URL) throws -> Void
+    private let didPersist: (PrayData) -> Void
 
     init(fileURL: URL? = PrayStore.defaultURL, initial: PrayData = PrayData(), write: @escaping (Data, URL) throws -> Void = { data, url in
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
         try data.write(to: url, options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication])
-    }) {
+    }, didPersist: @escaping (PrayData) -> Void = { _ = WidgetSnapshotPublisher.publish($0) }) {
         self.fileURL = fileURL
         self.write = write
+        self.didPersist = didPersist
         self.data = initial
         if let fileURL, FileManager.default.fileExists(atPath: fileURL.path) {
             do { data = try Self.decode(Data(contentsOf: fileURL)) }
@@ -47,6 +49,7 @@ final class PrayStore {
         _ = try next.validated()
         if let fileURL { try write(Self.encode(next), fileURL) }
         data = next
+        didPersist(next)
     }
     func finishOnboarding(categories: [PrayCategory], title: String, categoryID: UUID) throws {
         guard !categories.isEmpty else { throw PrayError.noCategories }
@@ -91,5 +94,11 @@ final class PrayStore {
         if let fileURL { try write(Self.encode(restored), fileURL) }
         data = restored
         loadError = nil
+        didPersist(restored)
+    }
+
+    func refreshWidgets() {
+        if loadError == nil { didPersist(data) }
+        else { WidgetSnapshotPublisher.invalidate() }
     }
 }

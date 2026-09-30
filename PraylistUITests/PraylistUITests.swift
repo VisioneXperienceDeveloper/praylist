@@ -2,6 +2,34 @@ import XCTest
 
 @MainActor
 final class PraylistUITests: XCTestCase {
+    func testWidgetURLsReachFourDestinationsAndRejectStaleTargets() throws {
+        let app = launch(["--screenshots", "--widget-testing"], language: "en")
+        XCTAssertTrue(app.buttons["prayerButton"].waitForExistence(timeout: 10))
+        let category = "00000000-0000-4000-8000-000000000002"
+        let pray = "00000000-0000-4000-8000-000000000110"
+        app.open(URL(string: "praylist://widget/today")!)
+        XCTAssertTrue(app.buttons["prayerContinueButton"].waitForExistence(timeout: 5))
+        app.buttons["Close"].tap()
+        XCTAssertEqual(app.buttons["prayerButton"].label, "Today's prayer")
+        app.open(URL(string: "praylist://widget/category/\(category)")!)
+        XCTAssertTrue(app.staticTexts["Things to have"].waitForExistence(timeout: 5))
+        app.open(URL(string: "praylist://widget/pray/\(category)/\(pray)")!)
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
+        XCTAssertEqual(app.textFields["prayField0"].value as? String, "A small sunlit studio")
+        app.open(URL(string: "praylist://widget/new/\(category)")!)
+        let field = app.textFields["prayField3"]
+        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5))
+        field.typeText("Widget-created pray\n")
+        XCTAssertEqual(app.textFields["prayField3"].value as? String, "Widget-created pray")
+        XCTAssertTrue(app.staticTexts["4 / 10"].exists)
+        app.open(URL(string: "praylist://widget/pray/\(category)/00000000-0000-4000-8000-999999999999")!)
+        XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 5))
+        app.alerts.buttons.firstMatch.tap()
+        XCTAssertTrue(app.buttons["prayerButton"].exists)
+        capture("widget-url-routing", app: app)
+    }
+
     func testEnglishOnboardingAndLanguageChoicePersistWithoutTranslatingUserText() {
         let app = launch(["--uitesting", "--reset"], language: "en")
         XCTAssertTrue(app.buttons["onboardingContinue"].waitForExistence(timeout: 10))
