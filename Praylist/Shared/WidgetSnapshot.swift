@@ -10,8 +10,31 @@ enum WidgetExperience {
     }
 }
 
-/// A projection only. Notes, reminder settings and prayer history never leave the app store.
+/// A projection only. Notes and prayer history stay in the app store.
 struct WidgetSnapshot: Codable, Equatable, Sendable {
+    struct PrayerSchedule: Codable, Equatable, Sendable {
+        let enabled: Bool
+        let hour: Int
+        let minute: Int
+        // Only the completed local day at publication, never the full history.
+        let completedDay: String?
+
+        enum Phase { case waiting, due, completed }
+
+        func time(on date: Date, calendar: Calendar = .current) -> Date? {
+            calendar.date(bySettingHour: hour, minute: minute, second: 0, of: date)
+        }
+
+        func phase(at date: Date, calendar: Calendar = .current) -> Phase {
+            var gregorian = Calendar(identifier: .gregorian)
+            gregorian.timeZone = calendar.timeZone
+            let parts = gregorian.dateComponents([.year, .month, .day], from: date)
+            let day = String(format: "%04d-%02d-%02d", parts.year ?? 0, parts.month ?? 0, parts.day ?? 0)
+            if completedDay == day { return .completed }
+            guard enabled, let time = time(on: date, calendar: calendar), date >= time else { return .waiting }
+            return .due
+        }
+    }
     struct Item: Codable, Identifiable, Equatable, Sendable {
         let id: UUID
         let title: String?
@@ -26,6 +49,7 @@ struct WidgetSnapshot: Codable, Equatable, Sendable {
     var generatedAt = Date()
     var language = "en"
     var categories: [Category] = []
+    var prayerSchedule: PrayerSchedule?
 
     static let empty = WidgetSnapshot()
 
@@ -42,6 +66,11 @@ struct WidgetSnapshot: Codable, Equatable, Sendable {
                       ($0.title?.count ?? 0) <= 80
                   }
               }) else { throw CocoaError(.coderReadCorrupt) }
+        if let schedule = value.prayerSchedule {
+            guard (0...23).contains(schedule.hour), (0...59).contains(schedule.minute) else {
+                throw CocoaError(.coderReadCorrupt)
+            }
+        }
         return value
     }
 

@@ -108,6 +108,48 @@ struct WidgetTests {
         }
     }
 
+    @Test func prayerTimeTransitionsAtScheduledMinuteAndResetsAfterMidnight() throws {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = try #require(TimeZone(secondsFromGMT: 0))
+        let due = try #require(calendar.date(from: DateComponents(year: 2026, month: 10, day: 3, hour: 21)))
+        let schedule = WidgetSnapshot.PrayerSchedule(enabled: true, hour: 21, minute: 0, completedDay: nil)
+        #expect(schedule.phase(at: due.addingTimeInterval(-1), calendar: calendar) == .waiting)
+        #expect(schedule.phase(at: due, calendar: calendar) == .due)
+        #expect(schedule.phase(at: due.addingTimeInterval(3600), calendar: calendar) == .due)
+        let completed = WidgetSnapshot.PrayerSchedule(enabled: true, hour: 21, minute: 0, completedDay: "2026-10-03")
+        #expect(completed.phase(at: due.addingTimeInterval(-3600), calendar: calendar) == .completed)
+        #expect(completed.phase(at: due, calendar: calendar) == .completed)
+        let tomorrow = try #require(calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: due)))
+        #expect(completed.phase(at: tomorrow, calendar: calendar) == .waiting)
+        let disabled = WidgetSnapshot.PrayerSchedule(enabled: false, hour: 21, minute: 0, completedDay: nil)
+        #expect(disabled.phase(at: due, calendar: calendar) == .waiting)
+    }
+
+    @Test func snapshotAcceptsMissingScheduleButRejectsInvalidTimes() throws {
+        var snapshot = WidgetSnapshotPublisher.makeSnapshot(fixture, language: "en")
+        snapshot.prayerSchedule = nil
+        #expect(try WidgetSnapshot.decode(JSONEncoder().encode(snapshot)).prayerSchedule == nil)
+        for (hour, minute) in [(24, 0), (-1, 0), (21, 60), (21, -1)] {
+            snapshot.prayerSchedule = .init(enabled: true, hour: hour, minute: minute, completedDay: nil)
+            #expect(throws: (any Error).self) { try WidgetSnapshot.decode(JSONEncoder().encode(snapshot)) }
+        }
+    }
+
+    @Test func scheduleProjectionSharesOnlyCurrentCompletionAndConfiguredTime() throws {
+        var data = fixture
+        data.reminder = .init(enabled: true, hour: 8, minute: 30)
+        let today = PrayData.dayKey(.now)
+        let oldDay = "2000-01-01"
+        data.prayerDays = [oldDay, today]
+        let snapshot = WidgetSnapshotPublisher.makeSnapshot(data, language: "en")
+        #expect(snapshot.prayerSchedule == .init(enabled: true, hour: 8, minute: 30, completedDay: today))
+        let text = String(decoding: try JSONEncoder().encode(snapshot), as: UTF8.self)
+        #expect(!text.contains(oldDay))
+        #expect(!text.contains("NEVER SHARE THIS NOTE"))
+        data.prayerDays = [oldDay]
+        #expect(WidgetSnapshotPublisher.makeSnapshot(data, language: "en").prayerSchedule?.completedDay == nil)
+    }
+
     @Test func failedSaveAndRestoreNeverPublish() throws {
         var publications = 0
         let data = fixture

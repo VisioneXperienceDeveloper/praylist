@@ -8,7 +8,9 @@ enum WidgetSnapshotPublisher {
             .init(id: category.id, title: category.title, items: category.prays.map {
                 .init(id: $0.id, title: $0.title, answered: $0.achievedAt != nil)
             })
-        })
+        }, prayerSchedule: .init(enabled: data.reminder.enabled, hour: data.reminder.hour,
+                                 minute: data.reminder.minute,
+                                 completedDay: data.prayedToday ? PrayData.dayKey(.now) : nil))
     }
 
     @discardableResult

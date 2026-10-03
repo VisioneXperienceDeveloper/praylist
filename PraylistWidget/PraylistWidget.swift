@@ -33,8 +33,22 @@ struct HomeWidgetProvider: AppIntentTimelineProvider {
         entry(for: configuration, family: context.family, preview: context.isPreview)
     }
     func timeline(for configuration: HomeWidgetIntent, in context: Context) async -> Timeline<HomeWidgetEntry> {
-        .init(entries: [entry(for: configuration, family: context.family)],
-              policy: .after(.now.addingTimeInterval(1800)))
+        let first = entry(for: configuration, family: context.family)
+        let calendar = Calendar.current
+        var dates = [first.date]
+        // Precompute time and midnight transitions so they do not depend on a timely reload.
+        for offset in 0...2 {
+            guard let day = calendar.date(byAdding: .day, value: offset, to: calendar.startOfDay(for: first.date)) else { continue }
+            if day > first.date { dates.append(day) }
+            if let schedule = first.snapshot.prayerSchedule, schedule.enabled,
+               let time = schedule.time(on: day, calendar: calendar), time > first.date {
+                dates.append(time)
+            }
+        }
+        let entries = Set(dates).sorted().map {
+            HomeWidgetEntry(date: $0, configuration: configuration, snapshot: first.snapshot, pageIndex: first.pageIndex)
+        }
+        return .init(entries: entries, policy: .after(first.date.addingTimeInterval(1800)))
     }
 
     private func entry(for configuration: HomeWidgetIntent, family: WidgetFamily, preview: Bool = false) -> HomeWidgetEntry {
@@ -50,6 +64,7 @@ struct HomeWidgetProvider: AppIntentTimelineProvider {
 
 struct HomeWidgetView: View {
     @Environment(\.widgetFamily) private var family
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.redactionReasons) private var redactionReasons
     let entry: HomeWidgetEntry
     private var ko: Bool { entry.snapshot.language == "ko" }
@@ -119,6 +134,7 @@ struct HomeWidgetView: View {
                 pagination
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            prayerTime
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .containerBackground(.background, for: .widget)
@@ -189,6 +205,43 @@ struct HomeWidgetView: View {
             .frame(maxWidth: .infinity)
             .fixedSize(horizontal: false, vertical: true)
         }
+    }
+    @ViewBuilder private var prayerTime: some View {
+        if let schedule = entry.snapshot.prayerSchedule,
+           let time = schedule.time(on: entry.date) {
+            let phase = schedule.phase(at: entry.date)
+            let status = phase == .completed ? copy("오늘 기도 완료", "Today's prayer complete")
+                : (!schedule.enabled ? copy("기도 알림 꺼짐", "Prayer reminder off")
+                    : (phase == .due ? copy("기도할 시간이에요", "It's time to pray") : copy("기도 시간 전", "Before prayer time")))
+            HStack(spacing: 4) {
+                Image(systemName: "alarm")
+                Text(timeLabel(time))
+            }
+            .font(.caption2.weight(.medium))
+            .foregroundStyle(phase == .completed ? Color.black : (phase == .due ? Color.primary : Color.gray))
+            .padding(.horizontal, 6)
+            .padding(.vertical, 3)
+            .background {
+                if phase == .due {
+                    Capsule()
+                        .fill(RadialGradient(colors: [.yellow.opacity(0.7), .orange.opacity(0.25), .clear],
+                                             center: .center, startRadius: 0, endRadius: 80))
+                        .blur(radius: 7)
+                } else if phase == .completed && colorScheme == .dark {
+                    Capsule().fill(.white.opacity(0.9))
+                }
+            }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(status), \(timeLabel(time))")
+            .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+    }
+    private func timeLabel(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: ko ? "ko_KR" : "en_US")
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
     }
     private func pageDot(category: WidgetSnapshot.Category, page: Int, current: Int, count: Int) -> some View {
         Button(intent: ChangeWidgetPageIntent(categoryID: category.id, pageSize: pageSize, page: page)) {
