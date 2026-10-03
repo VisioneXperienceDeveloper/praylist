@@ -3,7 +3,6 @@ import Foundation
 enum WidgetExperience {
     static let group = "group.com.visionexperiencedeveloper.praylist"
     static let kind = "com.visionexperiencedeveloper.praylist.home"
-    static let titlesKey = "widget.allowTitles"
     static var defaults: UserDefaults? { UserDefaults(suiteName: group) }
     static var fileURL: URL? {
         FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: group)?
@@ -26,7 +25,6 @@ struct WidgetSnapshot: Codable, Equatable, Sendable {
     var schemaVersion = 2
     var generatedAt = Date()
     var language = "en"
-    var titlesAllowed = false
     var categories: [Category] = []
 
     static let empty = WidgetSnapshot()
@@ -47,13 +45,12 @@ struct WidgetSnapshot: Codable, Equatable, Sendable {
         return value
     }
 
-    /// The widget extension uses this redacted projection for rendering.
-    /// Configuration pickers use `readConfiguration()` so their labels remain useful.
-    func redacted() -> Self {
-        guard !titlesAllowed else { return self }
+    /// A widget always identifies its category; the per-widget switch controls pray titles.
+    func displayingPrayTitles(_ showTitles: Bool) -> Self {
+        guard !showTitles else { return self }
         var value = self
         value.categories = value.categories.map { category in
-            .init(id: category.id, title: nil, items: category.items.map {
+            .init(id: category.id, title: category.title, items: category.items.map {
                 .init(id: $0.id, title: nil, answered: $0.answered)
             })
         }
@@ -67,11 +64,6 @@ struct WidgetSnapshot: Codable, Equatable, Sendable {
     }
 
     static func read() -> Self {
-        guard let url = WidgetExperience.fileURL, let bytes = try? Data(contentsOf: url),
-              let value = try? decode(bytes) else { return .empty }
-        // Revocation takes priority over a previously published snapshot.
-        return WidgetExperience.defaults?.bool(forKey: WidgetExperience.titlesKey) == true
-            ? value
-            : value.redacted()
+        readConfiguration()
     }
 }

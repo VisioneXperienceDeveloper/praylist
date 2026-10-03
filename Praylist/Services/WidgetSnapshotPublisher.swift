@@ -3,8 +3,8 @@ import WidgetKit
 
 @MainActor
 enum WidgetSnapshotPublisher {
-    static func makeSnapshot(_ data: PrayData, allowTitles: Bool, language: String) -> WidgetSnapshot {
-        WidgetSnapshot(language: language, titlesAllowed: allowTitles, categories: data.categories.map { category in
+    static func makeSnapshot(_ data: PrayData, language: String) -> WidgetSnapshot {
+        WidgetSnapshot(language: language, categories: data.categories.map { category in
             .init(id: category.id, title: category.title, items: category.prays.map {
                 .init(id: $0.id, title: $0.title, answered: $0.achievedAt != nil)
             })
@@ -14,8 +14,7 @@ enum WidgetSnapshotPublisher {
     @discardableResult
     static func publish(_ data: PrayData) -> Bool {
         guard let url = WidgetExperience.fileURL else { return false }
-        let snapshot = makeSnapshot(data, allowTitles: WidgetExperience.defaults?.bool(forKey: WidgetExperience.titlesKey) == true,
-                                    language: L10n.language.rawValue)
+        let snapshot = makeSnapshot(data, language: L10n.language.rawValue)
         do {
             let bytes = try JSONEncoder().encode(snapshot)
             _ = try WidgetSnapshot.decode(bytes)

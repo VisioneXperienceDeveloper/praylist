@@ -13,9 +13,11 @@
 		25C07388436B361E1D2D2844 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CAD434E9F4C061A2B849A2 /* PreviewData.swift */; };
 		35A2D08528366B768B533C20 /* PrayEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980033C7A7CAD460A9D9BAC /* PrayEditorView.swift */; };
 		399EECCA39A7FA1915C8608A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E29672A0B019962522407 /* SettingsView.swift */; };
+		41CCC5D33FABE983927DA82B /* WidgetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5E7D08B1BD8C89804C365 /* WidgetPage.swift */; };
 		45D5E42600CFAD513C247059 /* WidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A11F1FAF12075144D991B68 /* WidgetConfiguration.swift */; };
 		56FE29BECBEA31E4E51B2783 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E733D423A89457517B54D /* Design.swift */; };
 		576EBCAF659AFC570144311E /* PraylistWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB411FB54E522B6978AB34 /* PraylistWidget.swift */; };
+		5A7F652CD62944044B5B4EA4 /* WidgetPageIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D0B099B2EFD1417391B346 /* WidgetPageIntent.swift */; };
 		650486EE7E33833188C15947 /* WidgetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A3681D1BC0D0FCEF15B2C /* WidgetRouter.swift */; };
 		692C90A658969B4817E50061 /* PublicPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968201F2BFC12F436D26500 /* PublicPages.swift */; };
 		6A9DE0EACE301E64503C08DC /* WidgetSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94E6E394792297E2BB659DF /* WidgetSettingsView.swift */; };
@@ -40,6 +42,7 @@
 		E3184ACB9A3036EB46EA8009 /* WidgetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D44906AA44F4DB6E0852C6E /* WidgetRoute.swift */; };
 		ECEFFF1ABE3D37401299D413 /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E15AE77A015C94313DDAEF /* PrayerView.swift */; };
 		F02EED8D8B9FDB9D1166C4F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D8C088F1C85CB7DD38CAE6 /* Foundation.framework */; };
+		F0F5BA5492BFDC5FE9C2843C /* WidgetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5ACD66D3735B0BA82F27A0 /* WidgetPage.swift */; };
 		F48DE8982FB5D34AA911213A /* PrayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8F84B1FC19DD6AB8BE24C4 /* PrayData.swift */; };
 		F4E472FB8249C8A7BF363043 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 317071B1A24B0B017B2CE61F /* PrivacyInfo.xcprivacy */; };
 		F660EC577DA3378DBC33E689 /* WidgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57302066916391D8F0A1E3A7 /* WidgetTests.swift */; };
@@ -87,7 +90,9 @@
 
 /* Begin PBXFileReference section */
 		0A0C7A30533AE3CD13E5D1CD /* PrayStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayStore.swift; path = Services/PrayStore.swift; sourceTree = "<group>"; };
+		0E5ACD66D3735B0BA82F27A0 /* WidgetPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WidgetPage.swift; path = Shared/WidgetPage.swift; sourceTree = "<group>"; };
 		156975B299993CA127F61C67 /* LocalizationTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
+		19C5E7D08B1BD8C89804C365 /* WidgetPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetPage.swift; sourceTree = "<group>"; };
 		1BFF27048113260F9932D439 /* ReminderService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReminderService.swift; path = Services/ReminderService.swift; sourceTree = "<group>"; };
 		1C71A87C7621EEA5968E5153 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = Views/OnboardingView.swift; sourceTree = "<group>"; };
 		2ACAF74E30C3B4253D675495 /* en */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 		886E733D423A89457517B54D /* Design.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Design.swift; path = Views/Design.swift; sourceTree = "<group>"; };
 		8BD6ED4D812B6C5F52F7E20C /* WidgetSnapshotPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WidgetSnapshotPublisher.swift; path = Services/WidgetSnapshotPublisher.swift; sourceTree = "<group>"; };
 		91F2D1EAEE4769714777CD54 /* PraylistApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PraylistApp.swift; path = App/PraylistApp.swift; sourceTree = "<group>"; };
+		96D0B099B2EFD1417391B346 /* WidgetPageIntent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetPageIntent.swift; sourceTree = "<group>"; };
 		A5CAD434E9F4C061A2B849A2 /* PreviewData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewData.swift; path = Models/PreviewData.swift; sourceTree = "<group>"; };
 		A8D8C088F1C85CB7DD38CAE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		AAF4244CA4D5A00996F47D75 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WidgetSnapshot.swift; path = Shared/WidgetSnapshot.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 			children = (
 				5D44906AA44F4DB6E0852C6E /* WidgetRoute.swift */,
 				F8B94E59DE97B51AD75EF373 /* WidgetSnapshot.swift */,
+				19C5E7D08B1BD8C89804C365 /* WidgetPage.swift */,
 			);
 			name = WidgetShared;
 			path = Praylist/Shared;
@@ -192,6 +199,7 @@
 				3A11F1FAF12075144D991B68 /* WidgetConfiguration.swift */,
 				1B07A49B9A06CDF96D246CF3 /* Localizable.strings */,
 				F7855699530FED1D58BAD962 /* PrivacyInfo.xcprivacy */,
+				96D0B099B2EFD1417391B346 /* WidgetPageIntent.swift */,
 			);
 			name = PraylistWidget;
 			path = PraylistWidget;
@@ -230,6 +238,7 @@
 				2C5E29672A0B019962522407 /* SettingsView.swift */,
 				C94E6E394792297E2BB659DF /* WidgetSettingsView.swift */,
 				F211CE4A27F5E755843F877D /* Resources */,
+				0E5ACD66D3735B0BA82F27A0 /* WidgetPage.swift */,
 			);
 			name = Praylist;
 			path = Praylist;
@@ -438,6 +447,8 @@
 				45D5E42600CFAD513C247059 /* WidgetConfiguration.swift in Sources */,
 				E3184ACB9A3036EB46EA8009 /* WidgetRoute.swift in Sources */,
 				D34D2673CF71917A751DA6A9 /* WidgetSnapshot.swift in Sources */,
+				41CCC5D33FABE983927DA82B /* WidgetPage.swift in Sources */,
+				5A7F652CD62944044B5B4EA4 /* WidgetPageIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +494,7 @@
 				ECEFFF1ABE3D37401299D413 /* PrayerView.swift in Sources */,
 				399EECCA39A7FA1915C8608A /* SettingsView.swift in Sources */,
 				6A9DE0EACE301E64503C08DC /* WidgetSettingsView.swift in Sources */,
+				F0F5BA5492BFDC5FE9C2843C /* WidgetPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

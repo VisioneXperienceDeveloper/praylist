@@ -216,11 +216,11 @@
 "개인정보 처리방침 전문 보기" = "Read the full privacy policy";
 /* Home screen widgets */
 "widget.settings.title" = "Home screen widgets";
-"widget.settings.allow" = "Allow titles in widgets";
-"widget.settings.privacy" = "Personal text stays private by default. Allow sharing category and pray titles, then enable Show titles in each widget. Notes are never shared.";
+"widget.settings.privacy" = "The selected category name is always shown. Turn on Show titles to also show pray names. When off, a lock icon indicates that titles are private. Notes are never shared.";
 "widget.settings.instructions" = "Touch and hold the Home Screen, then choose Edit → Add Widget and find Praylist. Edit the widget to choose Today's prayer, New pray, Selected pray, or Category list.";
 "widget.settings.delay" = "Updates may take a little time. Opening a widget does not record a prayer.";
 "widget.settings.failed" = "Couldn't refresh widgets. Please reopen the app.";
 "widget.route.full" = "No room for another pray. Make space or add a category in Settings.";
 "widget.route.empty" = "Write your first pray, then start today's prayer.";
 "widget.route.unavailable" = "This widget's item is no longer available. Choose another in Edit Widget.";
+"widget.settings.paging" = "Category lists show one pray at a time in medium (4×2) widgets and five in large (4×4) widgets. Tap a page dot to change pages.";

@@ -9,6 +9,16 @@ enum WidgetPurpose: String, AppEnum {
     ]
 }
 
+// A separate enum keeps the small widget picker limited to its two supported actions.
+enum SmallWidgetPurpose: String, AppEnum {
+    case today, newPray
+    static let typeDisplayRepresentation: TypeDisplayRepresentation = "Widget type"
+    static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+        .today: "Today's prayer", .newPray: "New prayer"
+    ]
+    var purpose: WidgetPurpose { self == .today ? .today : .newPray }
+}
+
 struct WidgetCategoryEntity: AppEntity {
     let id: UUID
     let name: String
@@ -38,7 +48,14 @@ struct WidgetPrayEntity: AppEntity {
 }
 
 struct WidgetPrayQuery: EntityQuery {
+    @IntentParameterDependency<HomeWidgetIntent>(\.$category) var configuration
+
     func suggestedEntities() async throws -> [WidgetPrayEntity] {
+        guard let categoryID = configuration?.category.id else { return [] }
+        return allEntities().filter { $0.categoryID == categoryID }
+    }
+
+    private func allEntities() -> [WidgetPrayEntity] {
         WidgetSnapshot.readConfiguration().categories.enumerated().flatMap { ci, c in
             c.items.enumerated().filter { !$0.element.answered }.map { pi, p in
                 .init(id: p.id, name: p.title ?? String(localized: "Category") + " \(ci + 1) · pray \(pi + 1)", categoryID: c.id)
@@ -46,7 +63,8 @@ struct WidgetPrayQuery: EntityQuery {
         }
     }
     func entities(for identifiers: [UUID]) async throws -> [WidgetPrayEntity] {
-        try await suggestedEntities().filter { identifiers.contains($0.id) }
+        // Saved selections also resolve outside the configuration editor, without dependencies.
+        allEntities().filter { identifiers.contains($0.id) }
     }
 }
 
@@ -54,26 +72,50 @@ struct HomeWidgetIntent: WidgetConfigurationIntent {
     static let title: LocalizedStringResource = "Praylist widget"
     static let description = IntentDescription("Choose a destination and what this widget shows.")
     @Parameter(title: "Widget type", default: .today) var purpose: WidgetPurpose
+    @Parameter(title: "Widget type", default: .today) var smallPurpose: SmallWidgetPurpose
     @Parameter(title: "Category") var category: WidgetCategoryEntity?
     @Parameter(title: "Pray") var pray: WidgetPrayEntity?
     @Parameter(title: "Show titles", default: false) var showTitles: Bool
 
     static var parameterSummary: some ParameterSummary {
-        Switch(\.$purpose) {
-            Case(.today) {
-                Summary("\(\.$purpose)")
+        When(widgetFamily: .equalTo, .systemSmall) {
+            Switch(\.$smallPurpose) {
+                Case(.newPray) {
+                    Summary("\(\.$smallPurpose): \(\.$category)")
+                }
+                DefaultCase {
+                    Summary("\(\.$smallPurpose)")
+                }
             }
-            Case(.newPray) {
-                Summary("\(\.$purpose): \(\.$category)")
-            }
-            Case(.selectedPray) {
-                Summary("\(\.$purpose): \(\.$pray), \(\.$showTitles)")
-            }
-            Case(.category) {
-                Summary("\(\.$purpose): \(\.$category), \(\.$showTitles)")
-            }
-            DefaultCase {
-                Summary("\(\.$purpose)")
+        } otherwise: {
+            Switch(\.$purpose) {
+                Case(.today) {
+                    Summary("\(\.$purpose)")
+                }
+                Case(.newPray) {
+                    Summary("\(\.$purpose): \(\.$category)")
+                }
+                Case(.selectedPray) {
+                    When(\.$category, .hasAnyValue) {
+                        Summary {
+                            \.$purpose
+                            \.$category
+                            \.$pray
+                            \.$showTitles
+                        }
+                    } otherwise: {
+                        Summary {
+                            \.$purpose
+                            \.$category
+                        }
+                    }
+                }
+                Case(.category) {
+                    Summary("\(\.$purpose): \(\.$category), \(\.$showTitles)")
+                }
+                DefaultCase {
+                    Summary("\(\.$purpose)")
+                }
             }
         }
     }
