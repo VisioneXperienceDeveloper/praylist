@@ -80,7 +80,12 @@ struct HomeWidgetView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: family == .systemSmall ? 6 : 10) {
             HStack {
-                Image(systemName: "hands.sparkles").widgetAccentable().accessibilityHidden(true)
+                Image("PraylistAppIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 18, height: 18)
+                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                    .accessibilityHidden(true)
                 Text("praylist").font(.system(.caption, design: .serif))
                 Spacer(minLength: 0)
             }.foregroundStyle(.secondary)
