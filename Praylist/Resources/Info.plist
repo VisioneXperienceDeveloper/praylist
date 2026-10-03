@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
+<key>CFBundleURLTypes</key><array><dict>
+<key>CFBundleURLName</key><string>com.visionexperiencedeveloper.praylist.widget</string>
+<key>CFBundleURLSchemes</key><array><string>praylist</string></array>
+</dict></array>
 <key>ITSAppUsesNonExemptEncryption</key><false/>
 <key>CFBundleLocalizations</key><array><string>en</string><string>ko</string></array>
 <key>UIRequiresFullScreen</key><true/>

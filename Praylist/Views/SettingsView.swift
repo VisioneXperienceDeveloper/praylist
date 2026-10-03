@@ -47,6 +47,9 @@ struct SettingsView: View {
                     NavigationLink { LanguageSettingsView() } label: {
                         Label(L10n.text("언어"), systemImage: "globe")
                     }.accessibilityIdentifier("languageSettings")
+                    NavigationLink { WidgetSettingsView() } label: {
+                        Label(L10n.text("widget.settings.title"), systemImage: "square.grid.2x2")
+                    }.accessibilityIdentifier("widgetSettings")
                     Picker(L10n.text("테마"), selection: $appearance) {
                         ForEach(AppAppearance.allCases) { option in
                             Text(option.title).tag(option.rawValue)

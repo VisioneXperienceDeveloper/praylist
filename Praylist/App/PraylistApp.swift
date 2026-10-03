@@ -30,6 +30,7 @@ final class PraylistAppDelegate: NSObject, UIApplicationDelegate, UNUserNotifica
 struct PraylistApp: App {
     @State private var store: PrayStore
     @State private var language: LanguageSettings
+    @State private var widgetRouter = WidgetRouter()
     @UIApplicationDelegateAdaptor(PraylistAppDelegate.self) private var appDelegate
 
     init() {
@@ -62,8 +63,9 @@ struct PraylistApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            RootView().environment(store).environment(appDelegate.reminders).environment(language)
+            RootView().environment(store).environment(appDelegate.reminders).environment(language).environment(widgetRouter)
                 .environment(\.locale, language.locale).tint(.forest)
+                .onOpenURL { widgetRouter.open($0) }
         }
     }
 }
@@ -123,9 +125,10 @@ struct RootView: View {
         .foregroundStyle(Color.ink)
         .preferredColorScheme(AppAppearance(rawValue: appearance)?.colorScheme)
         .errorAlert($startupError)
-        .task { await syncReminders() }
-        .onChange(of: language.resolved) { _, _ in Task { await syncReminders() } }
-        .onChange(of: phase) { _, value in if value == .active { language.refreshRegion(); Task { await syncReminders() } } }
+        .task { store.refreshWidgets(); await syncReminders() }
+        .onChange(of: language.resolved) { _, _ in store.refreshWidgets(); Task { await syncReminders() } }
+        .onChange(of: store.loadError) { _, _ in store.refreshWidgets() }
+        .onChange(of: phase) { _, value in if value == .active { language.refreshRegion(); store.refreshWidgets(); Task { await syncReminders() } } }
     }
     private func syncReminders() async {
         guard store.loadError == nil, !reminders.isUpdatingPreference else { return }

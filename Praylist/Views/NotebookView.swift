@@ -11,6 +11,7 @@ struct NotebookView: View {
     @Environment(LanguageSettings.self) private var language
     @Environment(PrayStore.self) private var store
     @Environment(ReminderService.self) private var reminders
+    @Environment(WidgetRouter.self) private var widgetRouter
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var phase
     @State private var selectedID: UUID?
@@ -20,6 +21,7 @@ struct NotebookView: View {
     @State private var showPrayer = false
     @State private var keyboardVisible = false
     @State private var prayerAfterDismiss = false
+    @State private var widgetNotice: String?
     private var index: Int { store.data.categories.firstIndex(where: { $0.id == selectedID }) ?? 0 }
 
     var body: some View {
@@ -46,15 +48,17 @@ struct NotebookView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboardVisible = true }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboardVisible = false }
-        .onAppear { repairSelection(); routeReminder() }
+        .onAppear { repairSelection(); routeReminder(); routeWidget() }
         .onChange(of: store.data.categories.map(\.id)) { _, _ in repairSelection() }
         .onChange(of: selectedID) { _, _ in dismissKeyboard() }
         .onChange(of: reminders.openPrayer) { _, _ in routeReminder() }
+        .onChange(of: widgetRouter.pending) { _, _ in routeWidget() }
         .onChange(of: phase) { _, value in if value == .active { routeReminder() } }
         .sheet(item: $achievement, onDismiss: openPendingPrayer) { context in AchievementView(context: context) }
         .sheet(isPresented: $showSettings, onDismiss: openPendingPrayer) { SettingsView() }
         .sheet(isPresented: $showHistory, onDismiss: openPendingPrayer) { HistoryView() }
-        .sheet(isPresented: $showPrayer) { PrayerView() }
+        .sheet(isPresented: $showPrayer, onDismiss: routeWidget) { PrayerView() }
+        .errorAlert($widgetNotice)
     }
     private var topBar: some View {
         HStack {
@@ -103,9 +107,35 @@ struct NotebookView: View {
         reminders.openPrayer = false
     }
     private func openPendingPrayer() {
+        if widgetRouter.pending != nil { routeWidget(); return }
         guard prayerAfterDismiss else { return }
         prayerAfterDismiss = false
         showPrayer = true
+    }
+    private func routeWidget() {
+        guard let route = widgetRouter.pending else { return }
+        if achievement != nil || showSettings || showHistory || showPrayer {
+            achievement = nil; showSettings = false; showHistory = false; showPrayer = false
+            return
+        }
+        dismissKeyboard()
+        widgetRouter.pending = nil
+        prayerAfterDismiss = false
+        reminders.openPrayer = false
+        switch WidgetDestination.resolve(route, data: store.data) {
+        case .today: showPrayer = true
+        case .row(let category, let slot):
+            selectedID = category
+            widgetRouter.focus = .init(category: category, slot: slot)
+        case .category(let id): selectedID = id
+        case .full: widgetNotice = L10n.text("widget.route.full")
+        case .needsPray: widgetNotice = L10n.text("widget.route.empty")
+        case .unavailable: widgetNotice = L10n.text("widget.route.unavailable"); selectedID = store.data.categories.first?.id
+        case .notebook:
+            selectedID = store.data.categories.first?.id
+            if widgetRouter.invalidURL { widgetNotice = L10n.text("widget.route.unavailable") }
+        }
+        widgetRouter.invalidURL = false
     }
     private func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -114,6 +144,7 @@ struct NotebookView: View {
 
 private struct CategoryPage: View {
     @Environment(LanguageSettings.self) private var language
+    @Environment(WidgetRouter.self) private var widgetRouter
     let category: PrayCategory
     let number: Int
     var achieve: (Pray) -> Void
@@ -139,6 +170,11 @@ private struct CategoryPage: View {
                         .overlay(alignment: .leading) { Rectangle().fill(Color.forest.opacity(0.16)).frame(width: 1).padding(.leading, 30).allowsHitTesting(false) }
                     }.padding(.horizontal, 28).padding(.top, 20).padding(.bottom, 2)
                 }.scrollIndicators(.hidden).scrollDismissesKeyboard(.interactively)
+                    .task(id: widgetRouter.focus?.token) {
+                        guard let focus = widgetRouter.focus, focus.category == category.id else { return }
+                        try? await Task.sleep(for: .milliseconds(250))
+                        proxy.scrollTo(focus.slot, anchor: .center)
+                    }
                     .onChange(of: geometry.size.height) { _, _ in
                         if let focusedSlot { withAnimation(.easeOut(duration: 0.2)) { proxy.scrollTo(focusedSlot, anchor: .center) } }
                     }
@@ -162,6 +198,7 @@ private struct CategoryPage: View {
 struct InlinePrayRow: View {
     @Environment(LanguageSettings.self) private var language
     @Environment(PrayStore.self) private var store
+    @Environment(WidgetRouter.self) private var widgetRouter
     @Environment(\.scenePhase) private var phase
     let categoryID: UUID
     let pray: Pray?
@@ -217,6 +254,13 @@ struct InlinePrayRow: View {
             .onChange(of: pray?.id) { _, _ in if !focused { text = pray?.title ?? "" } }
             .onChange(of: phase) { _, value in if value != .active { commit() } }
             .onDisappear { commit() }
+            .task(id: widgetRouter.focus?.token) {
+                guard let focus = widgetRouter.focus, focus.category == categoryID, focus.slot == slot else { return }
+                try? await Task.sleep(for: .milliseconds(350))
+                guard !Task.isCancelled, widgetRouter.focus?.token == focus.token else { return }
+                focused = true
+                widgetRouter.focus = nil
+            }
             .errorAlert($error)
     }
     private func commit() {

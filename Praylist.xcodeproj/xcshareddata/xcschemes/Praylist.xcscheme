@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D8EA783BE865793748966FCB"
+               BlueprintIdentifier = "6912C1FF62893DF6140BE3E6"
                BuildableName = "Praylist.app"
                BlueprintName = "Praylist"
+               ReferencedContainer = "container:Praylist.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F7275B6360C3D37133DAFE7F"
+               BuildableName = "PraylistWidget.appex"
+               BlueprintName = "PraylistWidget"
                ReferencedContainer = "container:Praylist.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,7 +44,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D8EA783BE865793748966FCB"
+            BlueprintIdentifier = "6912C1FF62893DF6140BE3E6"
             BuildableName = "Praylist.app"
             BlueprintName = "Praylist"
             ReferencedContainer = "container:Praylist.xcodeproj">
@@ -41,7 +55,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FC54E8B4078969F853AE18F6"
+               BlueprintIdentifier = "3021BDC96D1B521927B320EB"
                BuildableName = "PraylistTests.xctest"
                BlueprintName = "PraylistTests"
                ReferencedContainer = "container:Praylist.xcodeproj">
@@ -51,7 +65,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "240F89A6402A5340A7045C28"
+               BlueprintIdentifier = "5E5FC6741DB80A2C5FFF681F"
                BuildableName = "PraylistUITests.xctest"
                BlueprintName = "PraylistUITests"
                ReferencedContainer = "container:Praylist.xcodeproj">
@@ -73,7 +87,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D8EA783BE865793748966FCB"
+            BlueprintIdentifier = "6912C1FF62893DF6140BE3E6"
             BuildableName = "Praylist.app"
             BlueprintName = "Praylist"
             ReferencedContainer = "container:Praylist.xcodeproj">
@@ -90,7 +104,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D8EA783BE865793748966FCB"
+            BlueprintIdentifier = "6912C1FF62893DF6140BE3E6"
             BuildableName = "Praylist.app"
             BlueprintName = "Praylist"
             ReferencedContainer = "container:Praylist.xcodeproj">

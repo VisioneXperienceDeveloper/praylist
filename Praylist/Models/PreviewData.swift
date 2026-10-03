@@ -14,6 +14,12 @@ enum PreviewData {
             categories[i].prays = titles[i].enumerated().map { j, title in
                 Pray(title: title, note: j == 0 ? L10n.text("작은 걸음부터, 나의 속도로.") : "", createdAt: Date().addingTimeInterval(-86400 * 40), achievedAt: i == 0 && (j == 0 || j == 5) ? Date().addingTimeInterval(-86400 * Double(j + 1)) : nil)
             }
+            if ProcessInfo.processInfo.arguments.contains("--widget-testing") {
+                categories[i].id = UUID(uuidString: String(format: "00000000-0000-4000-8000-%012d", i + 1))!
+                for j in categories[i].prays.indices {
+                    categories[i].prays[j].id = UUID(uuidString: String(format: "00000000-0000-4000-8000-%012d", 100 + i * 10 + j))!
+                }
+            }
         }
         return PrayData(onboarded: true, categories: categories, prayerDays: [PrayData.dayKey(Date().addingTimeInterval(-86400))])
     }

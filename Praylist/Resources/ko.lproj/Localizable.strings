@@ -214,3 +214,13 @@
 "pray.view.answered" = "%@ 달성일 보기";
 
 "개인정보 처리방침 전문 보기" = "개인정보 처리방침 전문 보기";
+/* Home screen widgets */
+"widget.settings.title" = "홈 화면 위젯";
+"widget.settings.privacy" = "선택한 카테고리명은 항상 표시돼요. ‘제목 표시’를 켜면 pray명도 함께 보여요. 끄면 잠금 아이콘과 비공개 안내가 표시돼요. 메모는 공유하지 않아요.";
+"widget.settings.instructions" = "홈 화면을 길게 누르고 편집 → 위젯 추가에서 Praylist를 찾아보세요. 위젯 편집에서 오늘의 기도, 새 pray, 선택한 pray, 카테고리 목록을 고를 수 있어요.";
+"widget.settings.delay" = "설정과 내용이 반영되기까지 시간이 걸릴 수 있어요. 위젯을 열어도 기도 기록은 추가되지 않아요.";
+"widget.settings.failed" = "위젯을 갱신하지 못했어요. 앱을 다시 열어 주세요.";
+"widget.route.full" = "추가할 공간이 없어요. 항목을 정리하거나 설정에서 새 항목을 만들어 주세요.";
+"widget.route.empty" = "먼저 pray를 하나 적어 주세요. 그다음 오늘의 기도를 시작할 수 있어요.";
+"widget.route.unavailable" = "위젯의 대상을 찾을 수 없어요. 위젯 편집에서 다시 선택해 주세요.";
+"widget.settings.paging" = "카테고리 목록은 중형(4×2)에서 1개씩, 대형(4×4)에서 5개씩 보여요. 페이지 점 버튼으로 넘길 수 있어요.";
