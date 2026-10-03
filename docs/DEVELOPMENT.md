@@ -16,7 +16,7 @@ xcodebuild -project Praylist.xcodeproj -scheme Praylist \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro Max,OS=26.5' test
 ```
 
-현재 개발 빌드 설정은 버전 **1.3.0 / 빌드 8**, Bundle ID `com.visionexperiencedeveloper.praylist`입니다. 홈 화면 위젯 확장에는 `com.visionexperiencedeveloper.praylist.widget`과 App Group `group.com.visionexperiencedeveloper.praylist`을 사용합니다. 실기기 빌드에는 앱과 확장 모두 해당 App Group을 포함한 프로비저닝이 필요합니다. 서명·업로드·심사 제출 상태는 [출시 문서](../release/RELEASE.md)에서 별도로 관리합니다.
+현재 개발 빌드 설정은 버전 **1.3.0 / 빌드 12**, Bundle ID `com.visionexperiencedeveloper.praylist`입니다. 홈 화면 위젯 확장에는 `com.visionexperiencedeveloper.praylist.widget`과 App Group `group.com.visionexperiencedeveloper.praylist`을 사용합니다. 실기기 빌드에는 앱과 확장 모두 해당 App Group을 포함한 프로비저닝이 필요합니다. 서명·업로드·심사 제출 상태는 [출시 문서](../release/RELEASE.md)에서 별도로 관리합니다.
 
 ## 버전 관리
 
